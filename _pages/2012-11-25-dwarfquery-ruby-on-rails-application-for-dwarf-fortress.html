@@ -1,0 +1,36 @@
+---
+layout: page
+title: 'Dwarfquery : Ruby on Rails Application for Dwarf Fortress'
+date: 2012-11-25 13:07:47.000000000 +00:00
+categories: []
+tags: []
+status: publish
+type: page
+published: true
+meta:
+  _edit_last: '12536933'
+  _wp_page_template: default
+  _publicize_pending: '1'
+author:
+  login: emospacemonkey
+  email: stephen.emo@gmail.com
+  display_name: emospacemonkey
+  first_name: ''
+  last_name: ''
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>This application parses the Legend File produced by a Dwarf Fortress game before you start the game. It can be a considerable size with a medium sized game being a couple of hundred megabytes in size. This XML is difficult to read. This tool parses the information and turns it into a searchable database.</p>
+<p>It is currently hosted on CloudFoundry. As the XML file is large it is not run in real time but using Resque/.Redis which means the file can be parsed not in real time. Also as the Worker Instance (which parses the file) is a different application than the Server app and Cloudfoundry does not allow shared files, the file is uploads then synced across on Dropbox. This can mean 10 minutes or so for a large file to upload.</p>
+<p>I would probably do the parsing by email if I was to extend this.</p>
+<p>You can view the login and see what goes on within the application at</p>
+<p>dwarfquery.cloudfoundry.com</p>
+<p>Use the test user : testuser@gmail.com. password is:sammy1</p>
+<p>Using this test user you and search and view the data.</p>
+<p>This application makes use of alot of gems within Rails including the composite_key, dropbox sdk, resque and of course cloudfoundry.</p>
+<p>Including some screenshots below. Historical Figures, Entities they are linked to and Historical Events. There is more related informaton if you browse round</p>
+<p><a href="http://stephenemo.files.wordpress.com/2012/11/histfig.gif"><img class="alignleft size-medium wp-image-31" title="histfig" alt="" src="assets/histfig.gif?w=300" height="217" width="300" /></a></p>
+<p>&nbsp;</p>
+<p><a href="http://stephenemo.files.wordpress.com/2012/11/entlinks.gif"><img class="alignleft size-medium wp-image-32" title="entlinks" alt="" src="assets/entlinks.gif?w=300" height="217" width="300" /></a></p>
+<p>&nbsp;</p>
+<p><a href="http://stephenemo.files.wordpress.com/2012/11/hisfigevt.gif"><img class="alignleft size-medium wp-image-33" title="hisfigevt" alt="" src="assets/hisfigevt.gif?w=300" height="217" width="300" /></a></p>

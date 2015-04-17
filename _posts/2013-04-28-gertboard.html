@@ -1,0 +1,26 @@
+---
+layout: post
+title: Gertboard
+date: 2013-04-28 15:12:26.000000000 +01:00
+categories: []
+tags:
+- battery
+- gertboard
+- motor
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '12536933'
+  _publicize_pending: '1'
+author:
+  login: emospacemonkey
+  email: stephen.emo@gmail.com
+  display_name: emospacemonkey
+  first_name: ''
+  last_name: ''
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>Well I have been running through the test programs for my gertboard and they all seem straightforward. There are a few snags you can hit even using the manual.</p>
+<p>The manual has lots of wiring diagrams but it does not clearly explain you need to put the 3V jumper on to fully enable the buttons and leds. Secondly for the motor test it does not fully explain the type of external power source you need. I initially had a 2 AA battery pack as used on the adafruit example. This did not produce enough voltage to power the motor through the gertboard (it did power when the battery was hooked direct to the 3V motor) A 9V PP3 battery is required to power the 3V motor on the motor test program.</p>

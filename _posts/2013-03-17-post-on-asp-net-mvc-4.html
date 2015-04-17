@@ -1,0 +1,32 @@
+---
+layout: post
+title: "$.Post on ASP.Net MVC 4"
+date: 2013-03-17 01:31:28.000000000 +00:00
+categories: []
+tags:
+- "$.post"
+- ASP.NET
+- jQuery
+- MVC
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '12536933'
+  _publicize_pending: '1'
+  tagazine-media: a:7:{s:7:"primary";s:0:"";s:6:"images";a:0:{}s:6:"videos";a:0:{}s:11:"image_count";i:0;s:6:"author";s:8:"12536933";s:7:"blog_id";s:8:"28403862";s:9:"mod_stamp";s:19:"2013-03-17
+    01:31:28";}
+author:
+  login: emospacemonkey
+  email: stephen.emo@gmail.com
+  display_name: emospacemonkey
+  first_name: ''
+  last_name: ''
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>Surprised I did not see an example of this on the web but I noticed to use $.post to pass a value to an Action in your controller you need to JSON.stringify on the value to get it to post. Otherwise the value you get in your parameter will be null. See below</p>
+<blockquote><p> $.post("/GemTable/ProcessBestGem",  { sGems: JSON.stringify(sname) }, function (html) {<br />
+// Do Something;<br />
+},"json");</p></blockquote>
+<p>Useful to know maybe.</p>

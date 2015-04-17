@@ -1,0 +1,91 @@
+---
+layout: post
+title: Effective Use of Concurrent Sidekiq Workers
+date: 2015-02-11 22:17:41.000000000 +00:00
+categories:
+- programming
+tags:
+- Belfast
+- Property
+- Real Estate
+- Ruby
+- Ruby on rails
+status: publish
+type: post
+published: true
+meta:
+  _rest_api_published: '1'
+  _rest_api_client_id: "-1"
+  _wpas_skip_facebook: '1'
+  _wpas_skip_google_plus: '1'
+  _wpas_skip_linkedin: '1'
+  _wpas_skip_tumblr: '1'
+  _wpas_skip_path: '1'
+  publicize_twitter_user: stephenemo
+  publicize_twitter_url: http://t.co/wH4ZSbtzsT
+  _wpas_done_5415324: '1'
+  _publicize_done_external: a:1:{s:7:"twitter";a:1:{i:36781241;b:1;}}
+author:
+  login: emospacemonkey
+  email: stephen.emo@gmail.com
+  display_name: emospacemonkey
+  first_name: ''
+  last_name: ''
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>One of the benefits of Sidekiq is that it allows your application to work on a single task using simultaneous worker processes which also  means that you have a set of additional problems</p>
+<ul>
+<li>Ensure separate workers do not save the same record result at the same causing data duplication</li>
+<li>Ensure separate workers do not work on the same data</li>
+</ul>
+<p>Sidekiq has proved useful on my web scraping code for my Northern Ireland Property Web Site at <a href="http://www.propertytrackerni.co.uk/">http://www.propertytrackerni.co.uk</a></p>
+<p>Obviously neither of these issues is something that you would want to happen in your working application and the issue if data duplication can be easily resolved by adding unique database constraints so that the same data cannot be added to your database table.</p>
+<p>The second issue can be resolved by marking off data that has been processed already which I have achieved by adding the below line to the code</p>
+<blockquote><p>  if pdate == nil or (pdate.year &lt;= Time.now.year and pdate.mon != Time.now.month)</p></blockquote>
+<p>This pdate contains the date the search area record was last processed and as this task is monthly this means search areas that have already been processed will be passed over. Now this does mean that later workers will have to iterate over search params that have already been processed but as the number of search areas can be measured in the thousands (Northern Ireland is quote small) this is not much overhead. The WHERE ActiveRecord statement could be used on top of the top condition e.g.</p>
+<blockquote><p>SearchParams.where(“searchdate is null or (EXTRACT(YEAR FROM searchdate) &lt;= EXTRACT(YEAR FROM now()) AND EXTRACT(MONTH FROM searchdate) &lt;= EXTRACT(MONTH FROM now()))find_each(start:isize, batch_size: batchsize)</p></blockquote>
+<p>However as find_each retrieves data in batches it is possible another worker could have retrieved one of your batches and it is now processed so the if condition is needed as well as the database constraint. The database constraint is needed as it is possible that the more than one worker could have grabbed the row before a database update has been done.</p>
+<blockquote><p>I would be interested in hearing about better methods that could be done to achieve this using SideKiq and Ruby. For example can I specify the number of workers dynamically and then calculate how the records to be processed are split among the workers. This does not seem the case in sidekiq.yml. I know I can specify the maximum number of workers but that is it</p>
+<p>:verbose: false<br />
+:pidfile: ./tmp/pids/sidekiq.pid<br />
+:logfile: ./log/sidekiq.log<br />
+:concurrency: 25<br />
+:queues:<br />
+- default<br />
+- queue_analysis<br />
+- queue_scraper<br />
+:limits:<br />
+queue_analysis: 1<br />
+queue_scraper: 15</p></blockquote>
+<p>The code is below</p>
+<blockquote><p>class ParseResultsWorker</p>
+<p>include Sidekiq::Worker</p>
+<p>sidekiq_options :queue =&gt; :queue_scraper</p>
+<p>def perform(*args)<br />
+isize = 1<br />
+batchsize = 10000<br />
+stime = Time.now<br />
+vst = stime.strftime("%H:%M:%S");<br />
+tstat = Transstatus.find_by name: 'ParseResultsWorker', created_at: Time.now.utc.to_date<br />
+if tstat.nil?<br />
+tstat = Transstatus.create(:name =&gt; "ParseResultsWorker" )<br />
+end<br />
+Rails.logger.debug ' ParseResultsWorker start job ' + vst<br />
+SearchParams.find_each(start:isize, batch_size: batchsize) do |params|<br />
+pdate = params['searchdate']<br />
+if pdate == nil or (pdate.year &lt;= Time.now.year and pdate.mon != Time.now.month)<br />
+tstat.update(currentparam: params.searchparam)<br />
+@pnewscrawl = PropertyNewsCrawler.new('http://www.propertynews.com', params.searchparam)<br />
+@pnewscrawl.findresult<br />
+end<br />
+end<br />
+etime = Time.now<br />
+vet = etime.strftime("%H:%M:%S");<br />
+PropertySite.lastscanned<br />
+Rails.logger.debug ' ParseResultsWorker end job ' + vet<br />
+rescue StandardError =&gt; e<br />
+Rails.logger.debug 'Error running ParseResultsWorker.perform ' + e.message<br />
+return false;<br />
+end<br />
+end</p></blockquote>

@@ -1,0 +1,47 @@
+---
+layout: post
+title: Using Whenever GEM to overcome Postgres limitations
+date: 2015-01-20 23:07:42.000000000 +00:00
+categories: []
+tags:
+- oracle
+- postgres
+- Ruby on rails
+status: publish
+type: post
+published: true
+meta:
+  _rest_api_published: '1'
+  _rest_api_client_id: "-1"
+  _wpas_skip_facebook: '1'
+  _wpas_skip_google_plus: '1'
+  _wpas_skip_linkedin: '1'
+  _wpas_skip_tumblr: '1'
+  _wpas_skip_path: '1'
+  publicize_twitter_user: stephenemo
+  publicize_twitter_url: http://t.co/w9YJhwLDSf
+  _wpas_done_5415324: '1'
+  _publicize_done_external: a:1:{s:7:"twitter";a:1:{i:36781241;b:1;}}
+author:
+  login: emospacemonkey
+  email: stephen.emo@gmail.com
+  display_name: emospacemonkey
+  first_name: ''
+  last_name: ''
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>One of the limitations I found with Postgres compared with Oracle is the lack of a scheduled request. To get round this limitation I used the whenever gem <a href="https://github.com/javan/whenever">https://github.com/javan/whenever</a>. This routine gives you the ability to rub a Sidekiq worker as a cron job. One gotcha that you need to watch out for is Sidekiq creates multiple workers which can mean you get multiple instances of the same function carried out at the same time. This means you can end out with duplicate entries if this does not break your database constraints.</p>
+<p>To limit this you can can specify the queue and the number of workers that can be created for your class. See example sidekiq.yml below</p>
+<blockquote><p>:verbose: false<br />
+:pidfile: ./tmp/pids/sidekiq.pid<br />
+:logfile: ./log/sidekiq.log<br />
+:concurrency: 25<br />
+:queues:<br />
+- default<br />
+- queue_analysis<br />
+- queue_scraper<br />
+:limits:<br />
+queue_analysis: 1<br />
+queue_scraper: 15</p></blockquote>
+<p>This means that something like a web scraping class can have multiple instances while the db class will just have one instance spawned.</p>

@@ -1,0 +1,51 @@
+---
+layout: post
+title: RaspberryPISpyIntranet
+date: 2013-11-12 20:41:50.000000000 +00:00
+categories:
+- programming
+tags:
+- Camera
+- Flask
+- GPIO
+- Python
+- raspberry pi
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '12536933'
+  _publicize_pending: '1'
+author:
+  login: emospacemonkey
+  email: stephen.emo@gmail.com
+  display_name: emospacemonkey
+  first_name: ''
+  last_name: ''
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>I have put together an application that is provides a web front end to either a USB WebCam or Raspberry PI Cam. The application can be set to random mode and alarm mode. In order to use alarm mode and infra red sensor (PIR) should be connected to GPIO17. If movement is detected an image is taken and an email of the image is sent.</p>
+<p>If the application is in random mode, random shots are taken throughout the day, you can define the start time and end time so no shots are taken outside the time, you can also define the frequency. Comments can also be added to the images. The layout of the screen is shown in github</p>
+<p>The idea with the random feature is that you get a journal of your photos. These photos can also be emailed out. The logs of detection from the PIR sensor are also displayed on the screen.</p>
+<p>This means that as well as using my Raspberry PI as a Youtube player attached to the TV it can also serve as an alarm system and photo journal.</p>
+<div>
+<dl>
+<dt><img alt="Screenshot 2013-11-04 23.54.06.gif" src="assets/file.php?id=5113" /></dt>
+<dd><em>About Screenshot</em></dd>
+<dd>Screenshot 2013-11-04 23.54.06.gif (16.72 KiB) Not viewed yet</dd>
+</dl>
+</div>
+<div>
+<dl>
+<dt><img alt="Screenshot 2013-11-09 15.17.02.gif" src="assets/file.php?id=5114" /></dt>
+<dd><em>Overview</em></dd>
+<dd>Screenshot 2013-11-09 15.17.02.gif (27.67 KiB) Not viewed yet</dd>
+</dl>
+</div>
+<p>The code can be found at <a title="https://github.com/emomonkey/RaspPISpyIntranet" href="https://github.com/emomonkey/RaspPISpyIntranet">https://github.com/emomonkey/RaspPISpyIntranet</a></p>
+<p>In theory you should be able to install by running sudo python setup.py install. However I have not tested the install, it would require a spare Sdcard so I would be interested in feedback from the forum if the install runs.</p>
+<p>Also you need to run the shell script gpioexp.sh in order that the pins can be written to</p>
+<p>An alternative way to install it is from the github page which is the the long way and involves copying the files to RaspPISpyIntranet and install the python packages individuals.</p>
+<p>The application needs to be run as sudo as the pins need supervisor access.</p>
+<p>So now the PI in my living room doubles as an email alarm and photo journal in addition to a PC</p>

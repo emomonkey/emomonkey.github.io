@@ -1,0 +1,76 @@
+---
+layout: post
+title: ATMega Gertboard controlled servo via serial input
+date: 2013-05-18 23:58:35.000000000 +01:00
+categories:
+- programming
+tags:
+- gertboard
+- raspberry pi
+- servo
+status: publish
+type: post
+published: true
+meta:
+  _publicize_pending: '1'
+  _edit_last: '12536933'
+  tagazine-media: a:7:{s:7:"primary";s:0:"";s:6:"images";a:0:{}s:6:"videos";a:0:{}s:11:"image_count";i:0;s:6:"author";s:8:"12536933";s:7:"blog_id";s:8:"28403862";s:9:"mod_stamp";s:19:"2013-05-19
+    15:56:32";}
+author:
+  login: emospacemonkey
+  email: stephen.emo@gmail.com
+  display_name: emospacemonkey
+  first_name: ''
+  last_name: ''
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>http://youtu.be/BzVuvnOsOYc</p>
+<p>Well I have worked through quite a few of the demos on the gertboard manual so I thought I'd spend some time combining the demos and rather than just have a motor going or a led lighting up I duct taped a nerf gun to the servo and as you can see from the demo it does fire.</p>
+<p>Alex eames from raspi tv give some help on wiring it together, as well the sketches in the arduino ide mention pin 9 and using the gertboard you have to use the buffers so you set up buffer 1 as pin 9.</p>
+<p>To wire it up you do the following : PB1 to B1 on J3 and servo pulse to BUF1 near the leds. Jumper B1 set to output.<br />
+GND lead of servo to Gertboard GND and 5V servo lead to 5V supply. GND of 5V supply also to Gertboard GND.<br />
+<a href="http://www.raspberrypi.org/phpBB3/viewtopic.php?f=42&amp;t=37624"> raspberryorg</a></p>
+<p>You jumper off the output as PB1 will provide the input to Buf 1. You then wire the control cable [orange on the servo] to Buf 1. The ground cable from the servo goes in the ground of PB1 and the positive servo cable to the positive battery. I ground the battery cable to the ground on PB1.It does not seem to matter where it is ground goes</p>
+<p>Minicom has been set up on the raspberry pi so GP14 and GP15 had jumpers set across to MCTX and RCTX as can be seen in the video. All that needs done to read the data from minicom (serial comms) is the function call Serial.Read</p>
+<p>The code from the arduino ide is listed below</p>
+<blockquote><p>// Serial Servo Nerf</p>
+<p>#include &lt;Servo.h&gt;</p>
+<p>Servo myservo; // create servo object<br />
+byte num = 0; // read in serial input<br />
+int pos = 0;<br />
+int servo_enabled = 0;</p>
+<p>void setup() {<br />
+// initialize serial port<br />
+Serial.begin(9600);<br />
+myservo.attach(9); // attaches the servo on pin 9<br />
+}</p>
+<p>void loop()<br />
+{<br />
+// pressing the letter a fires the servo<br />
+num = Serial.read();</p>
+<p>if (num == 97 &amp;&amp; servo_enabled == 0)<br />
+{<br />
+servo_enabled = 1;<br />
+Serial.print("arming nerf");<br />
+Serial.print("character received: ");<br />
+Serial.println(num, DEC);<br />
+delay(1); // required to read serial buffer<br />
+}<br />
+}</p>
+<p>if (servo_enabled ==  1 )<br />
+{</p>
+<p>for(pos = 0; pos &lt; 100; pos +=1)<br />
+{    myservo.write(pos);<br />
+delay(15); // waaaaaits 15 ms for the servo to reach position<br />
+}</p>
+<p>// move back<br />
+for(pos =  100; pos &gt;=1 ; pos-=1) // goes aaback to the position<br />
+{<br />
+myservo.write(pos);<br />
+delay(15);</p>
+<p>}</p>
+<p>Serial.print("servo disengaged");<br />
+servo_enabled = 0;<br />
+}</p>
+<p>}</p></blockquote>

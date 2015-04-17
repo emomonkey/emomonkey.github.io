@@ -1,0 +1,57 @@
+---
+layout: post
+title: Jdeveloper and xsd
+date: 2012-04-06 18:23:33.000000000 +01:00
+categories:
+- programming
+tags:
+- Jdeveloper 10.1.3
+status: publish
+type: post
+published: true
+meta: {}
+author:
+  login: emospacemonkey
+  email: stephen.emo@gmail.com
+  display_name: emospacemonkey
+  first_name: ''
+  last_name: ''
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>Jdeveloper 10.1.3 has no ability to parse xsd if you use built in wizard. It just uses jaxb to generate class and code. For something generic use documentbuilderfactory in java 5</p>
+<blockquote>
+<p>    protected void validateXSD(String sFileName) throws Exception,SAXException<br />
+      {<br />
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();<br />
+            factory.setNamespaceAware(true);<br />
+            factory.setValidating(true);<br />
+            factory.setAttribute("http://java.sun.com/xml/jaxp/properties/schemaLanguage", "http://www.w3.org/2001/XMLSchema");</p>
+<p>            URL  sURL = Thread.currentThread().getContextClassLoader().getResource(XML_SCHEMA);<br />
+            String sFile = sURL.getFile();<br />
+            factory.setAttribute("http://java.sun.com/xml/jaxp/properties/schemaSource", "file:" + sFile);</p>
+<p>            DocumentBuilder builder = factory.newDocumentBuilder();<br />
+            builder.setErrorHandler( new ErrorHandler() {<br />
+                    @Override<br />
+                    public void error(SAXParseException arg0) throws SAXException {<br />
+                         throw arg0;<br />
+                    }<br />
+                    @Override<br />
+                    public void fatalError(SAXParseException arg0) throws SAXException {<br />
+                         throw arg0;<br />
+                    }<br />
+                    @Override<br />
+                    public void warning(SAXParseException arg0) throws SAXException {<br />
+                         throw arg0;<br />
+                    }<br />
+            });</p>
+<p>            org.w3c.dom.Document document = builder.parse(new File(sFileName));</p>
+<p>      }</p>
+<p>      validateXSD(sOutputPath + sCurrDate + sName);</p>
+<p>      SAXReader reader = new SAXReader(true);<br />
+      reader.setValidation(false);<br />
+      org.dom4j.Document doc = null;</p>
+<p>      doc = reader.read(new File(sOutputPath + sCurrDate + sName));</p>
+<p>      /* Iterate through the entries */<br />
+      iterateElements(doc); </p>
+<p>&gt;</p></blockquote>

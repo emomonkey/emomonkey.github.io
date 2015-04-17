@@ -1,0 +1,26 @@
+---
+layout: post
+title: Loading that xsd file
+date: 2012-04-11 18:03:47.000000000 +01:00
+categories:
+- programming
+tags:
+- Jdeveloper 10.1.3
+- resource
+- Xsd
+status: publish
+type: post
+published: true
+meta:
+  tagazine-media: a:7:{s:7:"primary";s:0:"";s:6:"images";a:0:{}s:6:"videos";a:0:{}s:11:"image_count";s:1:"0";s:6:"author";s:8:"12536933";s:7:"blog_id";s:8:"28403862";s:9:"mod_stamp";s:19:"2012-04-11
+    18:03:48";}
+author:
+  login: emospacemonkey
+  email: stephen.emo@gmail.com
+  display_name: emospacemonkey
+  first_name: ''
+  last_name: ''
+excerpt: !ruby/object:Hpricot::Doc
+  options: {}
+---
+<p>Locating a resource file is a bit awkward in jdeveloper. Getresource takes the public_HTML when called from the view controller so you have to figure out where the classpath is. Look for the entry in system. getProperties to find it...dint forget to start the path with backslash first</p>
