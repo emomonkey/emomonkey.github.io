@@ -1,6 +1,6 @@
 ---
 layout: default
-title: My Blog
+
 ---
 
 <!DOCTYPE html>
@@ -16,14 +16,14 @@ title: My Blog
 
 
       <header>
-          <h1>Emomonkey.GitHub.io</h1>
-          <h2>This will be my jekyll blog</h2>
+          <h1>Programming and Hobbies Tinkering Blog owned by Stephen Emo/h1>
+          <h2>Covers Ruby on Rails, Oracle suite and Hobby Stuff</h2>
       </header>
       
       
       
       <section id="downloads" class="clearfix">
-          <a href="https://github.com/emomonkey" id="view-on-github" class="button"><span>View on GitHub</span></a>
+          <a href="https://github.com/emomonkey" id="view-on-github" class="button"><span>My Repository on GitHub</span></a>
       </section>
        
        <section id="posts">
@@ -40,13 +40,24 @@ title: My Blog
 	   {{post.content}}
 	  <div>
 	{% endfor %}
-       
+      
+	<!-- Pagination links -->
+	<div class="pagination">
+	  {% if paginator.previous_page %}
+      	   <a href="{{ paginator.previous_page_path }}" class="previous">Previous</a>
+          {% else %}
+           <span class="previous">Previous</span>
+          {% endif %}
+          <span class="page_number ">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
+          {% if paginator.next_page %}
+           <a href="{{ paginator.next_page_path }}" class="next">Next</a>
+          {% else %}
+           <span class="next ">Next</span>
+          {% endif %}
+	 </div>	
        
        </section>
        
-      
-      
-
       <ul>
 	
       </ul>
