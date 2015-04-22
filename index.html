@@ -33,16 +33,7 @@
           <h1>Programming and Hobbies Tinkering Blog owned by Stephen Emo</h1>
           <h2>Covers Ruby on Rails, Oracle suite and Hobby Stuff</h2>
       </header>
-      <aside>
-         <h3>About me</h3>
-         <p class="header"></p>
-         
-         <ul>
-          <li><a href="https://uk.linkedin.com/pub/stephen-emo/60/308/54b">LinkedIn Profile</a></li>
-          <li><a href="http://www.propertytracker.co.uk">NI Property Tracking Site</a></li>
-          	
-         </ul>
-      </aside>  
+      
       
       
       <section id="downloads" class="clearfix">
@@ -51,7 +42,16 @@
        
        <section id="posts">
        <h1>Blog Posts </h1>
-       
+       <aside>
+         <h3>About me</h3>
+         <p class="header"></p>
+         
+         <ul>
+          <li><a href="https://uk.linkedin.com/pub/stephen-emo/60/308/54b">LinkedIn Profile</a></li>
+          <li><a href="http://www.propertytracker.co.uk">NI Property Tracking Site</a></li>
+          	
+         </ul>
+      </aside>   
        {% for post in paginator.posts %}
 	  <h1>
 	    <a href="{{ post.url }}">{{ post.title }}</a>
