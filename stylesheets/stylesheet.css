@@ -327,10 +327,9 @@ footer a:hover {
 }
 
 aside {
-  top: 20px;	
   float: right;
   margin: 0 1.5%;
-  width: 20%;
+  border: 1px solid red;
 }
 
 /* MISC */
