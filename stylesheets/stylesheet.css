@@ -327,9 +327,10 @@ footer a:hover {
 }
 
 aside {
-  float: right;
-  margin: 0 1.5%;
- 
+  position: absolute;
+   right: 0;
+   top: 0;
+   width: 180px;
 }
 
 /* MISC */
