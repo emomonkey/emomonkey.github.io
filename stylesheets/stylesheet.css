@@ -91,6 +91,8 @@ header h2 {
 
 .inner {
   width: 70%;
+  float:left;
+  vertical-align:top;
   display:inline-block;
   margin: 0 auto;
 }
