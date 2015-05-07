@@ -90,12 +90,11 @@ header h2 {
 }
 
 .inner {
-  margin-left: 50px;	
   width: 70%;
   float:left;
   vertical-align:top;
   display:inline-block;
-  margin: 0 auto;
+  margin-left: 50px;	
 }
 
 .sideBar {
@@ -375,7 +374,7 @@ footer a:hover {
   }
   .inner {
     width: 94%;
-    margin: 0 auto;
+    margin-left: 50px;	
   }
 }
 
