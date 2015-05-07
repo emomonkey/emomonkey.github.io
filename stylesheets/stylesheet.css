@@ -90,6 +90,7 @@ header h2 {
 }
 
 .inner {
+  margin-left: 50px;	
   width: 70%;
   float:left;
   vertical-align:top;
