@@ -90,9 +90,18 @@ header h2 {
 }
 
 .inner {
-  width: 620px;
+  width: 70%;
+  display:inline-block;
   margin: 0 auto;
 }
+
+.sideBar {
+    width:29%;
+    float:right;
+    background-color: lightgrey;
+    border-left: solid 1px black;
+}
+
 
 #container .inner img {
   max-width: 100%;
