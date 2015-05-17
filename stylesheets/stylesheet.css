@@ -66,8 +66,7 @@ a:hover {
 header {
   padding-top: 35px;
   padding-bottom: 25px;
-  background-image:url(/images/header_image.jpg);
-  background-position: top center;
+  background-color: #cccccc;
 }
 
 header h1 {
