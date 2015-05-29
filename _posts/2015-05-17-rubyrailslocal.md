@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Using Ruby on Rails in Offline Mode
+title: Using Ruby on Rails in Offline Environment 
 date: 2015-05-17 22:01:49.000000000 +00:00
 categories: []
 tags:
