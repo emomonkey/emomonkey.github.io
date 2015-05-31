@@ -12,7 +12,7 @@
 <![endif]-->
 <title>Emomonkey.GitHub.io by Stephen Emo</title>
 </head>
-<h1>{{ page.title }}</h1>
+<h1>Using Ruby on Rails in Offline Environment</h1>
 <body>
 
 
@@ -24,11 +24,14 @@
 <main>
 <div class="inner">
 	<h1>
-         {{ post.title }}
+         
         </h1>
  <section id="posts">
 	 
- {{ content  }}
+ <p>I recently had the need to develop a quick ruby on rails application offline, I had all the GEMS I needed for the application and ran bundle install –local and still I got errors. It seems with the latest versions of bundler local is not offline but requires an Internet connection. </p>
+
+<p>To work offline in Ruby On Rails you need to run on bunder version 1.5.x and below. This is a bit of a gotcha for developers working in an offline environment.</p>
+
 
  </section>
 </div>

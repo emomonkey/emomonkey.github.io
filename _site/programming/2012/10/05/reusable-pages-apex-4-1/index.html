@@ -12,7 +12,7 @@
 <![endif]-->
 <title>Emomonkey.GitHub.io by Stephen Emo</title>
 </head>
-<h1>{{ page.title }}</h1>
+<h1>Reusable pages apex 4.1</h1>
 <body>
 
 
@@ -24,11 +24,17 @@
 <main>
 <div class="inner">
 	<h1>
-         {{ post.title }}
+         
         </h1>
  <section id="posts">
 	 
- {{ content  }}
+ <p>If you are struggling to write reusable pages in apex 4.1 with even simple things such as creating dynamic title page try this</p>
+<p>1. Stores title in hid field.<br />
+2. In title text put &amp;PX_XX. where the name matches the field in point 1</p>
+<p>Seems a mishmash on what you should declare to use the value of a field e.g :PX_XX or P_XX or sometimes v('') but you can get reusable code done in apex to a certain extent. As long as u don't expect MVC levels :)</p>
+<p>Padding parameters by URL is also a bit unusual. You have to list the parameters you are populating on the next page then separate this with a : and then the values u are inputing</p>
+<p>E.g url = 'f?p=&amp;APP_ID.:4:&amp;APP_SESSION.::&amp;DEBUG.::P4_ID,P4_TRANSACTION:&amp;P15_ID.,EDIT'</p>
+
 
  </section>
 </div>

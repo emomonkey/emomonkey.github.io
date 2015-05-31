@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/print.css" media="print">
+			    <!--[if lt IE 9]>
+			    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+			        <![endif]-->
+     <title>Emomonkey.GitHub.io by Stephen Emo</title>
+</head>
+
+
+
+<h1></h1>
+
+<body>
+    <div id="container">
+    <header>
+          <h1>Programming and Gadgets Blog</h1>
+          <h2>Covers Ruby on Rails, Oracle suite and Electronic Toys</h2>
+    </header>	
+      <main>	
+      <div class="inner">
+
+
+      <section id="downloads" class="clearfix">
+          <a href="https://github.com/emomonkey" id="view-on-github" class="button"><span>Repository</span></a>
+      </section>
+       
+       <section id="posts">
+       <h1>Blog Posts </h1>
+       
+       
+	  <h1>
+	    <a href="/programming/2012/07/23/apex-4-1-versus-ruby-on-rails/">Apex 4.1 versus Ruby on Rails</a>
+	  </h1>
+	  <p class = "author">
+	    <span class="date">2012-07-23 14:53:14 +0100</span>
+	  </p>
+	  <div class="content">
+	   <p>One thing I need to explain is that my workplace is an Oracle house through and through. Our development tools are jdeveloper 10.1.3, our databases are oracle, our rad tools are oracle.. Apex 4.1 to be exact . It has been interesting working on this at work and at home ruby on rails. They could no be more different.</p>
+<p>Apex 4.1 is there to sell oracle whereas ruby on rails is designed to be database independent... The logic is in the code. Now in Apex 4.1 defense as everything is the database you can write direct SQL and optimise it a much as you want.</p>
+<p>This is not possible in ruby on rails ad you ideally do not write SQL.</p>
+<p>Now ruby is much more flexible in terms of coding . The no of controls from grids, frameworks such as bootstrap and input from an enthusiastic opensource community cannot be matched from what is a tool to sell oracle databases.</p>
+<p>Apex 4.1 will give you an app in 2 days. Ruby maybe longer but at least you have real code you can reuse. Still. Apex 4.1 will remain a tool at work.</p>
+
+	  <div>
+	
+	  <h1>
+	    <a href="/programming/2012/04/11/loading-that-xsd-file/">Loading that xsd file</a>
+	  </h1>
+	  <p class = "author">
+	    <span class="date">2012-04-11 18:03:47 +0100</span>
+	  </p>
+	  <div class="content">
+	   <p>Locating a resource file is a bit awkward in jdeveloper. Getresource takes the public_HTML when called from the view controller so you have to figure out where the classpath is. Look for the entry in system. getProperties to find it...dint forget to start the path with backslash first</p>
+
+	  <div>
+	
+	  <h1>
+	    <a href="/programming/2012/04/06/jdeveloper-and-xsd/">Jdeveloper and xsd</a>
+	  </h1>
+	  <p class = "author">
+	    <span class="date">2012-04-06 18:23:33 +0100</span>
+	  </p>
+	  <div class="content">
+	   <p>Jdeveloper 10.1.3 has no ability to parse xsd if you use built in wizard. It just uses jaxb to generate class and code. For something generic use documentbuilderfactory in java 5</p>
+<blockquote>
+<p>    protected void validateXSD(String sFileName) throws Exception,SAXException<br />
+      {<br />
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();<br />
+            factory.setNamespaceAware(true);<br />
+            factory.setValidating(true);<br />
+            factory.setAttribute("http://java.sun.com/xml/jaxp/properties/schemaLanguage", "http://www.w3.org/2001/XMLSchema");</p>
+<p>            URL  sURL = Thread.currentThread().getContextClassLoader().getResource(XML_SCHEMA);<br />
+            String sFile = sURL.getFile();<br />
+            factory.setAttribute("http://java.sun.com/xml/jaxp/properties/schemaSource", "file:" + sFile);</p>
+<p>            DocumentBuilder builder = factory.newDocumentBuilder();<br />
+            builder.setErrorHandler( new ErrorHandler() {<br />
+                    @Override<br />
+                    public void error(SAXParseException arg0) throws SAXException {<br />
+                         throw arg0;<br />
+                    }<br />
+                    @Override<br />
+                    public void fatalError(SAXParseException arg0) throws SAXException {<br />
+                         throw arg0;<br />
+                    }<br />
+                    @Override<br />
+                    public void warning(SAXParseException arg0) throws SAXException {<br />
+                         throw arg0;<br />
+                    }<br />
+            });</p>
+<p>            org.w3c.dom.Document document = builder.parse(new File(sFileName));</p>
+<p>      }</p>
+<p>      validateXSD(sOutputPath + sCurrDate + sName);</p>
+<p>      SAXReader reader = new SAXReader(true);<br />
+      reader.setValidation(false);<br />
+      org.dom4j.Document doc = null;</p>
+<p>      doc = reader.read(new File(sOutputPath + sCurrDate + sName));</p>
+<p>      /* Iterate through the entries */<br />
+      iterateElements(doc); </p>
+<p>&gt;</p></blockquote>
+
+	  <div>
+	
+	  <h1>
+	    <a href="/programming/2012/03/10/jdeveloper/">Jdeveloper</a>
+	  </h1>
+	  <p class = "author">
+	    <span class="date">2012-03-10 12:38:29 +0000</span>
+	  </p>
+	  <div class="content">
+	   <p>Tips on jdeveloper 10.1.3 </p>
+<p>1. Get an error 500 for no reason when you run the application. Code look fine. Then the issue could be jdeveloper 10.1.3 has decided to add the public HTML to your model it will do this because you accidentally hit run app when you selected the model :) This happened to me twice</p>
+<p>2. If you add a new managed bean make sure If you edit the faces-config.XML that jdeveloper does not add a duplicate bean on you.</p>
+
+	  <div>
+	
+      
+	<!-- Pagination links -->
+	<div class="pagination">
+	  
+      	   <a href="/page6" class="previous">Previous</a>
+          
+          <span class="page_number ">Page: 7 of 7</span>
+          
+           <span class="next ">Next</span>
+          
+	 </div>
+	 
+       </section>
+        
+       </div>
+       </main>
+       <aside>
+         <h2>Latest</h2>
+         <p class="header"></p>
+         <ul>
+          <li><a href="https://uk.linkedin.com/pub/stephen-emo/60/308/54b">Stephen Emo</a></li>
+          <li><a href="http://www.propertytrackerni.co.uk">NI Property Tracking Site</a></li>
+          <li>
+	  <div class="google-ads">
+	   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	   <!-- Programming Blog Ads -->
+		<ins class="adsbygoogle"
+     		style="display:block"
+     		data-ad-client="ca-pub-9203088421896530"
+     		data-ad-slot="3590526208"
+     		data-ad-format="auto"></ins>
+	   <script>
+	   (adsbygoogle = window.adsbygoogle || []).push({});
+           </script>
+          </div>
+	</li>
+        </ul>
+      </aside>        
+    </div>
+</body>
+
+
+
+
+<script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-61943589-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+</script>
+ 
+
+     
+</html>

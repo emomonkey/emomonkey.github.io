@@ -12,7 +12,7 @@
 <![endif]-->
 <title>Emomonkey.GitHub.io by Stephen Emo</title>
 </head>
-<h1>{{ page.title }}</h1>
+<h1>$.Post on ASP.Net MVC 4</h1>
 <body>
 
 
@@ -24,11 +24,16 @@
 <main>
 <div class="inner">
 	<h1>
-         {{ post.title }}
+         
         </h1>
  <section id="posts">
 	 
- {{ content  }}
+ <p>Surprised I did not see an example of this on the web but I noticed to use $.post to pass a value to an Action in your controller you need to JSON.stringify on the value to get it to post. Otherwise the value you get in your parameter will be null. See below</p>
+<blockquote><p> $.post("/GemTable/ProcessBestGem",  { sGems: JSON.stringify(sname) }, function (html) {<br />
+// Do Something;<br />
+},"json");</p></blockquote>
+<p>Useful to know maybe.</p>
+
 
  </section>
 </div>

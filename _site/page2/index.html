@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/print.css" media="print">
+			    <!--[if lt IE 9]>
+			    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+			        <![endif]-->
+     <title>Emomonkey.GitHub.io by Stephen Emo</title>
+</head>
+
+
+
+<h1></h1>
+
+<body>
+    <div id="container">
+    <header>
+          <h1>Programming and Gadgets Blog</h1>
+          <h2>Covers Ruby on Rails, Oracle suite and Electronic Toys</h2>
+    </header>	
+      <main>	
+      <div class="inner">
+
+
+      <section id="downloads" class="clearfix">
+          <a href="https://github.com/emomonkey" id="view-on-github" class="button"><span>Repository</span></a>
+      </section>
+       
+       <section id="posts">
+       <h1>Blog Posts </h1>
+       
+       
+	  <h1>
+	    <a href="/2015/01/26/improvements-that-could-be-made-to-my-northern-ireland-property-tracking-website/">Improvements that could be made to my Northern Ireland Property Tracking Website</a>
+	  </h1>
+	  <p class = "author">
+	    <span class="date">2015-01-26 00:44:44 +0000</span>
+	  </p>
+	  <div class="content">
+	   <p>Having taken a look at my Property Tracking Web Site for  Northern Ireland<a href="http://www.propertytrackerni.co.uk"> http://www.propertytrackerni.co.uk</a> over several months I have noticed that the lack of weightings does throw up some distracting results. For example Lack in Co. Fermanagh has become one the areas with the highest average prices simply due to the fact it has one property that is over 500,000 in value and this property happens to be a site.</p>
+<p>Now I do categorize properties as detached, semi- detached, sites etc so I could pull sites out but that would defeat the purpose. It does illustrate that weightings are pretty essential when carrying out this sort of analysis.</p>
+<p>One thing that I am happy with is the use of<a href="http://refills.bourbon.io/"> http://refills.bourbon.io/</a> as the display technology. Using this I have immediately could a website that looks professional and can be used to automatically generate templates for the pages within the application. It is alot more lightweight than Bootstrap and having viewed my website on my mobile seems to give a basic level of responsive design to the site straight out of the box. I am somewhat surprised that Bootstrap seems to be used to such a large extent when you get so much for free using Bourbon Refills. It reminds me a little bit of the automatic screens in Oracle Apex<a href="https://apex.oracle.com/i/"> https://apex.oracle.com/i/</a> only you are not limited to the Oracle concept of using Pl/SQL everywhere. In ThoughtBot's Bourbon you also have lot of controls that have an iOS feel as well.</p>
+<p>So in terms of the look of the site I am pretty happy. In terms of maintaining this site, well I have found web scraping apps will always require some work. My source site made some changes to their site in December and this resulted in some changes needing to be made to my interface code. This is something that could not be improved unless I abandoned the idea of pulling data from another site and used a public domain dataset.</p>
+
+	  <div>
+	
+	  <h1>
+	    <a href="/2015/01/20/using-whenever-gem-to-overcome-postgres-limitations/">Using Whenever GEM to overcome Postgres limitations</a>
+	  </h1>
+	  <p class = "author">
+	    <span class="date">2015-01-20 23:07:42 +0000</span>
+	  </p>
+	  <div class="content">
+	   <p>One of the limitations I found with Postgres compared with Oracle is the lack of a scheduled request. To get round this limitation I used the whenever gem <a href="https://github.com/javan/whenever">https://github.com/javan/whenever</a>. This routine gives you the ability to rub a Sidekiq worker as a cron job. One gotcha that you need to watch out for is Sidekiq creates multiple workers which can mean you get multiple instances of the same function carried out at the same time. This means you can end out with duplicate entries if this does not break your database constraints.</p>
+<p>To limit this you can can specify the queue and the number of workers that can be created for your class. See example sidekiq.yml below</p>
+<blockquote><p>:verbose: false<br />
+:pidfile: ./tmp/pids/sidekiq.pid<br />
+:logfile: ./log/sidekiq.log<br />
+:concurrency: 25<br />
+:queues:<br />
+- default<br />
+- queue_analysis<br />
+- queue_scraper<br />
+:limits:<br />
+queue_analysis: 1<br />
+queue_scraper: 15</p></blockquote>
+<p>This means that something like a web scraping class can have multiple instances while the db class will just have one instance spawned.</p>
+
+	  <div>
+	
+	  <h1>
+	    <a href="/2015/01/15/developing-a-web-scraping-class-in-ruby/">Developing a Web Scraping Class in Ruby</a>
+	  </h1>
+	  <p class = "author">
+	    <span class="date">2015-01-15 23:16:46 +0000</span>
+	  </p>
+	  <div class="content">
+	   <p>As part of my website <a href="http://www.propertytrackerni.co.uk">www.propertytrackerni.co.uk</a> I needed to put together a web scraper application. Some of the information was available through the government web site but not in an automated way and also it contained less detail than the information that was freely available on property sites on the web. Also when you develop your own code you are not limited to working within the limits of a ready made Dataset. As I had chosen Ruby on Rails 4 as my platform I was left with the below choices for my web scraping needs</p>
+<ul>
+<li>Nokogiri Gem</li>
+<li>Mechanize Gem</li>
+</ul>
+<p>Mechanize uses Nokogiri but it is at a much higher level than Nokogiri so for example if you need to edit a checkbox with a description you simply enter the method checkbox_with with the name as a method. There are methods specifically for interacting with a form, filling in fields, pressing command buttons or highlighting checkboxes. If you have used Selenium for your automated tests then you will feel very familiar with the syntax and code that you put together here</p>
+<p>Next tool that you require is</p>
+<ul>
+<li>Chrome</li>
+</ul>
+<p>If you are going to pull data of a web site you need to know how the css is structured on the web site you are going to pull data from.  There are at least two methods for pulling data of the website, xpath syntax and the standard css commands. I found xpath was best for pulling the overall element you want of the web site, for example the search results and the next method was to use the css itself to pull of the standard elements. The xpath command will give you an array of element you can iterate through.</p>
+<p>For example the xpath "//div[contains(@class,'<span class="pl-pse">#{</span><span class="pl-s2">parse_string</span><span class="pl-pse"><span class="pl-s2">}</span></span>')]" will give you the contents of the with the div statement belonging to the class whose name is the value of parse_string. So in other word if the parse_string is search_results it will be the contents of the div statement of class search_results.</p>
+<p>This will give you an array of elements which you can then iterate through and parse. Now rather than use xpath you can access the css directly so say for example the header contains the name you require you can enter the below command</p>
+<p>.css(<span class="pl-s1"><span class="pl-pds">"</span>h2<span class="pl-pds">"</span></span>)[<span class="pl-c1">0</span>].content</p>
+<p>If the contents you want is instead a class you can use the syntax .classname as shown below</p>
+<p>.css(<span class="pl-s1"><span class="pl-pds">"</span>.beds<span class="pl-pds">"</span></span>)[<span class="pl-c1">0</span>].content</p>
+<p>This information can then be insert into the database via ActiveRecord. The web scraping element of this project was alot more easier than I thought with the code coming together in much the same way that an automated test set would come together.</p>
+<p>The code for this is available on</p>
+<p><a href="https://github.com/emomonkey/PropertyTrackerNI/blob/master/app/models/property_news_crawler.rb">https://github.com/emomonkey/PropertyTrackerNI/blob/master/app/models/property_news_crawler.rb</a></p>
+<p>and</p>
+<p><a href="https://github.com/emomonkey/PropertyTrackerNI/blob/master/app/models/concerns/crawler_module.rb">https://github.com/emomonkey/PropertyTrackerNI/blob/master/app/models/concerns/crawler_module.rb</a></p>
+
+	  <div>
+	
+	  <h1>
+	    <a href="/2015/01/13/should-rails-developers-be-database-developers/">Should Rails Developers be Database Developers</a>
+	  </h1>
+	  <p class = "author">
+	    <span class="date">2015-01-13 23:23:56 +0000</span>
+	  </p>
+	  <div class="content">
+	   <p>One of the things that I noticed in most of the getting start with Rails books that they seemed determined in teaching you how to work with the database purely through ActiveRecord. ActiveRecord contains alot of analytical functions such as sum or count though these are very limiting compared to what you can in pure SQL especially with a database as powerful as Postgres which contains many of the features of Oracle from windows functions (analytical functions in Oracle) and materialised views.</p>
+<p>Take a look at the following piece of SQL</p>
+<blockquote><p>SELECT cntyvol.COUNTY, cntyvol.YEAR, cntyvol.MONTH, cntyvol.VOLPC, cntyvol.created_at,soldvol.prcsold, prcchg.MONTH_PRICE_DIFF, row_number() OVER () id<br />
+FROM<br />
+(SELECT vcnty.county, vcnty.year, vcnty.month, ROUND((vcnty.volsum / tvol.volsum) * 100,2) VOLPC, created_at<br />
+FROM<br />
+(SELECT<br />
+COUNTY,<br />
+YEAR,<br />
+MONTH,<br />
+historic_analyses.created_at,<br />
+ROUND(SUM(resultvalue), 2) volsum<br />
+FROM historic_analyses, search_params sp, search_types st<br />
+WHERE search_types_id = st.id AND search_params_id = sp.id<br />
+AND st.searchtext = 'Volume Summary Property Types'<br />
+GROUP BY COUNTY, YEAR, MONTH, historic_analyses.created_at<br />
+) vcnty,<br />
+(SELECT<br />
+YEAR,<br />
+MONTH,<br />
+ROUND(SUM(resultvalue), 2) volsum<br />
+FROM historic_analyses, search_params sp, search_types st<br />
+WHERE search_types_id = st.id AND search_params_id = sp.id<br />
+AND st.searchtext = 'Volume Summary Property Types'<br />
+GROUP BY YEAR, MONTH<br />
+) tvol<br />
+WHERE tvol.year = vcnty.year<br />
+AND vcnty.month = tvol.month) cntyvol,<br />
+(SELECT volv.county, volv.year, volv.month, ROUND( (soldval /volsum * 100) ,2) prcsold<br />
+FROM<br />
+(<br />
+SELECT<br />
+COUNTY,<br />
+YEAR,<br />
+MONTH,<br />
+ROUND(SUM(resultvalue), 2) volsum<br />
+FROM historic_analyses, search_params sp, search_types st<br />
+WHERE search_types_id = st.id AND search_params_id = sp.id<br />
+AND st.searchtext = 'Volume Summary Property Types'<br />
+GROUP BY COUNTY, YEAR, MONTH<br />
+) volv LEFT JOIN<br />
+(<br />
+SELECT<br />
+COUNTY,<br />
+YEAR,<br />
+MONTH,<br />
+ROUND(SUM(resultvalue), 2) soldval<br />
+FROM historic_analyses, search_params sp, search_types st<br />
+WHERE search_types_id = st.id AND search_params_id = sp.id<br />
+AND st.searchtext = 'Sold Summary Prop Type'<br />
+GROUP BY COUNTY, YEAR, MONTH<br />
+ORDER BY COUNTY, YEAR, MONTH DESC<br />
+) soldv ON soldv.county = volv.county AND soldv.year = volv.year AND soldv.month = volv.month<br />
+) soldvol,<br />
+(<br />
+SELECT COUNTY, YEAR, MONTH,MONTH_PRICE_DIFF<br />
+FROM (<br />
+SELECT<br />
+COUNTY,<br />
+YEAR,<br />
+MONTH,<br />
+coalesce(round((AVERAGEVAL - LAG(AVERAGEVAL, 1)<br />
+OVER (PARTITION BY county<br />
+ORDER BY year, month)), 2), 0) MONTH_PRICE_DIFF,<br />
+valtime<br />
+FROM (<br />
+SELECT<br />
+COUNTY,<br />
+YEAR,<br />
+MONTH,<br />
+ROUND(AVG(resultvalue), 2) AVERAGEVAL,<br />
+MAX(year || trim(to_char(month, '09')))<br />
+OVER (PARTITION BY county) valtime<br />
+FROM historic_analyses, search_params sp<br />
+WHERE search_types_id = 5 AND search_params_id = sp.id<br />
+GROUP BY COUNTY, YEAR, MONTH<br />
+ORDER BY COUNTY, YEAR, MONTH DESC<br />
+) a<br />
+) perc<br />
+WHERE valtime = year|| trim(to_char(month,'09'))<br />
+) prcchg<br />
+WHERE soldvol.county = cntyvol.county AND soldvol.year = cntyvol.year<br />
+AND soldvol.month = cntyvol.month AND prcchg.county = cntyvol.county AND prcchg.month = cntyvol.month<br />
+AND prcchg.year = cntyvol.year)</p></blockquote>
+<p>Developing this in ActiveRecord would have been very time consuming and involved alot of lines of code considering ActiveRecord's sum function only operates on one group by at a time, ActiveRecord did prove it's worth when used as part of the web scraping code where database interaction is limited to inserts and updates as shown below</p>
+<blockquote><p>propertysite <span class="pl-k">=</span> <span class="pl-s3">PropertySite</span>.create(<span class="pl-c1">:title</span> =&gt; spage[<span class="pl-s1"><span class="pl-pds">"</span>itmtitle<span class="pl-pds">"</span></span>], <span class="pl-c1">:propertytype</span> =&gt; spage[<span class="pl-s1"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span>], <span class="pl-c1">:beds</span> =&gt; sbeds.to_i, <span class="pl-c1">:searchtext</span> =&gt; <span class="pl-vo">@searchinput</span>, <span class="pl-c1">:status</span> =&gt; spage[<span class="pl-s1"><span class="pl-pds">"</span>status<span class="pl-pds">"</span></span>], <span class="pl-c1">:lastdatescanned</span> =&gt; <span class="pl-s3">DateTime</span>.now )</p></blockquote>
+<p>Ruby on Rails applications are scaffolded and run as part of SQlite and all the tutorials focus on ActiveRecord which can lead developers down the wrong path by ignoring the powerful syntax they have available with SQL. Creating Database Independent code is not a good idea as the chances of your system moving from SQLlite to Postgres to MySQL over it's lifetime as slim,</p>
+<p>It would be better if some of the books or Rails Blogs focused on Database Development as well as focusing 100 Percent on ActiveRecord.</p>
+
+	  <div>
+	
+      
+	<!-- Pagination links -->
+	<div class="pagination">
+	  
+      	   <a href="/" class="previous">Previous</a>
+          
+          <span class="page_number ">Page: 2 of 7</span>
+          
+           <a href="/page3" class="next">Next</a>
+          
+	 </div>
+	 
+       </section>
+        
+       </div>
+       </main>
+       <aside>
+         <h2>Latest</h2>
+         <p class="header"></p>
+         <ul>
+          <li><a href="https://uk.linkedin.com/pub/stephen-emo/60/308/54b">Stephen Emo</a></li>
+          <li><a href="http://www.propertytrackerni.co.uk">NI Property Tracking Site</a></li>
+          <li>
+	  <div class="google-ads">
+	   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	   <!-- Programming Blog Ads -->
+		<ins class="adsbygoogle"
+     		style="display:block"
+     		data-ad-client="ca-pub-9203088421896530"
+     		data-ad-slot="3590526208"
+     		data-ad-format="auto"></ins>
+	   <script>
+	   (adsbygoogle = window.adsbygoogle || []).push({});
+           </script>
+          </div>
+	</li>
+        </ul>
+      </aside>        
+    </div>
+</body>
+
+
+
+
+<script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-61943589-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+</script>
+ 
+
+     
+</html>

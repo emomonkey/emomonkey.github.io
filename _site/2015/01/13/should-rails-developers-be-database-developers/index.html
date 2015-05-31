@@ -1,0 +1,149 @@
+
+<html>
+<head>
+<meta charset='utf-8'>
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="/stylesheets/stylesheet.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/stylesheets/pygment_trac.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/stylesheets/print.css" media="print">
+<!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<title>Emomonkey.GitHub.io by Stephen Emo</title>
+</head>
+<h1>Should Rails Developers be Database Developers</h1>
+<body>
+
+
+<div id="container">
+<header>
+ <h1>Programming and Gadgets Blog</h1>
+ <h2>Covers Ruby on Rails, Oracle suite and Electronic Toys</h2>
+</header>
+<main>
+<div class="inner">
+	<h1>
+         
+        </h1>
+ <section id="posts">
+	 
+ <p>One of the things that I noticed in most of the getting start with Rails books that they seemed determined in teaching you how to work with the database purely through ActiveRecord. ActiveRecord contains alot of analytical functions such as sum or count though these are very limiting compared to what you can in pure SQL especially with a database as powerful as Postgres which contains many of the features of Oracle from windows functions (analytical functions in Oracle) and materialised views.</p>
+<p>Take a look at the following piece of SQL</p>
+<blockquote><p>SELECT cntyvol.COUNTY, cntyvol.YEAR, cntyvol.MONTH, cntyvol.VOLPC, cntyvol.created_at,soldvol.prcsold, prcchg.MONTH_PRICE_DIFF, row_number() OVER () id<br />
+FROM<br />
+(SELECT vcnty.county, vcnty.year, vcnty.month, ROUND((vcnty.volsum / tvol.volsum) * 100,2) VOLPC, created_at<br />
+FROM<br />
+(SELECT<br />
+COUNTY,<br />
+YEAR,<br />
+MONTH,<br />
+historic_analyses.created_at,<br />
+ROUND(SUM(resultvalue), 2) volsum<br />
+FROM historic_analyses, search_params sp, search_types st<br />
+WHERE search_types_id = st.id AND search_params_id = sp.id<br />
+AND st.searchtext = 'Volume Summary Property Types'<br />
+GROUP BY COUNTY, YEAR, MONTH, historic_analyses.created_at<br />
+) vcnty,<br />
+(SELECT<br />
+YEAR,<br />
+MONTH,<br />
+ROUND(SUM(resultvalue), 2) volsum<br />
+FROM historic_analyses, search_params sp, search_types st<br />
+WHERE search_types_id = st.id AND search_params_id = sp.id<br />
+AND st.searchtext = 'Volume Summary Property Types'<br />
+GROUP BY YEAR, MONTH<br />
+) tvol<br />
+WHERE tvol.year = vcnty.year<br />
+AND vcnty.month = tvol.month) cntyvol,<br />
+(SELECT volv.county, volv.year, volv.month, ROUND( (soldval /volsum * 100) ,2) prcsold<br />
+FROM<br />
+(<br />
+SELECT<br />
+COUNTY,<br />
+YEAR,<br />
+MONTH,<br />
+ROUND(SUM(resultvalue), 2) volsum<br />
+FROM historic_analyses, search_params sp, search_types st<br />
+WHERE search_types_id = st.id AND search_params_id = sp.id<br />
+AND st.searchtext = 'Volume Summary Property Types'<br />
+GROUP BY COUNTY, YEAR, MONTH<br />
+) volv LEFT JOIN<br />
+(<br />
+SELECT<br />
+COUNTY,<br />
+YEAR,<br />
+MONTH,<br />
+ROUND(SUM(resultvalue), 2) soldval<br />
+FROM historic_analyses, search_params sp, search_types st<br />
+WHERE search_types_id = st.id AND search_params_id = sp.id<br />
+AND st.searchtext = 'Sold Summary Prop Type'<br />
+GROUP BY COUNTY, YEAR, MONTH<br />
+ORDER BY COUNTY, YEAR, MONTH DESC<br />
+) soldv ON soldv.county = volv.county AND soldv.year = volv.year AND soldv.month = volv.month<br />
+) soldvol,<br />
+(<br />
+SELECT COUNTY, YEAR, MONTH,MONTH_PRICE_DIFF<br />
+FROM (<br />
+SELECT<br />
+COUNTY,<br />
+YEAR,<br />
+MONTH,<br />
+coalesce(round((AVERAGEVAL - LAG(AVERAGEVAL, 1)<br />
+OVER (PARTITION BY county<br />
+ORDER BY year, month)), 2), 0) MONTH_PRICE_DIFF,<br />
+valtime<br />
+FROM (<br />
+SELECT<br />
+COUNTY,<br />
+YEAR,<br />
+MONTH,<br />
+ROUND(AVG(resultvalue), 2) AVERAGEVAL,<br />
+MAX(year || trim(to_char(month, '09')))<br />
+OVER (PARTITION BY county) valtime<br />
+FROM historic_analyses, search_params sp<br />
+WHERE search_types_id = 5 AND search_params_id = sp.id<br />
+GROUP BY COUNTY, YEAR, MONTH<br />
+ORDER BY COUNTY, YEAR, MONTH DESC<br />
+) a<br />
+) perc<br />
+WHERE valtime = year|| trim(to_char(month,'09'))<br />
+) prcchg<br />
+WHERE soldvol.county = cntyvol.county AND soldvol.year = cntyvol.year<br />
+AND soldvol.month = cntyvol.month AND prcchg.county = cntyvol.county AND prcchg.month = cntyvol.month<br />
+AND prcchg.year = cntyvol.year)</p></blockquote>
+<p>Developing this in ActiveRecord would have been very time consuming and involved alot of lines of code considering ActiveRecord's sum function only operates on one group by at a time, ActiveRecord did prove it's worth when used as part of the web scraping code where database interaction is limited to inserts and updates as shown below</p>
+<blockquote><p>propertysite <span class="pl-k">=</span> <span class="pl-s3">PropertySite</span>.create(<span class="pl-c1">:title</span> =&gt; spage[<span class="pl-s1"><span class="pl-pds">"</span>itmtitle<span class="pl-pds">"</span></span>], <span class="pl-c1">:propertytype</span> =&gt; spage[<span class="pl-s1"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span>], <span class="pl-c1">:beds</span> =&gt; sbeds.to_i, <span class="pl-c1">:searchtext</span> =&gt; <span class="pl-vo">@searchinput</span>, <span class="pl-c1">:status</span> =&gt; spage[<span class="pl-s1"><span class="pl-pds">"</span>status<span class="pl-pds">"</span></span>], <span class="pl-c1">:lastdatescanned</span> =&gt; <span class="pl-s3">DateTime</span>.now )</p></blockquote>
+<p>Ruby on Rails applications are scaffolded and run as part of SQlite and all the tutorials focus on ActiveRecord which can lead developers down the wrong path by ignoring the powerful syntax they have available with SQL. Creating Database Independent code is not a good idea as the chances of your system moving from SQLlite to Postgres to MySQL over it's lifetime as slim,</p>
+<p>It would be better if some of the books or Rails Blogs focused on Database Development as well as focusing 100 Percent on ActiveRecord.</p>
+
+
+ </section>
+</div>
+</main>
+<aside>
+ <h2>Latest</h2>
+ <p class="header"></p>
+ <ul>
+  <li><a href="https://uk.linkedin.com/pub/stephen-emo/60/308/54b">Stephen Emo</a></li>
+  <li><a href="http://www.propertytrackerni.co.uk">NI Property Tracking Site</a></li>
+  <li>
+    <div class="google-ads">
+     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- Programming Blog Ads -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-9203088421896530"
+	     data-ad-slot="3590526208"
+	     data-ad-format="auto"></ins>
+	    <script>
+           (adsbygoogle = window.adsbygoogle || []).push({});
+	    </script>
+    </div>
+   </li>
+ </ul>
+</aside>
+
+</div>
+</body>
+</html>

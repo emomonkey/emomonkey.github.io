@@ -1,0 +1,97 @@
+
+<html>
+<head>
+<meta charset='utf-8'>
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="/stylesheets/stylesheet.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/stylesheets/pygment_trac.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/stylesheets/print.css" media="print">
+<!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<title>Emomonkey.GitHub.io by Stephen Emo</title>
+</head>
+<h1>Jdeveloper and xsd</h1>
+<body>
+
+
+<div id="container">
+<header>
+ <h1>Programming and Gadgets Blog</h1>
+ <h2>Covers Ruby on Rails, Oracle suite and Electronic Toys</h2>
+</header>
+<main>
+<div class="inner">
+	<h1>
+         
+        </h1>
+ <section id="posts">
+	 
+ <p>Jdeveloper 10.1.3 has no ability to parse xsd if you use built in wizard. It just uses jaxb to generate class and code. For something generic use documentbuilderfactory in java 5</p>
+<blockquote>
+<p>    protected void validateXSD(String sFileName) throws Exception,SAXException<br />
+      {<br />
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();<br />
+            factory.setNamespaceAware(true);<br />
+            factory.setValidating(true);<br />
+            factory.setAttribute("http://java.sun.com/xml/jaxp/properties/schemaLanguage", "http://www.w3.org/2001/XMLSchema");</p>
+<p>            URL  sURL = Thread.currentThread().getContextClassLoader().getResource(XML_SCHEMA);<br />
+            String sFile = sURL.getFile();<br />
+            factory.setAttribute("http://java.sun.com/xml/jaxp/properties/schemaSource", "file:" + sFile);</p>
+<p>            DocumentBuilder builder = factory.newDocumentBuilder();<br />
+            builder.setErrorHandler( new ErrorHandler() {<br />
+                    @Override<br />
+                    public void error(SAXParseException arg0) throws SAXException {<br />
+                         throw arg0;<br />
+                    }<br />
+                    @Override<br />
+                    public void fatalError(SAXParseException arg0) throws SAXException {<br />
+                         throw arg0;<br />
+                    }<br />
+                    @Override<br />
+                    public void warning(SAXParseException arg0) throws SAXException {<br />
+                         throw arg0;<br />
+                    }<br />
+            });</p>
+<p>            org.w3c.dom.Document document = builder.parse(new File(sFileName));</p>
+<p>      }</p>
+<p>      validateXSD(sOutputPath + sCurrDate + sName);</p>
+<p>      SAXReader reader = new SAXReader(true);<br />
+      reader.setValidation(false);<br />
+      org.dom4j.Document doc = null;</p>
+<p>      doc = reader.read(new File(sOutputPath + sCurrDate + sName));</p>
+<p>      /* Iterate through the entries */<br />
+      iterateElements(doc); </p>
+<p>&gt;</p></blockquote>
+
+
+ </section>
+</div>
+</main>
+<aside>
+ <h2>Latest</h2>
+ <p class="header"></p>
+ <ul>
+  <li><a href="https://uk.linkedin.com/pub/stephen-emo/60/308/54b">Stephen Emo</a></li>
+  <li><a href="http://www.propertytrackerni.co.uk">NI Property Tracking Site</a></li>
+  <li>
+    <div class="google-ads">
+     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- Programming Blog Ads -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-9203088421896530"
+	     data-ad-slot="3590526208"
+	     data-ad-format="auto"></ins>
+	    <script>
+           (adsbygoogle = window.adsbygoogle || []).push({});
+	    </script>
+    </div>
+   </li>
+ </ul>
+</aside>
+
+</div>
+</body>
+</html>

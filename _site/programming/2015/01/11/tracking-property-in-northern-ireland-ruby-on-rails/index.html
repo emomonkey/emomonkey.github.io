@@ -1,0 +1,105 @@
+
+<html>
+<head>
+<meta charset='utf-8'>
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="/stylesheets/stylesheet.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/stylesheets/pygment_trac.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/stylesheets/print.css" media="print">
+<!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<title>Emomonkey.GitHub.io by Stephen Emo</title>
+</head>
+<h1>Tracking Property in Northern Ireland (Ruby on Rails)</h1>
+<body>
+
+
+<div id="container">
+<header>
+ <h1>Programming and Gadgets Blog</h1>
+ <h2>Covers Ruby on Rails, Oracle suite and Electronic Toys</h2>
+</header>
+<main>
+<div class="inner">
+	<h1>
+         
+        </h1>
+ <section id="posts">
+	 
+ <p>I have put together a Property Tracking Web Site which can be accessed at <a title="http://www.propertytrackerni.co.uk/" href="http://www.propertytrackerni.co.uk/">http://www.propertytrackerni.co.uk/</a>. This web site scrape data from property sites in Northern Ireland and tracks changes in the prices and volumes of properties in all the area in northern ireland.</p>
+<p><img src="/assets/screenshot-2015-01-11-23-25-50.png" alt="Screenshot 2015-01-11 23.25.50" width="600" height="328" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Depending on clicking on the volume or pricing you can navigate through a ranked listing based on the county you select and see a visual representation of the property volume and price movements of the area you select</p>
+<p><img src="/assets/screenshot-2015-01-11-23-32-49.png" alt="Screenshot 2015-01-11 23.32.49" width="600" height="328" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>The Ranked Table is displayed below.  Bourbon/Neat was used as a framework for the layout, it is less heavy than bootstrap and allows for the website to have at least a base level of responsive design</p>
+<p><img src="/assets/screenshot-2015-01-11-23-34-11.png" alt="Screenshot 2015-01-11 23.34.11" width="600" height="328" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>The final graph for the selected area is shown below. These graphs use the highchart framework</p>
+<p><img  src="/assets/screenshot-2015-01-11-23-34-35.png" alt="Screenshot 2015-01-11 23.34.35" width="600" height="328" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>If a user logs in they can subscribe to a number of areas and will receive emailed version of the graphs on a montly basis. The web site has been built on Ruby on Rails 4 with a Postgres back end. The Gems and Technologies used include</p>
+<ul>
+<li>Devise</li>
+<li>Sidekiq</li>
+<li>Postgres</li>
+<li>HighChart</li>
+<li>Whenever</li>
+<li>RSpec</li>
+<li>Neat/Bourbon</li>
+<li>Redis</li>
+<li>PhantomJS</li>
+<li>Nokogiri/Mechanize</li>
+</ul>
+<p>The code is OpenSource and can be viewed at  <a title="https://github.com/emomonkey/PropertyTrackerNI" href="https://github.com/emomonkey/PropertyTrackerNI">https://github.com/emomonkey/PropertyTrackerNI</a>. I have been impressed with Postgres as it matchs Oracle on a feature by feature basis. Windows Functions in place of Analytical Functions and Materialised Views, the only exception is no way of organising code into Packages. ActiveRecord was used alot in the Web Scraping Logic</p>
+<p>I intend to take more about specific areas of the application in further posts</p>
+<p>&nbsp;</p>
+
+
+ </section>
+</div>
+</main>
+<aside>
+ <h2>Latest</h2>
+ <p class="header"></p>
+ <ul>
+  <li><a href="https://uk.linkedin.com/pub/stephen-emo/60/308/54b">Stephen Emo</a></li>
+  <li><a href="http://www.propertytrackerni.co.uk">NI Property Tracking Site</a></li>
+  <li>
+    <div class="google-ads">
+     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- Programming Blog Ads -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-9203088421896530"
+	     data-ad-slot="3590526208"
+	     data-ad-format="auto"></ins>
+	    <script>
+           (adsbygoogle = window.adsbygoogle || []).push({});
+	    </script>
+    </div>
+   </li>
+ </ul>
+</aside>
+
+</div>
+</body>
+</html>

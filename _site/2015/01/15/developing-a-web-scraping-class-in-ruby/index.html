@@ -1,0 +1,82 @@
+
+<html>
+<head>
+<meta charset='utf-8'>
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="/stylesheets/stylesheet.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/stylesheets/pygment_trac.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/stylesheets/print.css" media="print">
+<!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<title>Emomonkey.GitHub.io by Stephen Emo</title>
+</head>
+<h1>Developing a Web Scraping Class in Ruby</h1>
+<body>
+
+
+<div id="container">
+<header>
+ <h1>Programming and Gadgets Blog</h1>
+ <h2>Covers Ruby on Rails, Oracle suite and Electronic Toys</h2>
+</header>
+<main>
+<div class="inner">
+	<h1>
+         
+        </h1>
+ <section id="posts">
+	 
+ <p>As part of my website <a href="http://www.propertytrackerni.co.uk">www.propertytrackerni.co.uk</a> I needed to put together a web scraper application. Some of the information was available through the government web site but not in an automated way and also it contained less detail than the information that was freely available on property sites on the web. Also when you develop your own code you are not limited to working within the limits of a ready made Dataset. As I had chosen Ruby on Rails 4 as my platform I was left with the below choices for my web scraping needs</p>
+<ul>
+<li>Nokogiri Gem</li>
+<li>Mechanize Gem</li>
+</ul>
+<p>Mechanize uses Nokogiri but it is at a much higher level than Nokogiri so for example if you need to edit a checkbox with a description you simply enter the method checkbox_with with the name as a method. There are methods specifically for interacting with a form, filling in fields, pressing command buttons or highlighting checkboxes. If you have used Selenium for your automated tests then you will feel very familiar with the syntax and code that you put together here</p>
+<p>Next tool that you require is</p>
+<ul>
+<li>Chrome</li>
+</ul>
+<p>If you are going to pull data of a web site you need to know how the css is structured on the web site you are going to pull data from.  There are at least two methods for pulling data of the website, xpath syntax and the standard css commands. I found xpath was best for pulling the overall element you want of the web site, for example the search results and the next method was to use the css itself to pull of the standard elements. The xpath command will give you an array of element you can iterate through.</p>
+<p>For example the xpath "//div[contains(@class,'<span class="pl-pse">#{</span><span class="pl-s2">parse_string</span><span class="pl-pse"><span class="pl-s2">}</span></span>')]" will give you the contents of the with the div statement belonging to the class whose name is the value of parse_string. So in other word if the parse_string is search_results it will be the contents of the div statement of class search_results.</p>
+<p>This will give you an array of elements which you can then iterate through and parse. Now rather than use xpath you can access the css directly so say for example the header contains the name you require you can enter the below command</p>
+<p>.css(<span class="pl-s1"><span class="pl-pds">"</span>h2<span class="pl-pds">"</span></span>)[<span class="pl-c1">0</span>].content</p>
+<p>If the contents you want is instead a class you can use the syntax .classname as shown below</p>
+<p>.css(<span class="pl-s1"><span class="pl-pds">"</span>.beds<span class="pl-pds">"</span></span>)[<span class="pl-c1">0</span>].content</p>
+<p>This information can then be insert into the database via ActiveRecord. The web scraping element of this project was alot more easier than I thought with the code coming together in much the same way that an automated test set would come together.</p>
+<p>The code for this is available on</p>
+<p><a href="https://github.com/emomonkey/PropertyTrackerNI/blob/master/app/models/property_news_crawler.rb">https://github.com/emomonkey/PropertyTrackerNI/blob/master/app/models/property_news_crawler.rb</a></p>
+<p>and</p>
+<p><a href="https://github.com/emomonkey/PropertyTrackerNI/blob/master/app/models/concerns/crawler_module.rb">https://github.com/emomonkey/PropertyTrackerNI/blob/master/app/models/concerns/crawler_module.rb</a></p>
+
+
+ </section>
+</div>
+</main>
+<aside>
+ <h2>Latest</h2>
+ <p class="header"></p>
+ <ul>
+  <li><a href="https://uk.linkedin.com/pub/stephen-emo/60/308/54b">Stephen Emo</a></li>
+  <li><a href="http://www.propertytrackerni.co.uk">NI Property Tracking Site</a></li>
+  <li>
+    <div class="google-ads">
+     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- Programming Blog Ads -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-9203088421896530"
+	     data-ad-slot="3590526208"
+	     data-ad-format="auto"></ins>
+	    <script>
+           (adsbygoogle = window.adsbygoogle || []).push({});
+	    </script>
+    </div>
+   </li>
+ </ul>
+</aside>
+
+</div>
+</body>
+</html>

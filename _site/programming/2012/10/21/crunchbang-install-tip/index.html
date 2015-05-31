@@ -12,7 +12,7 @@
 <![endif]-->
 <title>Emomonkey.GitHub.io by Stephen Emo</title>
 </head>
-<h1>{{ page.title }}</h1>
+<h1>Crunchbang install tip</h1>
 <body>
 
 
@@ -24,11 +24,16 @@
 <main>
 <div class="inner">
 	<h1>
-         {{ post.title }}
+         
         </h1>
  <section id="posts">
 	 
- {{ content  }}
+ <p>Had to reinstall crunchbang. Once again ryanbiggs install guide helped. There where two changes need</p>
+<p>1. Mentioned on the crunchbang forum at the rvm install stage u get zlib errors. Solutionis on this forum</p>
+<p>2. .bashrc needs changed with below line</p>
+<p>[[ -s "$HOME/.rvm/scripts/rvm" ]] &amp;&amp; source "$HOME/.rvm/scripts/rvm"</p>
+<p>To see .bashrc use file manager and hit ctrl h to see system files</p>
+
 
  </section>
 </div>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/print.css" media="print">
+			    <!--[if lt IE 9]>
+			    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+			        <![endif]-->
+     <title>Emomonkey.GitHub.io by Stephen Emo</title>
+</head>
+
+
+
+<h1></h1>
+
+<body>
+    <div id="container">
+    <header>
+          <h1>Programming and Gadgets Blog</h1>
+          <h2>Covers Ruby on Rails, Oracle suite and Electronic Toys</h2>
+    </header>	
+      <main>	
+      <div class="inner">
+
+
+      <section id="downloads" class="clearfix">
+          <a href="https://github.com/emomonkey" id="view-on-github" class="button"><span>Repository</span></a>
+      </section>
+       
+       <section id="posts">
+       <h1>Blog Posts </h1>
+       
+       
+	  <h1>
+	    <a href="/2015/05/17/rubyrailslocal/">Using Ruby on Rails in Offline Environment</a>
+	  </h1>
+	  <p class = "author">
+	    <span class="date">2015-05-17 23:01:49 +0100</span>
+	  </p>
+	  <div class="content">
+	   <p>I recently had the need to develop a quick ruby on rails application offline, I had all the GEMS I needed for the application and ran bundle install –local and still I got errors. It seems with the latest versions of bundler local is not offline but requires an Internet connection. </p>
+
+<p>To work offline in Ruby On Rails you need to run on bunder version 1.5.x and below. This is a bit of a gotcha for developers working in an offline environment.</p>
+
+	  <div>
+	
+	  <h1>
+	    <a href="/2015/03/03/high-charts-interactive-grids/">High Charts Interactive Grids</a>
+	  </h1>
+	  <p class = "author">
+	    <span class="date">2015-03-03 22:01:49 +0000</span>
+	  </p>
+	  <div class="content">
+	   <p>Now that my web site has been live for a couple of months I have had time to go back and see some improvements I can make. The first thing I noticed was regarding the Highchart graphs, I noticed that you could filter out the lines of the graph that you where not interested in by clicking on the related legend. So I updated the graph so that clicking on it does not move you to a new page which meant this useful dynamic legend filter functionality could be used. You can still move pages by clicking on the left hand side grid boxes</p>
+<p><img src="/assets/screenshot-from-2015-03-03-214817.png" alt="High Charts Graphs" width="600" height="310" /></p>
+<p>The second thing I noticed was that smaller towns ended up with the highest price. This was due to the low volumes of sales in the area. This meant a single site valued at 600,000 pounds would give high average price as it was the only one available. I do need some sorted of weighted average. Any suggestions would be welcome.</p>
+<p>Check out <a href="http://www.propertytrackerni.co.uk">http://www.propertytrackerni.co.uk</a></p>
+
+	  <div>
+	
+	  <h1>
+	    <a href="/programming/2015/02/19/using-highcharts-in-ruby-on-rails-in-headless-mode/">Using Highcharts in  Ruby on Rails in Headless Mode</a>
+	  </h1>
+	  <p class = "author">
+	    <span class="date">2015-02-19 00:29:24 +0000</span>
+	  </p>
+	  <div class="content">
+	   <p>Using Highcharts is straightforward enough using the ruby on rails gem as you can see on my web site <a href="http://www.propertytrackerni.co.uk">http://www.propertytrackerni.co.uk</a> thanks to the gem lazy_high_charts. However what do we need to do is to use these graphing tool in a scheduled email ?</p>
+<p>The answer is that we need a scheduled job to call this browser based javascript graphing tool from the command line and we need this scheduled routine to first export the graphing info out to json.</p>
+<p>To export this data in json take a look at the below code</p>
+<blockquote><p>volcnty = @graphservice.fndavgprcmthyr<br />
+cats = {:categories =&gt; volcnty.category}<br />
+icnt = 0<br />
+vdata = Array.new<br />
+volcnty.series.each do |volitm|<br />
+vdata &lt;&lt; Hash(:name =&gt; volcnty.arrseries[icnt], :data =&gt; volitm)<br />
+icnt+=1<br />
+end<br />
+types = {:type =&gt; "line"}<br />
+yax = {:title =&gt; {:text =&gt; "Average Asking Price"}}<br />
+graphdat = {:chart =&gt; types,:title =&gt; "Average Asking Price over the year",:xAxis =&gt; cats,:yAxis =&gt; yax, :series =&gt; vdata}<br />
+File.open("#{Rails.root}/highchart/exporting-server/phantomjs/#{@currtrans.id}__avgyr.json", "w") { |f| f.write(graphdat.to_json) }</p></blockquote>
+<p>The routine @graphservice.fndavgprcmthyr calls our postgres view and returns the result as an object which contains the results of our query, To write the data in a format highchart will understand we need to use the json put in the below format</p>
+<blockquote><p>graphdat = {:chart =&gt; types,:title =&gt; "Average Asking Price over the year",:xAxis =&gt; cats,:yAxis =&gt; yax, :series =&gt; vdata}</p></blockquote>
+<p>A shell script needs to be called to call highcharts and convery the json into a png which can be loaded into our email</p>
+<blockquote><p>system(<span class="pl-s1"><span class="pl-pds">"</span>sh <span class="pl-pse">#{</span><span class="pl-s2"><span class="pl-s3">Rails</span>.root</span><span class="pl-pse"><span class="pl-s2">}</span></span>/highchart/exporting-server/phantomjs/phantomjs.sh <span class="pl-pse">#{</span><span class="pl-s2"><span class="pl-s3">Rails</span>.root</span><span class="pl-pse"><span class="pl-s2">}</span></span> <span class="pl-pse">#{</span><span class="pl-s2"><span class="pl-vo">@currtrans</span>.id</span><span class="pl-pse"><span class="pl-s2">}</span></span>__volyr_<span class="pl-pse">#{</span><span class="pl-s2">searchp.id</span><span class="pl-pse"><span class="pl-s2">}</span></span>.json volyr_<span class="pl-pse">#{</span><span class="pl-s2">searchp.id</span><span class="pl-pse"><span class="pl-s2">}</span></span>_<span class="pl-pse">#{</span><span class="pl-s2"><span class="pl-vo">@currtrans</span>.id</span><span class="pl-pse"><span class="pl-s2">}</span></span>.png<span class="pl-pds">"</span></span>)</p></blockquote>
+<p>This shell script contains the below code</p>
+<blockquote><p>cd $1/highchart/exporting-server/phantomjs<br />
+phantomjs highcharts-convert.js -infile $2 -outfile $1/public/export/$3 -scale 2.5 -width 300 -constr Chart</p></blockquote>
+<p>The highcharts-convert.js and the associated files can be found on the highcharts web site</p>
+
+	  <div>
+	
+	  <h1>
+	    <a href="/programming/2015/02/11/effective-use-of-concurrent-sidekiq-workers/">Effective Use of Concurrent Sidekiq Workers</a>
+	  </h1>
+	  <p class = "author">
+	    <span class="date">2015-02-11 22:17:41 +0000</span>
+	  </p>
+	  <div class="content">
+	   <p>One of the benefits of Sidekiq is that it allows your application to work on a single task using simultaneous worker processes which also  means that you have a set of additional problems</p>
+<ul>
+<li>Ensure separate workers do not save the same record result at the same causing data duplication</li>
+<li>Ensure separate workers do not work on the same data</li>
+</ul>
+<p>Sidekiq has proved useful on my web scraping code for my Northern Ireland Property Web Site at <a href="http://www.propertytrackerni.co.uk/">http://www.propertytrackerni.co.uk</a></p>
+<p>Obviously neither of these issues is something that you would want to happen in your working application and the issue if data duplication can be easily resolved by adding unique database constraints so that the same data cannot be added to your database table.</p>
+<p>The second issue can be resolved by marking off data that has been processed already which I have achieved by adding the below line to the code</p>
+<blockquote><p>  if pdate == nil or (pdate.year &lt;= Time.now.year and pdate.mon != Time.now.month)</p></blockquote>
+<p>This pdate contains the date the search area record was last processed and as this task is monthly this means search areas that have already been processed will be passed over. Now this does mean that later workers will have to iterate over search params that have already been processed but as the number of search areas can be measured in the thousands (Northern Ireland is quote small) this is not much overhead. The WHERE ActiveRecord statement could be used on top of the top condition e.g.</p>
+<blockquote><p>SearchParams.where(“searchdate is null or (EXTRACT(YEAR FROM searchdate) &lt;= EXTRACT(YEAR FROM now()) AND EXTRACT(MONTH FROM searchdate) &lt;= EXTRACT(MONTH FROM now()))find_each(start:isize, batch_size: batchsize)</p></blockquote>
+<p>However as find_each retrieves data in batches it is possible another worker could have retrieved one of your batches and it is now processed so the if condition is needed as well as the database constraint. The database constraint is needed as it is possible that the more than one worker could have grabbed the row before a database update has been done.</p>
+<blockquote><p>I would be interested in hearing about better methods that could be done to achieve this using SideKiq and Ruby. For example can I specify the number of workers dynamically and then calculate how the records to be processed are split among the workers. This does not seem the case in sidekiq.yml. I know I can specify the maximum number of workers but that is it</p>
+<p>:verbose: false<br />
+:pidfile: ./tmp/pids/sidekiq.pid<br />
+:logfile: ./log/sidekiq.log<br />
+:concurrency: 25<br />
+:queues:<br />
+- default<br />
+- queue_analysis<br />
+- queue_scraper<br />
+:limits:<br />
+queue_analysis: 1<br />
+queue_scraper: 15</p></blockquote>
+<p>The code is below</p>
+<blockquote><p>class ParseResultsWorker</p>
+<p>include Sidekiq::Worker</p>
+<p>sidekiq_options :queue =&gt; :queue_scraper</p>
+<p>def perform(*args)<br />
+isize = 1<br />
+batchsize = 10000<br />
+stime = Time.now<br />
+vst = stime.strftime("%H:%M:%S");<br />
+tstat = Transstatus.find_by name: 'ParseResultsWorker', created_at: Time.now.utc.to_date<br />
+if tstat.nil?<br />
+tstat = Transstatus.create(:name =&gt; "ParseResultsWorker" )<br />
+end<br />
+Rails.logger.debug ' ParseResultsWorker start job ' + vst<br />
+SearchParams.find_each(start:isize, batch_size: batchsize) do |params|<br />
+pdate = params['searchdate']<br />
+if pdate == nil or (pdate.year &lt;= Time.now.year and pdate.mon != Time.now.month)<br />
+tstat.update(currentparam: params.searchparam)<br />
+@pnewscrawl = PropertyNewsCrawler.new('http://www.propertynews.com', params.searchparam)<br />
+@pnewscrawl.findresult<br />
+end<br />
+end<br />
+etime = Time.now<br />
+vet = etime.strftime("%H:%M:%S");<br />
+PropertySite.lastscanned<br />
+Rails.logger.debug ' ParseResultsWorker end job ' + vet<br />
+rescue StandardError =&gt; e<br />
+Rails.logger.debug 'Error running ParseResultsWorker.perform ' + e.message<br />
+return false;<br />
+end<br />
+end</p></blockquote>
+
+	  <div>
+	
+      
+	<!-- Pagination links -->
+	<div class="pagination">
+	  
+           <span class="previous">Previous</span>
+          
+          <span class="page_number ">Page: 1 of 7</span>
+          
+           <a href="/page2" class="next">Next</a>
+          
+	 </div>
+	 
+       </section>
+        
+       </div>
+       </main>
+       <aside>
+         <h2>Latest</h2>
+         <p class="header"></p>
+         <ul>
+          <li><a href="https://uk.linkedin.com/pub/stephen-emo/60/308/54b">Stephen Emo</a></li>
+          <li><a href="http://www.propertytrackerni.co.uk">NI Property Tracking Site</a></li>
+          <li>
+	  <div class="google-ads">
+	   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	   <!-- Programming Blog Ads -->
+		<ins class="adsbygoogle"
+     		style="display:block"
+     		data-ad-client="ca-pub-9203088421896530"
+     		data-ad-slot="3590526208"
+     		data-ad-format="auto"></ins>
+	   <script>
+	   (adsbygoogle = window.adsbygoogle || []).push({});
+           </script>
+          </div>
+	</li>
+        </ul>
+      </aside>        
+    </div>
+</body>
+
+
+
+
+<script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-61943589-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+</script>
+ 
+
+     
+</html>
