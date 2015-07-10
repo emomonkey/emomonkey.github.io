@@ -19,26 +19,26 @@
 </head>
 
 
-
-<h1>{{ page.title }}</h1>
-
+<header>
+ <h1>{{ page.title }}</h1>
+</header>
 <body>
     <div id="container">
     <header>
           <h1>Programming and Gadgets Blog</h1>
           <h2>Covers Ruby on Rails, Oracle suite and Electronic Toys</h2>
-    </header>	
-      <main>	
+    </header>
+      <main>
       <div class="inner">
 
 
       <section id="downloads" class="clearfix">
           <a href="https://github.com/emomonkey" id="view-on-github" class="button"><span>Repository</span></a>
       </section>
-       
+
        <section id="posts">
        <h1>Blog Posts </h1>
-       
+
        {% for post in paginator.posts %}
 	  <h1>
 	    <a href="{{ post.url }}">{{ post.title }}</a>
@@ -50,7 +50,7 @@
 	   {{post.content}}
 	  <div>
 	{% endfor %}
-      
+
 	<!-- Pagination links -->
 	<div class="pagination">
 	  {% if paginator.previous_page %}
@@ -65,17 +65,17 @@
            <span class="next ">Next</span>
           {% endif %}
 	 </div>
-	 
+
        </section>
-        
+
        </div>
        </main>
-       <aside class="sidebar">
+       <aside>
          <h2>Latest</h2>
          <p class="header"></p>
+
          <ul>
           <li><a href="https://uk.linkedin.com/pub/stephen-emo/60/308/54b">Stephen Emo</a></li>
-          <li><a href="http://www.propertytrackerni.co.uk">NI Property Tracking Site</a></li>
           <li>
 	  <div class="google-ads">
 	   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -90,8 +90,12 @@
            </script>
           </div>
 	</li>
+	<li><a href="http://www.propertytrackerni.co.uk">NI Property Tracking Site</a></li>
+
         </ul>
-      </aside>        
+
+      </aside>
+
     </div>
 </body>
 
@@ -108,7 +112,7 @@
             pageTracker._trackPageview();
             } catch(err) {}
 </script>
- 
 
-     
+
+
 </html>
