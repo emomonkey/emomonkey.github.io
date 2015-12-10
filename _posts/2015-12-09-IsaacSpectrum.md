@@ -50,9 +50,16 @@ Take the below selection of games
  * UnderWurlde
  * Pyjamarama
 
-Most of these games nowadays seem rather slow, UnderWurlde does seem similar to Spelunky with its ropes, platforming and water areas but the other games definitely did not work.
+Most of these games nowadays seem rather slow, UnderWurlde does seem similar to Spelunky with its ropes, platforming and water areas but the other games definitely would to too slow for todays audience.
 
-On clicking submit the average price for the above type of property will be found.
+![Underwurlde](http://emomonkey.github.io/images/UnderWurlde1.jpg)
+
+Spelunky is a bit more busy and as you can see it has multiplayer functionality which you would not get in the pre internet days.
+
+![Spelunky](http://emomonkey.github.io/images/spelunky.jpg)
+
+It does make me wonder if there aren't some more missing gems hidden in the Sinclair Spectrum vault. Some genres have disappeared such as straightforward maze games like Sabrewulf and Ant Attack. I can see the Meat Boy team doing a high paced Maze game or maybe Vlambeer can do a new Lunar Jetman spin like Lufthasers...
+
+Maybe it's time to brush off Gamemaker and do the ultimate Stop the Express update
 
 
-M
