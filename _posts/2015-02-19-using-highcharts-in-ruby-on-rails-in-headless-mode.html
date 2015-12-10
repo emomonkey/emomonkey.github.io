@@ -37,7 +37,7 @@ excerpt: !ruby/object:Hpricot::Doc
 <p>Using Highcharts is straightforward enough using the ruby on rails gem as you can see on my web site <a href="http://www.propertytrackerni.co.uk">http://www.propertytrackerni.co.uk</a> thanks to the gem lazy_high_charts. However what do we need to do is to use these graphing tool in a scheduled email ?</p>
 <p>The answer is that we need a scheduled job to call this browser based javascript graphing tool from the command line and we need this scheduled routine to first export the graphing info out to json.</p>
 <p>To export this data in json take a look at the below code</p>
-<blockquote><p>volcnty = @graphservice.fndavgprcmthyr<br />
+<div class="highlight"><pre><p>volcnty = @graphservice.fndavgprcmthyr<br />
 cats = {:categories =&gt; volcnty.category}<br />
 icnt = 0<br />
 vdata = Array.new<br />
@@ -48,12 +48,12 @@ end<br />
 types = {:type =&gt; "line"}<br />
 yax = {:title =&gt; {:text =&gt; "Average Asking Price"}}<br />
 graphdat = {:chart =&gt; types,:title =&gt; "Average Asking Price over the year",:xAxis =&gt; cats,:yAxis =&gt; yax, :series =&gt; vdata}<br />
-File.open("#{Rails.root}/highchart/exporting-server/phantomjs/#{@currtrans.id}__avgyr.json", "w") { |f| f.write(graphdat.to_json) }</p></blockquote>
+File.open("#{Rails.root}/highchart/exporting-server/phantomjs/#{@currtrans.id}__avgyr.json", "w") { |f| f.write(graphdat.to_json) }</p></pre></div>
 <p>The routine @graphservice.fndavgprcmthyr calls our postgres view and returns the result as an object which contains the results of our query, To write the data in a format highchart will understand we need to use the json put in the below format</p>
-<blockquote><p>graphdat = {:chart =&gt; types,:title =&gt; "Average Asking Price over the year",:xAxis =&gt; cats,:yAxis =&gt; yax, :series =&gt; vdata}</p></blockquote>
+<div class="highlight"><pre><p>graphdat = {:chart =&gt; types,:title =&gt; "Average Asking Price over the year",:xAxis =&gt; cats,:yAxis =&gt; yax, :series =&gt; vdata}</p></pre></div>
 <p>A shell script needs to be called to call highcharts and convery the json into a png which can be loaded into our email</p>
-<blockquote><p>system(<span class="pl-s1"><span class="pl-pds">"</span>sh <span class="pl-pse">#{</span><span class="pl-s2"><span class="pl-s3">Rails</span>.root</span><span class="pl-pse"><span class="pl-s2">}</span></span>/highchart/exporting-server/phantomjs/phantomjs.sh <span class="pl-pse">#{</span><span class="pl-s2"><span class="pl-s3">Rails</span>.root</span><span class="pl-pse"><span class="pl-s2">}</span></span> <span class="pl-pse">#{</span><span class="pl-s2"><span class="pl-vo">@currtrans</span>.id</span><span class="pl-pse"><span class="pl-s2">}</span></span>__volyr_<span class="pl-pse">#{</span><span class="pl-s2">searchp.id</span><span class="pl-pse"><span class="pl-s2">}</span></span>.json volyr_<span class="pl-pse">#{</span><span class="pl-s2">searchp.id</span><span class="pl-pse"><span class="pl-s2">}</span></span>_<span class="pl-pse">#{</span><span class="pl-s2"><span class="pl-vo">@currtrans</span>.id</span><span class="pl-pse"><span class="pl-s2">}</span></span>.png<span class="pl-pds">"</span></span>)</p></blockquote>
+<div class="highlight"><pre><p>system(<span class="pl-s1"><span class="pl-pds">"</span>sh <span class="pl-pse">#{</span><span class="pl-s2"><span class="pl-s3">Rails</span>.root</span><span class="pl-pse"><span class="pl-s2">}</span></span>/highchart/exporting-server/phantomjs/phantomjs.sh <span class="pl-pse">#{</span><span class="pl-s2"><span class="pl-s3">Rails</span>.root</span><span class="pl-pse"><span class="pl-s2">}</span></span> <span class="pl-pse">#{</span><span class="pl-s2"><span class="pl-vo">@currtrans</span>.id</span><span class="pl-pse"><span class="pl-s2">}</span></span>__volyr_<span class="pl-pse">#{</span><span class="pl-s2">searchp.id</span><span class="pl-pse"><span class="pl-s2">}</span></span>.json volyr_<span class="pl-pse">#{</span><span class="pl-s2">searchp.id</span><span class="pl-pse"><span class="pl-s2">}</span></span>_<span class="pl-pse">#{</span><span class="pl-s2"><span class="pl-vo">@currtrans</span>.id</span><span class="pl-pse"><span class="pl-s2">}</span></span>.png<span class="pl-pds">"</span></span>)</p></pre></div>
 <p>This shell script contains the below code</p>
-<blockquote><p>cd $1/highchart/exporting-server/phantomjs<br />
-phantomjs highcharts-convert.js -infile $2 -outfile $1/public/export/$3 -scale 2.5 -width 300 -constr Chart</p></blockquote>
+<div class="highlight"><pre><p>cd $1/highchart/exporting-server/phantomjs<br />
+phantomjs highcharts-convert.js -infile $2 -outfile $1/public/export/$3 -scale 2.5 -width 300 -constr Chart</p></pre></div>
 <p>The highcharts-convert.js and the associated files can be found on the highcharts web site</p>

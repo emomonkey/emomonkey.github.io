@@ -1,0 +1,179 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/styles.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/pygment_trac.css" media="screen">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- [if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+     
+     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+     <title>Home</title>
+</head>
+
+
+<body>
+ <div id="main">
+   <div id="header">
+      <div class="wrapper">
+        <a href="https://github.com/emomonkey" class="btn">View On GitHub</a>
+        <ul class="nav">
+          <li class="download-title">Links</li>
+          <li class="downloads">
+	   <a href="https://uk.linkedin.com/pub/stephen-emo/60/308/54b" class="btn">LinkedIn</a>
+	  </li>
+          <li class="downloads">
+           <a href="http://www.propertytrackerni.co.uk" class="btn">NI Property Tracking</a>
+	  </li>
+        </ul>
+      </div>
+    </div><!-- end header -->     
+    <div class="wrapper">
+     <section id="posts">
+	           <div id="title">
+       <h1>Development Blog</h1>
+       <h5>Web Development, Video Gaming d Maker Work</h5>
+       <h5>Who's this Stephen Emo? <img src="portrait.jpg"> </h5>
+       <p>He's a developer who works on Oracle EBS but loves working with Ruby, playing Indie Games and tinkering with the Raspberry PI </p> 
+      <hr>
+      </div>
+     
+       
+	  <h1>
+	    <a href="/programming/2012/04/11/loading-that-xsd-file/">Loading that xsd file</a>
+	  </h1>
+	  <p class = "author">
+	    <span class="date">2012-04-11 18:03:47 +0100</span>
+	  </p>
+	  <div class="content">
+	   <p>Locating a resource file is a bit awkward in jdeveloper. Getresource takes the public_HTML when called from the view controller so you have to figure out where the classpath is. Look for the entry in system. getProperties to find it...dint forget to start the path with backslash first</p>
+
+	  <div>
+	
+	  <h1>
+	    <a href="/programming/2012/04/06/jdeveloper-and-xsd/">Jdeveloper and xsd</a>
+	  </h1>
+	  <p class = "author">
+	    <span class="date">2012-04-06 18:23:33 +0100</span>
+	  </p>
+	  <div class="content">
+	   <p>Jdeveloper 10.1.3 has no ability to parse xsd if you use built in wizard. It just uses jaxb to generate class and code. For something generic use documentbuilderfactory in java 5</p>
+<blockquote>
+<p>    protected void validateXSD(String sFileName) throws Exception,SAXException<br />
+      {<br />
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();<br />
+            factory.setNamespaceAware(true);<br />
+            factory.setValidating(true);<br />
+            factory.setAttribute("http://java.sun.com/xml/jaxp/properties/schemaLanguage", "http://www.w3.org/2001/XMLSchema");</p>
+<p>            URL  sURL = Thread.currentThread().getContextClassLoader().getResource(XML_SCHEMA);<br />
+            String sFile = sURL.getFile();<br />
+            factory.setAttribute("http://java.sun.com/xml/jaxp/properties/schemaSource", "file:" + sFile);</p>
+<p>            DocumentBuilder builder = factory.newDocumentBuilder();<br />
+            builder.setErrorHandler( new ErrorHandler() {<br />
+                    @Override<br />
+                    public void error(SAXParseException arg0) throws SAXException {<br />
+                         throw arg0;<br />
+                    }<br />
+                    @Override<br />
+                    public void fatalError(SAXParseException arg0) throws SAXException {<br />
+                         throw arg0;<br />
+                    }<br />
+                    @Override<br />
+                    public void warning(SAXParseException arg0) throws SAXException {<br />
+                         throw arg0;<br />
+                    }<br />
+            });</p>
+<p>            org.w3c.dom.Document document = builder.parse(new File(sFileName));</p>
+<p>      }</p>
+<p>      validateXSD(sOutputPath + sCurrDate + sName);</p>
+<p>      SAXReader reader = new SAXReader(true);<br />
+      reader.setValidation(false);<br />
+      org.dom4j.Document doc = null;</p>
+<p>      doc = reader.read(new File(sOutputPath + sCurrDate + sName));</p>
+<p>      /* Iterate through the entries */<br />
+      iterateElements(doc); </p>
+<p>&gt;</p></blockquote>
+
+	  <div>
+	
+	  <h1>
+	    <a href="/programming/2012/03/10/jdeveloper/">Jdeveloper</a>
+	  </h1>
+	  <p class = "author">
+	    <span class="date">2012-03-10 12:38:29 +0000</span>
+	  </p>
+	  <div class="content">
+	   <p>Tips on jdeveloper 10.1.3 </p>
+<p>1. Get an error 500 for no reason when you run the application. Code look fine. Then the issue could be jdeveloper 10.1.3 has decided to add the public HTML to your model it will do this because you accidentally hit run app when you selected the model :) This happened to me twice</p>
+<p>2. If you add a new managed bean make sure If you edit the faces-config.XML that jdeveloper does not add a duplicate bean on you.</p>
+
+	  <div>
+	
+
+	<!-- Pagination links -->
+	<div class="pagination">
+	  
+      	   <a href="/page7" class="previous">Previous</a>
+          
+          <span class="page_number ">Page: 8 of 8</span>
+          
+           <span class="next ">Next</span>
+          
+	 </div>
+	
+            
+             </section>
+      
+       <div class="google-ads">
+	   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	   <!-- Programming Blog Ads -->
+		<ins class="adsbygoogle"
+     		style="display:block"
+     		data-ad-client="ca-pub-9203088421896530"
+     		data-ad-slot="3590526208"
+     		data-ad-format="auto"></ins>
+	   <script>
+	   (adsbygoogle = window.adsbygoogle || []).push({});
+           </script>
+       </div>
+        <span class="credits left">
+	       Site maintained by <a href="https://github.com/emomonkey">Stephen Emo</a>
+       </span>
+       <span class="credits right">
+	       This project uses Jekyll. A Ruby Static Site tool.
+       </span>
+		
+      </div>
+  </div>
+        
+</body>
+
+
+<script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-61943589-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+</script>
+
+
+
+</html>
+
+

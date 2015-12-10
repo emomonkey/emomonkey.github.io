@@ -1,0 +1,42 @@
+tcp        0      0 127.0.1.1:53            0.0.0.0:*               LISTEN      -               
+tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN      -               
+tcp        0      0 127.0.0.1:5432          0.0.0.0:*               LISTEN      -               
+tcp        0      0 127.0.0.1:7001          0.0.0.0:*               LISTEN      2239/nxnode.bin 
+tcp        0      0 0.0.0.0:4000            0.0.0.0:*               LISTEN      -               
+tcp        0      0 127.0.0.1:12001         0.0.0.0:*               LISTEN      2239/nxnode.bin 
+tcp        0      0 127.0.0.1:22370         0.0.0.0:*               LISTEN      -               
+tcp        0      0 127.0.0.1:25001         0.0.0.0:*               LISTEN      2287/nxclient.bin
+tcp        0      0 0.0.0.0:6379            0.0.0.0:*               LISTEN      -               
+tcp6       0      0 ::1:631                 :::*                    LISTEN      -               
+tcp6       0      0 ::1:7001                :::*                    LISTEN      2239/nxnode.bin 
+tcp6       0      0 :::4000                 :::*                    LISTEN      -               
+tcp6       0      0 :::6379                 :::*                    LISTEN      -               
+unix  2      [ ACC ]     STREAM     LISTENING     14733    -                   /var/run/avahi-daemon/socket
+unix  2      [ ACC ]     STREAM     LISTENING     20323    1569/systemd        /run/user/1000/systemd/private
+unix  2      [ ACC ]     SEQPACKET  LISTENING     12349    -                   /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     20332    -                   /run/user/1000/keyring/control
+unix  2      [ ACC ]     STREAM     LISTENING     14734    -                   /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     STREAM     LISTENING     11887    -                   /run/uuidd/request
+unix  2      [ ACC ]     STREAM     LISTENING     11888    -                   /var/run/cups/cups.sock
+unix  2      [ ACC ]     STREAM     LISTENING     19311    -                   /run/user/1000/keyring/pkcs11
+unix  2      [ ACC ]     STREAM     LISTENING     19313    -                   /run/user/1000/keyring/ssh
+unix  2      [ ACC ]     STREAM     LISTENING     21650    1894/pulseaudio     /run/user/1000/pulse/native
+unix  2      [ ACC ]     STREAM     LISTENING     18352    1801/gnome-session  @/tmp/.ICE-unix/1801
+unix  2      [ ACC ]     STREAM     LISTENING     16347    -                   @/tmp/.X11-unix/X0
+unix  2      [ ACC ]     STREAM     LISTENING     17051    -                   /var/run/NetworkManager/private
+unix  2      [ ACC ]     STREAM     LISTENING     22998    2239/nxnode.bin     /tmp/.X11-unix/X1001
+unix  2      [ ACC ]     STREAM     LISTENING     16348    -                   /tmp/.X11-unix/X0
+unix  2      [ ACC ]     STREAM     LISTENING     17211    -                   /var/run/NetworkManager/private-dhcp
+unix  2      [ ACC ]     STREAM     LISTENING     11884    -                   /run/acpid.socket
+unix  2      [ ACC ]     STREAM     LISTENING     20447    1731/dbus-daemon    @/tmp/dbus-50ck4dS1Nr
+unix  2      [ ACC ]     STREAM     LISTENING     21381    1758/gpg-agent      /tmp/gpg-IW6p1q/S.gpg-agent
+unix  2      [ ACC ]     STREAM     LISTENING     18353    1801/gnome-session  /tmp/.ICE-unix/1801
+unix  2      [ ACC ]     STREAM     LISTENING     23968    2115/-              /tmp/tmux-1000/default
+unix  2      [ ACC ]     STREAM     LISTENING     23111    -                   /var/run/postgresql/.s.PGSQL.5432
+unix  2      [ ACC ]     STREAM     LISTENING     18313    1762/ibus-daemon    @/tmp/dbus-JxoJ2ajU
+unix  2      [ ACC ]     STREAM     LISTENING     12319    -                   /run/systemd/private
+unix  2      [ ACC ]     STREAM     LISTENING     20418    1577/upstart        @/com/ubuntu/upstart-session/1000/1577
+unix  2      [ ACC ]     STREAM     LISTENING     12334    -                   /run/systemd/journal/stdout
+unix  2      [ ACC ]     STREAM     LISTENING     10408    -                   /run/systemd/fsck.progress
+unix  2      [ ACC ]     STREAM     LISTENING     22997    2239/nxnode.bin     @/tmp/.X11-unix/X1001
+unix  2      [ ACC ]     STREAM     LISTENING     21526    1807/dbus-daemon    @/tmp/dbus-vaDFGV1rdz

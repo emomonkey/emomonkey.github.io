@@ -1,7 +1,8 @@
 ---
-
-
+layout: default
+title: Home
 ---
+
 
 <!DOCTYPE html>
 <html>
@@ -9,36 +10,49 @@
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="/stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/styles.css" media="screen">
     <link rel="stylesheet" type="text/css" href="/stylesheets/pygment_trac.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/print.css" media="print">
-			    <!--[if lt IE 9]>
-			    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-			        <![endif]-->
-     <title>Emomonkey.GitHub.io by Stephen Emo</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- [if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+     
+     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+     <title>{{ page.title }}</title>
 </head>
 
 
 <body>
-    <div id="container">
-    <header>
-      <section role="banner">
-        <img src="./assets/header_images.jpg" />
-      </section>
-          <h1>Programming and Gadgets Blog</h1>
-          <h2>Covers Ruby on Rails, Oracle suite and Javascript</h2>
-    </header>
-      <main>
-      <div class="inner">
-
-
-      <section id="downloads" class="clearfix">
-          <a href="https://github.com/emomonkey" id="view-on-github" class="button"><span>Repository</span></a>
-      </section>
-
-       <section id="posts">
-       <h1>Blog Posts </h1>
-
+ <div id="main">
+   <div id="header">
+      <div class="wrapper">
+        <a href="https://github.com/emomonkey" class="btn">View On GitHub</a>
+        <ul class="nav">
+          <li class="download-title">Links</li>
+          <li class="downloads">
+	   <a href="https://uk.linkedin.com/pub/stephen-emo/60/308/54b" class="btn">LinkedIn</a>
+	  </li>
+          <li class="downloads">
+           <a href="http://www.propertytrackerni.co.uk" class="btn">NI Property Tracking</a>
+	  </li>
+        </ul>
+      </div>
+    </div><!-- end header -->     
+    <div class="wrapper">
+     <section id="posts">
+	           <div id="title">
+       <h1>Development Blog</h1>
+       <h5>Web Development, Video Gaming d Maker Work</h5>
+       <h5>Who's this Stephen Emo? <img src="portrait.jpg"> </h5>
+       <p>He's a developer who works on Oracle EBS but loves working with Ruby, playing Indie Games and tinkering with the Raspberry PI </p> 
+      <hr>
+      </div>
+     
        {% for post in paginator.posts %}
 	  <h1>
 	    <a href="{{ post.url }}">{{ post.title }}</a>
@@ -65,9 +79,10 @@
            <span class="next ">Next</span>
           {% endif %}
 	 </div>
-
-       </section>
-       
+	
+            
+             </section>
+      
        <div class="google-ads">
 	   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	   <!-- Programming Blog Ads -->
@@ -80,26 +95,17 @@
 	   (adsbygoogle = window.adsbygoogle || []).push({});
            </script>
        </div>
-       	
-	
-       </div>
-       </main>
-       <aside>
-         <h2>Latest</h2>
-         <p class="header"></p>
-
-         <ul>
-          <li><a href="https://uk.linkedin.com/pub/stephen-emo/60/308/54b">Stephen Emo</a></li>
-<li><a href="http://www.propertytrackerni.co.uk">NI Property Tracking Site</a></li>
-
-        </ul>
-
-      </aside>
-
-    </div>
+        <span class="credits left">
+	       Site maintained by <a href="https://github.com/emomonkey">Stephen Emo</a>
+       </span>
+       <span class="credits right">
+	       This project uses Jekyll. A Ruby Static Site tool.
+       </span>
+		
+      </div>
+  </div>
+        
 </body>
-
-
 
 
 <script type="text/javascript">

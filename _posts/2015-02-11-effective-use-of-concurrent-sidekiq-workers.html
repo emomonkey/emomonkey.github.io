@@ -46,8 +46,8 @@ excerpt: !ruby/object:Hpricot::Doc
 <p>This pdate contains the date the search area record was last processed and as this task is monthly this means search areas that have already been processed will be passed over. Now this does mean that later workers will have to iterate over search params that have already been processed but as the number of search areas can be measured in the thousands (Northern Ireland is quote small) this is not much overhead. The WHERE ActiveRecord statement could be used on top of the top condition e.g.</p>
 <blockquote><p>SearchParams.where(“searchdate is null or (EXTRACT(YEAR FROM searchdate) &lt;= EXTRACT(YEAR FROM now()) AND EXTRACT(MONTH FROM searchdate) &lt;= EXTRACT(MONTH FROM now()))find_each(start:isize, batch_size: batchsize)</p></blockquote>
 <p>However as find_each retrieves data in batches it is possible another worker could have retrieved one of your batches and it is now processed so the if condition is needed as well as the database constraint. The database constraint is needed as it is possible that the more than one worker could have grabbed the row before a database update has been done.</p>
-<blockquote><p>I would be interested in hearing about better methods that could be done to achieve this using SideKiq and Ruby. For example can I specify the number of workers dynamically and then calculate how the records to be processed are split among the workers. This does not seem the case in sidekiq.yml. I know I can specify the maximum number of workers but that is it</p>
-<p>:verbose: false<br />
+<p>I would be interested in hearing about better methods that could be used to achieve this using SideKiq and Ruby. For example can I specify the number of workers dynamically and then calculate how the records to be processed are split among the workers. This does not seem the case in sidekiq.yml. I know I can specify the maximum number of workers but that is it</p>
+<blockquote><p>:verbose: false<br />
 :pidfile: ./tmp/pids/sidekiq.pid<br />
 :logfile: ./log/sidekiq.log<br />
 :concurrency: 25<br />

@@ -1,40 +1,104 @@
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="/stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/styles.css" media="screen">
     <link rel="stylesheet" type="text/css" href="/stylesheets/pygment_trac.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/print.css" media="print">
-			    <!--[if lt IE 9]>
-			    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-			        <![endif]-->
-     <title>Emomonkey.GitHub.io by Stephen Emo</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- [if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+     
+     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+     <title>Home</title>
 </head>
 
 
-
-<h1></h1>
-
 <body>
-    <div id="container">
-    <header>
-          <h1>Programming and Gadgets Blog</h1>
-          <h2>Covers Ruby on Rails, Oracle suite and Electronic Toys</h2>
-    </header>	
-      <main>	
-      <div class="inner">
+ <div id="main">
+   <div id="header">
+      <div class="wrapper">
+        <a href="https://github.com/emomonkey" class="btn">View On GitHub</a>
+        <ul class="nav">
+          <li class="download-title">Links</li>
+          <li class="downloads">
+	   <a href="https://uk.linkedin.com/pub/stephen-emo/60/308/54b" class="btn">LinkedIn</a>
+	  </li>
+          <li class="downloads">
+           <a href="http://www.propertytrackerni.co.uk" class="btn">NI Property Tracking</a>
+	  </li>
+        </ul>
+      </div>
+    </div><!-- end header -->     
+    <div class="wrapper">
+     <section id="posts">
+	           <div id="title">
+       <h1>Development Blog</h1>
+       <h5>Web Development, Video Gaming d Maker Work</h5>
+       <h5>Who's this Stephen Emo? <img src="portrait.jpg"> </h5>
+       <p>He's a developer who works on Oracle EBS but loves working with Ruby, playing Indie Games and tinkering with the Raspberry PI </p> 
+      <hr>
+      </div>
+     
+       
+	  <h1>
+	    <a href="/2014/04/24/most-talked-about-tag/">Most talked about #tag</a>
+	  </h1>
+	  <p class = "author">
+	    <span class="date">2014-04-24 22:59:09 +0100</span>
+	  </p>
+	  <div class="content">
+	   <p><a href="http://tinyurl.com/kbdpmeb" title="Most talked about #tag">Most talked about #tag</a></p>
+<p>And the most tagged about #tag in Craigavon is</p>
+<ul>
+<li>#KCA </li>
+</ul>
+<p>Which I believe is Nickolodean channel followed by #IrelandWant5SOS and something to do with a Pop group called Little Mix.</p>
+<p>What are people talking about..EastEnders...who did away with Lucy</p>
+<p> </p>
+<p> </p>
+<p> </p>
 
+	  <div>
+	
+	  <h1>
+	    <a href="/2014/03/10/spring-boot-versus-spring-2-5-annotation-versus-pre-2-5/">Spring Boot versus Spring 2.5 annotation versus Pre 2.5</a>
+	  </h1>
+	  <p class = "author">
+	    <span class="date">2014-03-10 00:33:27 +0000</span>
+	  </p>
+	  <div class="content">
+	   <p>One of the things I have found with Java is the multitude of frameworks. Working for an Oracle house company my Java exposure is ADF with some Vaadin work on the side. Now with half the world using Spring I have started work on a Rest Back End for my angular app. So it has been fun trying Spring Boot, Spring 2.5 with annotation and Pre Spring 2.5 and noticing how much work is being done to make Spring as easy to use as NodeJS, ASP and Ruby I guess. Spring 2.5 with annotations seems the best bet, Spring Boot makes way too many decisions for you so you don't understand the code you get. At least Spring annotation gets rid of alot of the nightmares encountered with the XML maze of early Java frameworks such as JDeveloper 10....</p>
+<p> </p>
+<p> </p>
 
-      <section id="downloads" class="clearfix">
-          <a href="https://github.com/emomonkey" id="view-on-github" class="button"><span>Repository</span></a>
-      </section>
-       
-       <section id="posts">
-       <h1>Blog Posts </h1>
-       
-       
+	  <div>
+	
+	  <h1>
+	    <a href="/2014/03/06/new-project/">New Project</a>
+	  </h1>
+	  <p class = "author">
+	    <span class="date">2014-03-06 21:54:29 +0000</span>
+	  </p>
+	  <div class="content">
+	   <p>I am surprised how stable the Raspberry PI NodeJS server has proven to be. There is a constant stream of tweets being processed and counted on the MongoDB database and the system seems to stay up with little memory issues even though it is up for a week at a time. </p>
+<p>Started moving forward with my next project. A MongoDB Spring data project running off the raspberry pi that stored beer recipes via an AngularJS front end. I also intend to hae it monitor the temperature of the beer and alert me when it is outside that range.</p>
+<p> </p>
+<p>I know<a title="BrewPI" href="http://www.brewpi.com"> brewPI</a> exists but I would something non PHP. The twitter monitoring page is still up and running <a title="Whats up in waringstown" href="http://80.229.21.163/">http://80.229.21.163</a>/</p>
+<p> </p>
+
+	  <div>
+	
 	  <h1>
 	    <a href="/programming/2014/02/18/twitterwhatsuphome-nodejs-app-listing-twitter-updates-and-weather-for-your-location/">TwitterWhatsUpHome :- Nodejs App listing Twitter Updates and Weather for your Location</a>
 	  </h1>
@@ -53,135 +117,22 @@
 
 	  <div>
 	
-	  <h1>
-	    <a href="/programming/2013/11/12/raspberrypispyintranet/">RaspberryPISpyIntranet</a>
-	  </h1>
-	  <p class = "author">
-	    <span class="date">2013-11-12 20:41:50 +0000</span>
-	  </p>
-	  <div class="content">
-	   <p>I have put together an application that is provides a web front end to either a USB WebCam or Raspberry PI Cam. The application can be set to random mode and alarm mode. In order to use alarm mode and infra red sensor (PIR) should be connected to GPIO17. If movement is detected an image is taken and an email of the image is sent.</p>
-<p>If the application is in random mode, random shots are taken throughout the day, you can define the start time and end time so no shots are taken outside the time, you can also define the frequency. Comments can also be added to the images. The layout of the screen is shown in github</p>
-<p>The idea with the random feature is that you get a journal of your photos. These photos can also be emailed out. The logs of detection from the PIR sensor are also displayed on the screen.</p>
-<p>This means that as well as using my Raspberry PI as a Youtube player attached to the TV it can also serve as an alarm system and photo journal.</p>
-<div>
-<dl>
-<dt><img alt="Screenshot 2013-11-04 23.54.06.gif" src= "/assets/Screenshot 2013-11-04 23.54.06.gif"></dd>
 
-</dl>
-</div>
-<div>
-<dl>
-<dt><img alt="Screenshot 2013-11-09 15.17.02.gif" src="/assets/Screenshot 2013-11-09 15.17.02.gif"/></dt>
-<dd><em>Overview</em></dd>
-
-</dl>
-</div>
-<p>The code can be found at <a title="https://github.com/emomonkey/RaspPISpyIntranet" href="https://github.com/emomonkey/RaspPISpyIntranet">https://github.com/emomonkey/RaspPISpyIntranet</a></p>
-<p>In theory you should be able to install by running sudo python setup.py install. However I have not tested the install, it would require a spare Sdcard so I would be interested in feedback from the forum if the install runs.</p>
-<p>Also you need to run the shell script gpioexp.sh in order that the pins can be written to</p>
-<p>An alternative way to install it is from the github page which is the the long way and involves copying the files to RaspPISpyIntranet and install the python packages individuals.</p>
-<p>The application needs to be run as sudo as the pins need supervisor access.</p>
-<p>So now the PI in my living room doubles as an email alarm and photo journal in addition to a PC</p>
-
-	  <div>
-	
-	  <h1>
-	    <a href="/programming/2013/05/18/atmega-gertboard-controlled-servo-via-serial-input/">ATMega Gertboard controlled servo via serial input</a>
-	  </h1>
-	  <p class = "author">
-	    <span class="date">2013-05-18 23:58:35 +0100</span>
-	  </p>
-	  <div class="content">
-	   <p>
-<iframe class='youtube-player' type='text/html' width='830' height='497' src='https://www.youtube.com/embed/BzVuvnOsOYc?version=3&#038;rel=1&#038;fs=1&#038;showsearch=0&#038;showinfo=1&#038;iv_load_policy=1&#038;wmode=transparent' frameborder='0' allowfullscreen='true'></iframe></p>
-<p>Well I have worked through quite a few of the demos on the gertboard manual so I thought I'd spend some time combining the demos and rather than just have a motor going or a led lighting up I duct taped a nerf gun to the servo and as you can see from the demo it does fire.</p>
-<p>Alex eames from raspi tv give some help on wiring it together, as well the sketches in the arduino ide mention pin 9 and using the gertboard you have to use the buffers so you set up buffer 1 as pin 9.</p>
-<p>To wire it up you do the following : PB1 to B1 on J3 and servo pulse to BUF1 near the leds. Jumper B1 set to output.<br />
-GND lead of servo to Gertboard GND and 5V servo lead to 5V supply. GND of 5V supply also to Gertboard GND.<br />
-<a href="http://www.raspberrypi.org/phpBB3/viewtopic.php?f=42&amp;t=37624"> raspberryorg</a></p>
-<p>You jumper off the output as PB1 will provide the input to Buf 1. You then wire the control cable [orange on the servo] to Buf 1. The ground cable from the servo goes in the ground of PB1 and the positive servo cable to the positive battery. I ground the battery cable to the ground on PB1.It does not seem to matter where it is ground goes</p>
-<p>Minicom has been set up on the raspberry pi so GP14 and GP15 had jumpers set across to MCTX and RCTX as can be seen in the video. All that needs done to read the data from minicom (serial comms) is the function call Serial.Read</p>
-<p>The code from the arduino ide is listed below</p>
-<blockquote><p>// Serial Servo Nerf</p>
-<p>#include &lt;Servo.h&gt;</p>
-<p>Servo myservo; // create servo object<br />
-byte num = 0; // read in serial input<br />
-int pos = 0;<br />
-int servo_enabled = 0;</p>
-<p>void setup() {<br />
-// initialize serial port<br />
-Serial.begin(9600);<br />
-myservo.attach(9); // attaches the servo on pin 9<br />
-}</p>
-<p>void loop()<br />
-{<br />
-// pressing the letter a fires the servo<br />
-num = Serial.read();</p>
-<p>if (num == 97 &amp;&amp; servo_enabled == 0)<br />
-{<br />
-servo_enabled = 1;<br />
-Serial.print("arming nerf");<br />
-Serial.print("character received: ");<br />
-Serial.println(num, DEC);<br />
-delay(1); // required to read serial buffer<br />
-}<br />
-}</p>
-<p>if (servo_enabled ==  1 )<br />
-{</p>
-<p>for(pos = 0; pos &lt; 100; pos +=1)<br />
-{    myservo.write(pos);<br />
-delay(15); // waaaaaits 15 ms for the servo to reach position<br />
-}</p>
-<p>// move back<br />
-for(pos =  100; pos &gt;=1 ; pos-=1) // goes aaback to the position<br />
-{<br />
-myservo.write(pos);<br />
-delay(15);</p>
-<p>}</p>
-<p>Serial.print("servo disengaged");<br />
-servo_enabled = 0;<br />
-}</p>
-<p>}</p></blockquote>
-
-	  <div>
-	
-	  <h1>
-	    <a href="/2013/04/28/gertboard/">Gertboard</a>
-	  </h1>
-	  <p class = "author">
-	    <span class="date">2013-04-28 15:12:26 +0100</span>
-	  </p>
-	  <div class="content">
-	   <p>Well I have been running through the test programs for my gertboard and they all seem straightforward. There are a few snags you can hit even using the manual.</p>
-<p>The manual has lots of wiring diagrams but it does not clearly explain you need to put the 3V jumper on to fully enable the buttons and leds. Secondly for the motor test it does not fully explain the type of external power source you need. I initially had a 2 AA battery pack as used on the adafruit example. This did not produce enough voltage to power the motor through the gertboard (it did power when the battery was hooked direct to the 3V motor) A 9V PP3 battery is required to power the 3V motor on the motor test program.</p>
-
-	  <div>
-	
-      
 	<!-- Pagination links -->
 	<div class="pagination">
 	  
       	   <a href="/page3" class="previous">Previous</a>
           
-          <span class="page_number ">Page: 4 of 7</span>
+          <span class="page_number ">Page: 4 of 8</span>
           
            <a href="/page5" class="next">Next</a>
           
 	 </div>
-	 
-       </section>
-        
-       </div>
-       </main>
-       <aside>
-         <h2>Latest</h2>
-         <p class="header"></p>
-         <ul>
-          <li><a href="https://uk.linkedin.com/pub/stephen-emo/60/308/54b">Stephen Emo</a></li>
-          <li><a href="http://www.propertytrackerni.co.uk">NI Property Tracking Site</a></li>
-          <li>
-	  <div class="google-ads">
+	
+            
+             </section>
+      
+       <div class="google-ads">
 	   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	   <!-- Programming Blog Ads -->
 		<ins class="adsbygoogle"
@@ -192,14 +143,18 @@ servo_enabled = 0;<br />
 	   <script>
 	   (adsbygoogle = window.adsbygoogle || []).push({});
            </script>
-          </div>
-	</li>
-        </ul>
-      </aside>        
-    </div>
+       </div>
+        <span class="credits left">
+	       Site maintained by <a href="https://github.com/emomonkey">Stephen Emo</a>
+       </span>
+       <span class="credits right">
+	       This project uses Jekyll. A Ruby Static Site tool.
+       </span>
+		
+      </div>
+  </div>
+        
 </body>
-
-
 
 
 <script type="text/javascript">
@@ -212,7 +167,9 @@ servo_enabled = 0;<br />
             pageTracker._trackPageview();
             } catch(err) {}
 </script>
- 
 
-     
+
+
 </html>
+
+

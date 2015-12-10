@@ -1,40 +1,98 @@
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="/stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/styles.css" media="screen">
     <link rel="stylesheet" type="text/css" href="/stylesheets/pygment_trac.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/print.css" media="print">
-			    <!--[if lt IE 9]>
-			    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-			        <![endif]-->
-     <title>Emomonkey.GitHub.io by Stephen Emo</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- [if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+     
+     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+     <title>Home</title>
 </head>
 
 
-
-<h1></h1>
-
 <body>
-    <div id="container">
-    <header>
-          <h1>Programming and Gadgets Blog</h1>
-          <h2>Covers Ruby on Rails, Oracle suite and Electronic Toys</h2>
-    </header>	
-      <main>	
-      <div class="inner">
+ <div id="main">
+   <div id="header">
+      <div class="wrapper">
+        <a href="https://github.com/emomonkey" class="btn">View On GitHub</a>
+        <ul class="nav">
+          <li class="download-title">Links</li>
+          <li class="downloads">
+	   <a href="https://uk.linkedin.com/pub/stephen-emo/60/308/54b" class="btn">LinkedIn</a>
+	  </li>
+          <li class="downloads">
+           <a href="http://www.propertytrackerni.co.uk" class="btn">NI Property Tracking</a>
+	  </li>
+        </ul>
+      </div>
+    </div><!-- end header -->     
+    <div class="wrapper">
+     <section id="posts">
+	           <div id="title">
+       <h1>Development Blog</h1>
+       <h5>Web Development, Video Gaming d Maker Work</h5>
+       <h5>Who's this Stephen Emo? <img src="portrait.jpg"> </h5>
+       <p>He's a developer who works on Oracle EBS but loves working with Ruby, playing Indie Games and tinkering with the Raspberry PI </p> 
+      <hr>
+      </div>
+     
+       
+	  <h1>
+	    <a href="/programming/2012/10/05/reusable-pages-apex-4-1/">Reusable pages apex 4.1</a>
+	  </h1>
+	  <p class = "author">
+	    <span class="date">2012-10-05 12:30:49 +0100</span>
+	  </p>
+	  <div class="content">
+	   <p>If you are struggling to write reusable pages in apex 4.1 with even simple things such as creating dynamic title page try this</p>
+<p>1. Stores title in hid field.<br />
+2. In title text put &amp;PX_XX. where the name matches the field in point 1</p>
+<p>Seems a mishmash on what you should declare to use the value of a field e.g :PX_XX or P_XX or sometimes v('') but you can get reusable code done in apex to a certain extent. As long as u don't expect MVC levels :)</p>
+<p>Padding parameters by URL is also a bit unusual. You have to list the parameters you are populating on the next page then separate this with a : and then the values u are inputing</p>
+<p>E.g url = 'f?p=&amp;APP_ID.:4:&amp;APP_SESSION.::&amp;DEBUG.::P4_ID,P4_TRANSACTION:&amp;P15_ID.,EDIT'</p>
 
+	  <div>
+	
+	  <h1>
+	    <a href="/programming/2012/09/21/crunchbang-or/">Crunchbang or #!</a>
+	  </h1>
+	  <p class = "author">
+	    <span class="date">2012-09-21 15:12:12 +0100</span>
+	  </p>
+	  <div class="content">
+	   <p>I have my development environment on my ASUS netbook set up to use crunchbang. This is a Linux distribution that is based on the current debian build but is really streamed down to include just what you need. The ui is minimal, keyshortcuts straightforward e.g space and windows key is for the menu. No waiting for graphic menus being pulled up. Most importantly it's not abandonware like the netbook version of ubuntu</p>
+<p><a href="http://stephenemo.files.wordpress.com/2012/09/20120921-161158.jpg"><img src="assets/20120921-161158.jpg" alt="20120921-161158.jpg" class="alignnone size-full" /></a></p>
+<p>Installing ruby on rails has been easy and allowed me to work rather than configuring libraries on the OS. My document viewer for the legend file of dwarffortress needs to read an XML of 147 megs in size . Obviously something that cannot be done in realtime on a web page. I have used DJ or delayed_job gem to do this. Simple task of using a keyword delay in front of your method and some config of course.</p>
+<p>Hoping to get the app up on heroku real soon .</p>
 
-      <section id="downloads" class="clearfix">
-          <a href="https://github.com/emomonkey" id="view-on-github" class="button"><span>Repository</span></a>
-      </section>
-       
-       <section id="posts">
-       <h1>Blog Posts </h1>
-       
-       
+	  <div>
+	
+	  <h1>
+	    <a href="/programming/2012/08/02/development-environment/">Development environment</a>
+	  </h1>
+	  <p class = "author">
+	    <span class="date">2012-08-02 09:18:39 +0100</span>
+	  </p>
+	  <div class="content">
+	   <p>Shot of my development environment. Asus eepc, ubuntu netbook edition 10, sdcard mount for tmp folder, Dropbox on USB stick, ruby on rails and a tranparent terminal screen to recreate that dual screen effect. Talk about cost effective :)</p>
+<p><img src="/assets/20120802-101821.jpg" alt="20120802-101821.jpg" class="alignnone size-full" /></p>
+
+	  <div>
+	
 	  <h1>
 	    <a href="/programming/2012/07/23/apex-4-1-versus-ruby-on-rails/">Apex 4.1 versus Ruby on Rails</a>
 	  </h1>
@@ -50,100 +108,22 @@
 
 	  <div>
 	
-	  <h1>
-	    <a href="/programming/2012/04/11/loading-that-xsd-file/">Loading that xsd file</a>
-	  </h1>
-	  <p class = "author">
-	    <span class="date">2012-04-11 18:03:47 +0100</span>
-	  </p>
-	  <div class="content">
-	   <p>Locating a resource file is a bit awkward in jdeveloper. Getresource takes the public_HTML when called from the view controller so you have to figure out where the classpath is. Look for the entry in system. getProperties to find it...dint forget to start the path with backslash first</p>
 
-	  <div>
-	
-	  <h1>
-	    <a href="/programming/2012/04/06/jdeveloper-and-xsd/">Jdeveloper and xsd</a>
-	  </h1>
-	  <p class = "author">
-	    <span class="date">2012-04-06 18:23:33 +0100</span>
-	  </p>
-	  <div class="content">
-	   <p>Jdeveloper 10.1.3 has no ability to parse xsd if you use built in wizard. It just uses jaxb to generate class and code. For something generic use documentbuilderfactory in java 5</p>
-<blockquote>
-<p>    protected void validateXSD(String sFileName) throws Exception,SAXException<br />
-      {<br />
-            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();<br />
-            factory.setNamespaceAware(true);<br />
-            factory.setValidating(true);<br />
-            factory.setAttribute("http://java.sun.com/xml/jaxp/properties/schemaLanguage", "http://www.w3.org/2001/XMLSchema");</p>
-<p>            URL  sURL = Thread.currentThread().getContextClassLoader().getResource(XML_SCHEMA);<br />
-            String sFile = sURL.getFile();<br />
-            factory.setAttribute("http://java.sun.com/xml/jaxp/properties/schemaSource", "file:" + sFile);</p>
-<p>            DocumentBuilder builder = factory.newDocumentBuilder();<br />
-            builder.setErrorHandler( new ErrorHandler() {<br />
-                    @Override<br />
-                    public void error(SAXParseException arg0) throws SAXException {<br />
-                         throw arg0;<br />
-                    }<br />
-                    @Override<br />
-                    public void fatalError(SAXParseException arg0) throws SAXException {<br />
-                         throw arg0;<br />
-                    }<br />
-                    @Override<br />
-                    public void warning(SAXParseException arg0) throws SAXException {<br />
-                         throw arg0;<br />
-                    }<br />
-            });</p>
-<p>            org.w3c.dom.Document document = builder.parse(new File(sFileName));</p>
-<p>      }</p>
-<p>      validateXSD(sOutputPath + sCurrDate + sName);</p>
-<p>      SAXReader reader = new SAXReader(true);<br />
-      reader.setValidation(false);<br />
-      org.dom4j.Document doc = null;</p>
-<p>      doc = reader.read(new File(sOutputPath + sCurrDate + sName));</p>
-<p>      /* Iterate through the entries */<br />
-      iterateElements(doc); </p>
-<p>&gt;</p></blockquote>
-
-	  <div>
-	
-	  <h1>
-	    <a href="/programming/2012/03/10/jdeveloper/">Jdeveloper</a>
-	  </h1>
-	  <p class = "author">
-	    <span class="date">2012-03-10 12:38:29 +0000</span>
-	  </p>
-	  <div class="content">
-	   <p>Tips on jdeveloper 10.1.3 </p>
-<p>1. Get an error 500 for no reason when you run the application. Code look fine. Then the issue could be jdeveloper 10.1.3 has decided to add the public HTML to your model it will do this because you accidentally hit run app when you selected the model :) This happened to me twice</p>
-<p>2. If you add a new managed bean make sure If you edit the faces-config.XML that jdeveloper does not add a duplicate bean on you.</p>
-
-	  <div>
-	
-      
 	<!-- Pagination links -->
 	<div class="pagination">
 	  
       	   <a href="/page6" class="previous">Previous</a>
           
-          <span class="page_number ">Page: 7 of 7</span>
+          <span class="page_number ">Page: 7 of 8</span>
           
-           <span class="next ">Next</span>
+           <a href="/page8" class="next">Next</a>
           
 	 </div>
-	 
-       </section>
-        
-       </div>
-       </main>
-       <aside>
-         <h2>Latest</h2>
-         <p class="header"></p>
-         <ul>
-          <li><a href="https://uk.linkedin.com/pub/stephen-emo/60/308/54b">Stephen Emo</a></li>
-          <li><a href="http://www.propertytrackerni.co.uk">NI Property Tracking Site</a></li>
-          <li>
-	  <div class="google-ads">
+	
+            
+             </section>
+      
+       <div class="google-ads">
 	   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	   <!-- Programming Blog Ads -->
 		<ins class="adsbygoogle"
@@ -154,14 +134,18 @@
 	   <script>
 	   (adsbygoogle = window.adsbygoogle || []).push({});
            </script>
-          </div>
-	</li>
-        </ul>
-      </aside>        
-    </div>
+       </div>
+        <span class="credits left">
+	       Site maintained by <a href="https://github.com/emomonkey">Stephen Emo</a>
+       </span>
+       <span class="credits right">
+	       This project uses Jekyll. A Ruby Static Site tool.
+       </span>
+		
+      </div>
+  </div>
+        
 </body>
-
-
 
 
 <script type="text/javascript">
@@ -174,7 +158,9 @@
             pageTracker._trackPageview();
             } catch(err) {}
 </script>
- 
 
-     
+
+
 </html>
+
+

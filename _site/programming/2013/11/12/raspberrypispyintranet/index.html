@@ -4,31 +4,43 @@
 <meta charset='utf-8'>
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
 <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" href="/stylesheets/stylesheet.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/stylesheets/styles.css" media="screen">
 <link rel="stylesheet" type="text/css" href="/stylesheets/pygment_trac.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/stylesheets/print.css" media="print">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="javascripts/respond.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
 <!--[if lt IE 9]>
 <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
-<title>Emomonkey.GitHub.io by Stephen Emo</title>
+<title>RaspberryPISpyIntranet</title>
 </head>
-<h1>RaspberryPISpyIntranet</h1>
+<!-- <h1>RaspberryPISpyIntranet</h1> -->
+
 <body>
 
-
-<div id="container">
-<header>
- <h1>Programming and Gadgets Blog</h1>
- <h2>Covers Ruby on Rails, Oracle suite and Electronic Toys</h2>
-</header>
-<main>
-<div class="inner">
-	<h1>
-         
-        </h1>
- <section id="posts">
-	 
- <p>I have put together an application that is provides a web front end to either a USB WebCam or Raspberry PI Cam. The application can be set to random mode and alarm mode. In order to use alarm mode and infra red sensor (PIR) should be connected to GPIO17. If movement is detected an image is taken and an email of the image is sent.</p>
+ <div id="main">
+  <div id="header">
+   <div class="wrapper">
+        <a href="http://emomonkey.github.io" class="btn">Home</a>
+        <a href="https://github.com/emomonkey" class="btn">View On GitHub</a>
+        <ul class="nav">
+          <li class="download-title">Links</li>
+          <li class="downloads">
+	   <a href="https://uk.linkedin.com/pub/stephen-emo/60/308/54b" class="btn">LinkedIn</a>
+	  </li>
+          <li class="downloads">
+           <a href="http://www.propertytrackerni.co.uk" class="btn">NI Property Tracking</a>
+	  </li>
+        </ul>
+   </div>
+  </div>
+  <div class="wrapper">
+  <section id="posts">
+    <h3>RaspberryPISpyIntranet </h3>
+   
+    <p>I have put together an application that is provides a web front end to either a USB WebCam or Raspberry PI Cam. The application can be set to random mode and alarm mode. In order to use alarm mode and infra red sensor (PIR) should be connected to GPIO17. If movement is detected an image is taken and an email of the image is sent.</p>
 <p>If the application is in random mode, random shots are taken throughout the day, you can define the start time and end time so no shots are taken outside the time, you can also define the frequency. Comments can also be added to the images. The layout of the screen is shown in github</p>
 <p>The idea with the random feature is that you get a journal of your photos. These photos can also be emailed out. The logs of detection from the PIR sensor are also displayed on the screen.</p>
 <p>This means that as well as using my Raspberry PI as a Youtube player attached to the TV it can also serve as an alarm system and photo journal.</p>
@@ -52,32 +64,32 @@
 <p>The application needs to be run as sudo as the pins need supervisor access.</p>
 <p>So now the PI in my living room doubles as an email alarm and photo journal in addition to a PC</p>
 
+   
+   <div class="google-ads">
+   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+   <!-- Programming Blog Ads -->
+	<ins class="adsbygoogle"
+	style="display:block"
+	data-ad-client="ca-pub-9203088421896530"
+	data-ad-slot="3590526208"
+	data-ad-format="auto"></ins>
+   <script>
+   (adsbygoogle = window.adsbygoogle || []).push({});
+   </script>
+   </div>
+   <span class="credits left">
+       Site maintained by <a href="https://github.com/emomonkey">Stephen Emo</a>
+   </span>
+   <span class="credits right">
+       This project uses Jekyll. A Ruby Static Site tool.
+   </span>
+	
+   </div>
 
- </section>
-</div>
-</main>
-<aside>
- <h2>Latest</h2>
- <p class="header"></p>
- <ul>
-  <li><a href="https://uk.linkedin.com/pub/stephen-emo/60/308/54b">Stephen Emo</a></li>
-  <li><a href="http://www.propertytrackerni.co.uk">NI Property Tracking Site</a></li>
-  <li>
-    <div class="google-ads">
-     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-      <!-- Programming Blog Ads -->
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-9203088421896530"
-	     data-ad-slot="3590526208"
-	     data-ad-format="auto"></ins>
-	    <script>
-           (adsbygoogle = window.adsbygoogle || []).push({});
-	    </script>
-    </div>
-   </li>
- </ul>
-</aside>
+   </section>
+  </div>
+
+
 
 </div>
 </body>

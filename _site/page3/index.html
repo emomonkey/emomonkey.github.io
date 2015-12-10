@@ -1,40 +1,209 @@
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="/stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/styles.css" media="screen">
     <link rel="stylesheet" type="text/css" href="/stylesheets/pygment_trac.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/print.css" media="print">
-			    <!--[if lt IE 9]>
-			    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-			        <![endif]-->
-     <title>Emomonkey.GitHub.io by Stephen Emo</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- [if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+     
+     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+     <title>Home</title>
 </head>
 
 
-
-<h1></h1>
-
 <body>
-    <div id="container">
-    <header>
-          <h1>Programming and Gadgets Blog</h1>
-          <h2>Covers Ruby on Rails, Oracle suite and Electronic Toys</h2>
-    </header>	
-      <main>	
-      <div class="inner">
+ <div id="main">
+   <div id="header">
+      <div class="wrapper">
+        <a href="https://github.com/emomonkey" class="btn">View On GitHub</a>
+        <ul class="nav">
+          <li class="download-title">Links</li>
+          <li class="downloads">
+	   <a href="https://uk.linkedin.com/pub/stephen-emo/60/308/54b" class="btn">LinkedIn</a>
+	  </li>
+          <li class="downloads">
+           <a href="http://www.propertytrackerni.co.uk" class="btn">NI Property Tracking</a>
+	  </li>
+        </ul>
+      </div>
+    </div><!-- end header -->     
+    <div class="wrapper">
+     <section id="posts">
+	           <div id="title">
+       <h1>Development Blog</h1>
+       <h5>Web Development, Video Gaming d Maker Work</h5>
+       <h5>Who's this Stephen Emo? <img src="portrait.jpg"> </h5>
+       <p>He's a developer who works on Oracle EBS but loves working with Ruby, playing Indie Games and tinkering with the Raspberry PI </p> 
+      <hr>
+      </div>
+     
+       
+	  <h1>
+	    <a href="/2015/01/20/using-whenever-gem-to-overcome-postgres-limitations/">Using Whenever GEM to overcome Postgres limitations</a>
+	  </h1>
+	  <p class = "author">
+	    <span class="date">2015-01-20 23:07:42 +0000</span>
+	  </p>
+	  <div class="content">
+	   <p>One of the limitations I found with Postgres compared with Oracle is the lack of a scheduled request. To get round this limitation I used the whenever gem <a href="https://github.com/javan/whenever">https://github.com/javan/whenever</a>. This routine gives you the ability to rub a Sidekiq worker as a cron job. One gotcha that you need to watch out for is Sidekiq creates multiple workers which can mean you get multiple instances of the same function carried out at the same time. This means you can end out with duplicate entries if this does not break your database constraints.</p>
+<p>To limit this you can can specify the queue and the number of workers that can be created for your class. See example sidekiq.yml below</p>
+<blockquote><p>:verbose: false<br />
+:pidfile: ./tmp/pids/sidekiq.pid<br />
+:logfile: ./log/sidekiq.log<br />
+:concurrency: 25<br />
+:queues:<br />
+- default<br />
+- queue_analysis<br />
+- queue_scraper<br />
+:limits:<br />
+queue_analysis: 1<br />
+queue_scraper: 15</p></blockquote>
+<p>This means that something like a web scraping class can have multiple instances while the db class will just have one instance spawned.</p>
 
+	  <div>
+	
+	  <h1>
+	    <a href="/2015/01/15/developing-a-web-scraping-class-in-ruby/">Developing a Web Scraping Class in Ruby</a>
+	  </h1>
+	  <p class = "author">
+	    <span class="date">2015-01-15 23:16:46 +0000</span>
+	  </p>
+	  <div class="content">
+	   <p>As part of my website <a href="http://www.propertytrackerni.co.uk">www.propertytrackerni.co.uk</a> I needed to put together a web scraper application. Some of the information was available through the government web site but not in an automated way and also it contained less detail than the information that was freely available on property sites on the web. Also when you develop your own code you are not limited to working within the limits of a ready made Dataset. As I had chosen Ruby on Rails 4 as my platform I was left with the below choices for my web scraping needs</p>
+<ul>
+<li>Nokogiri Gem</li>
+<li>Mechanize Gem</li>
+</ul>
+<p>Mechanize uses Nokogiri but it is at a much higher level than Nokogiri so for example if you need to edit a checkbox with a description you simply enter the method checkbox_with with the name as a method. There are methods specifically for interacting with a form, filling in fields, pressing command buttons or highlighting checkboxes. If you have used Selenium for your automated tests then you will feel very familiar with the syntax and code that you put together here</p>
+<p>Next tool that you require is</p>
+<ul>
+<li>Chrome</li>
+</ul>
+<p>If you are going to pull data of a web site you need to know how the css is structured on the web site you are going to pull data from.  There are at least two methods for pulling data of the website, xpath syntax and the standard css commands. I found xpath was best for pulling the overall element you want of the web site, for example the search results and the next method was to use the css itself to pull of the standard elements. The xpath command will give you an array of element you can iterate through.</p>
+<p>For example the xpath "//div[contains(@class,'<span class="pl-pse">#{</span><span class="pl-s2">parse_string</span><span class="pl-pse"><span class="pl-s2">}</span></span>')]" will give you the contents of the with the div statement belonging to the class whose name is the value of parse_string. So in other word if the parse_string is search_results it will be the contents of the div statement of class search_results.</p>
+<p>This will give you an array of elements which you can then iterate through and parse. Now rather than use xpath you can access the css directly so say for example the header contains the name you require you can enter the below command</p>
+<p>.css(<span class="pl-s1"><span class="pl-pds">"</span>h2<span class="pl-pds">"</span></span>)[<span class="pl-c1">0</span>].content</p>
+<p>If the contents you want is instead a class you can use the syntax .classname as shown below</p>
+<p>.css(<span class="pl-s1"><span class="pl-pds">"</span>.beds<span class="pl-pds">"</span></span>)[<span class="pl-c1">0</span>].content</p>
+<p>This information can then be insert into the database via ActiveRecord. The web scraping element of this project was alot more easier than I thought with the code coming together in much the same way that an automated test set would come together.</p>
+<p>The code for this is available on</p>
+<p><a href="https://github.com/emomonkey/PropertyTrackerNI/blob/master/app/models/property_news_crawler.rb">https://github.com/emomonkey/PropertyTrackerNI/blob/master/app/models/property_news_crawler.rb</a></p>
+<p>and</p>
+<p><a href="https://github.com/emomonkey/PropertyTrackerNI/blob/master/app/models/concerns/crawler_module.rb">https://github.com/emomonkey/PropertyTrackerNI/blob/master/app/models/concerns/crawler_module.rb</a></p>
 
-      <section id="downloads" class="clearfix">
-          <a href="https://github.com/emomonkey" id="view-on-github" class="button"><span>Repository</span></a>
-      </section>
-       
-       <section id="posts">
-       <h1>Blog Posts </h1>
-       
-       
+	  <div>
+	
+	  <h1>
+	    <a href="/2015/01/13/should-rails-developers-be-database-developers/">Should Rails Developers be Database Developers</a>
+	  </h1>
+	  <p class = "author">
+	    <span class="date">2015-01-13 23:23:56 +0000</span>
+	  </p>
+	  <div class="content">
+	   <p>One of the things that I noticed in most of the getting start with Rails books that they seemed determined in teaching you how to work with the database purely through ActiveRecord. ActiveRecord contains alot of analytical functions such as sum or count though these are very limiting compared to what you can in pure SQL especially with a database as powerful as Postgres which contains many of the features of Oracle from windows functions (analytical functions in Oracle) and materialised views.</p>
+<p>Take a look at the following piece of SQL</p>
+<blockquote><p>SELECT cntyvol.COUNTY, cntyvol.YEAR, cntyvol.MONTH, cntyvol.VOLPC, cntyvol.created_at,soldvol.prcsold, prcchg.MONTH_PRICE_DIFF, row_number() OVER () id<br />
+FROM<br />
+(SELECT vcnty.county, vcnty.year, vcnty.month, ROUND((vcnty.volsum / tvol.volsum) * 100,2) VOLPC, created_at<br />
+FROM<br />
+(SELECT<br />
+COUNTY,<br />
+YEAR,<br />
+MONTH,<br />
+historic_analyses.created_at,<br />
+ROUND(SUM(resultvalue), 2) volsum<br />
+FROM historic_analyses, search_params sp, search_types st<br />
+WHERE search_types_id = st.id AND search_params_id = sp.id<br />
+AND st.searchtext = 'Volume Summary Property Types'<br />
+GROUP BY COUNTY, YEAR, MONTH, historic_analyses.created_at<br />
+) vcnty,<br />
+(SELECT<br />
+YEAR,<br />
+MONTH,<br />
+ROUND(SUM(resultvalue), 2) volsum<br />
+FROM historic_analyses, search_params sp, search_types st<br />
+WHERE search_types_id = st.id AND search_params_id = sp.id<br />
+AND st.searchtext = 'Volume Summary Property Types'<br />
+GROUP BY YEAR, MONTH<br />
+) tvol<br />
+WHERE tvol.year = vcnty.year<br />
+AND vcnty.month = tvol.month) cntyvol,<br />
+(SELECT volv.county, volv.year, volv.month, ROUND( (soldval /volsum * 100) ,2) prcsold<br />
+FROM<br />
+(<br />
+SELECT<br />
+COUNTY,<br />
+YEAR,<br />
+MONTH,<br />
+ROUND(SUM(resultvalue), 2) volsum<br />
+FROM historic_analyses, search_params sp, search_types st<br />
+WHERE search_types_id = st.id AND search_params_id = sp.id<br />
+AND st.searchtext = 'Volume Summary Property Types'<br />
+GROUP BY COUNTY, YEAR, MONTH<br />
+) volv LEFT JOIN<br />
+(<br />
+SELECT<br />
+COUNTY,<br />
+YEAR,<br />
+MONTH,<br />
+ROUND(SUM(resultvalue), 2) soldval<br />
+FROM historic_analyses, search_params sp, search_types st<br />
+WHERE search_types_id = st.id AND search_params_id = sp.id<br />
+AND st.searchtext = 'Sold Summary Prop Type'<br />
+GROUP BY COUNTY, YEAR, MONTH<br />
+ORDER BY COUNTY, YEAR, MONTH DESC<br />
+) soldv ON soldv.county = volv.county AND soldv.year = volv.year AND soldv.month = volv.month<br />
+) soldvol,<br />
+(<br />
+SELECT COUNTY, YEAR, MONTH,MONTH_PRICE_DIFF<br />
+FROM (<br />
+SELECT<br />
+COUNTY,<br />
+YEAR,<br />
+MONTH,<br />
+coalesce(round((AVERAGEVAL - LAG(AVERAGEVAL, 1)<br />
+OVER (PARTITION BY county<br />
+ORDER BY year, month)), 2), 0) MONTH_PRICE_DIFF,<br />
+valtime<br />
+FROM (<br />
+SELECT<br />
+COUNTY,<br />
+YEAR,<br />
+MONTH,<br />
+ROUND(AVG(resultvalue), 2) AVERAGEVAL,<br />
+MAX(year || trim(to_char(month, '09')))<br />
+OVER (PARTITION BY county) valtime<br />
+FROM historic_analyses, search_params sp<br />
+WHERE search_types_id = 5 AND search_params_id = sp.id<br />
+GROUP BY COUNTY, YEAR, MONTH<br />
+ORDER BY COUNTY, YEAR, MONTH DESC<br />
+) a<br />
+) perc<br />
+WHERE valtime = year|| trim(to_char(month,'09'))<br />
+) prcchg<br />
+WHERE soldvol.county = cntyvol.county AND soldvol.year = cntyvol.year<br />
+AND soldvol.month = cntyvol.month AND prcchg.county = cntyvol.county AND prcchg.month = cntyvol.month<br />
+AND prcchg.year = cntyvol.year)</p></blockquote>
+<p>Developing this in ActiveRecord would have been very time consuming and involved alot of lines of code considering ActiveRecord's sum function only operates on one group by at a time, ActiveRecord did prove it's worth when used as part of the web scraping code where database interaction is limited to inserts and updates as shown below</p>
+<blockquote><p>propertysite <span class="pl-k">=</span> <span class="pl-s3">PropertySite</span>.create(<span class="pl-c1">:title</span> =&gt; spage[<span class="pl-s1"><span class="pl-pds">"</span>itmtitle<span class="pl-pds">"</span></span>], <span class="pl-c1">:propertytype</span> =&gt; spage[<span class="pl-s1"><span class="pl-pds">"</span>type<span class="pl-pds">"</span></span>], <span class="pl-c1">:beds</span> =&gt; sbeds.to_i, <span class="pl-c1">:searchtext</span> =&gt; <span class="pl-vo">@searchinput</span>, <span class="pl-c1">:status</span> =&gt; spage[<span class="pl-s1"><span class="pl-pds">"</span>status<span class="pl-pds">"</span></span>], <span class="pl-c1">:lastdatescanned</span> =&gt; <span class="pl-s3">DateTime</span>.now )</p></blockquote>
+<p>Ruby on Rails applications are scaffolded and run as part of SQlite and all the tutorials focus on ActiveRecord which can lead developers down the wrong path by ignoring the powerful syntax they have available with SQL. Creating Database Independent code is not a good idea as the chances of your system moving from SQLlite to Postgres to MySQL over it's lifetime as slim,</p>
+<p>It would be better if some of the books or Rails Blogs focused on Database Development as well as focusing 100 Percent on ActiveRecord.</p>
+
+	  <div>
+	
 	  <h1>
 	    <a href="/programming/2015/01/11/tracking-property-in-northern-ireland-ruby-on-rails/">Tracking Property in Northern Ireland (Ruby on Rails)</a>
 	  </h1>
@@ -89,78 +258,22 @@
 
 	  <div>
 	
-	  <h1>
-	    <a href="/2014/04/24/most-talked-about-tag/">Most talked about #tag</a>
-	  </h1>
-	  <p class = "author">
-	    <span class="date">2014-04-24 22:59:09 +0100</span>
-	  </p>
-	  <div class="content">
-	   <p><a href="http://tinyurl.com/kbdpmeb" title="Most talked about #tag">Most talked about #tag</a></p>
-<p>And the most tagged about #tag in Craigavon is</p>
-<ul>
-<li>#KCA </li>
-</ul>
-<p>Which I believe is Nickolodean channel followed by #IrelandWant5SOS and something to do with a Pop group called Little Mix.</p>
-<p>What are people talking about..EastEnders...who did away with Lucy</p>
-<p> </p>
-<p> </p>
-<p> </p>
 
-	  <div>
-	
-	  <h1>
-	    <a href="/2014/03/10/spring-boot-versus-spring-2-5-annotation-versus-pre-2-5/">Spring Boot versus Spring 2.5 annotation versus Pre 2.5</a>
-	  </h1>
-	  <p class = "author">
-	    <span class="date">2014-03-10 00:33:27 +0000</span>
-	  </p>
-	  <div class="content">
-	   <p>One of the things I have found with Java is the multitude of frameworks. Working for an Oracle house company my Java exposure is ADF with some Vaadin work on the side. Now with half the world using Spring I have started work on a Rest Back End for my angular app. So it has been fun trying Spring Boot, Spring 2.5 with annotation and Pre Spring 2.5 and noticing how much work is being done to make Spring as easy to use as NodeJS, ASP and Ruby I guess. Spring 2.5 with annotations seems the best bet, Spring Boot makes way too many decisions for you so you don't understand the code you get. At least Spring annotation gets rid of alot of the nightmares encountered with the XML maze of early Java frameworks such as JDeveloper 10....</p>
-<p> </p>
-<p> </p>
-
-	  <div>
-	
-	  <h1>
-	    <a href="/2014/03/06/new-project/">New Project</a>
-	  </h1>
-	  <p class = "author">
-	    <span class="date">2014-03-06 21:54:29 +0000</span>
-	  </p>
-	  <div class="content">
-	   <p>I am surprised how stable the Raspberry PI NodeJS server has proven to be. There is a constant stream of tweets being processed and counted on the MongoDB database and the system seems to stay up with little memory issues even though it is up for a week at a time. </p>
-<p>Started moving forward with my next project. A MongoDB Spring data project running off the raspberry pi that stored beer recipes via an AngularJS front end. I also intend to hae it monitor the temperature of the beer and alert me when it is outside that range.</p>
-<p> </p>
-<p>I know<a title="BrewPI" href="http://www.brewpi.com"> brewPI</a> exists but I would something non PHP. The twitter monitoring page is still up and running <a title="Whats up in waringstown" href="http://80.229.21.163/">http://80.229.21.163</a>/</p>
-<p> </p>
-
-	  <div>
-	
-      
 	<!-- Pagination links -->
 	<div class="pagination">
 	  
       	   <a href="/page2" class="previous">Previous</a>
           
-          <span class="page_number ">Page: 3 of 7</span>
+          <span class="page_number ">Page: 3 of 8</span>
           
            <a href="/page4" class="next">Next</a>
           
 	 </div>
-	 
-       </section>
-        
-       </div>
-       </main>
-       <aside>
-         <h2>Latest</h2>
-         <p class="header"></p>
-         <ul>
-          <li><a href="https://uk.linkedin.com/pub/stephen-emo/60/308/54b">Stephen Emo</a></li>
-          <li><a href="http://www.propertytrackerni.co.uk">NI Property Tracking Site</a></li>
-          <li>
-	  <div class="google-ads">
+	
+            
+             </section>
+      
+       <div class="google-ads">
 	   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 	   <!-- Programming Blog Ads -->
 		<ins class="adsbygoogle"
@@ -171,14 +284,18 @@
 	   <script>
 	   (adsbygoogle = window.adsbygoogle || []).push({});
            </script>
-          </div>
-	</li>
-        </ul>
-      </aside>        
-    </div>
+       </div>
+        <span class="credits left">
+	       Site maintained by <a href="https://github.com/emomonkey">Stephen Emo</a>
+       </span>
+       <span class="credits right">
+	       This project uses Jekyll. A Ruby Static Site tool.
+       </span>
+		
+      </div>
+  </div>
+        
 </body>
-
-
 
 
 <script type="text/javascript">
@@ -191,7 +308,9 @@
             pageTracker._trackPageview();
             } catch(err) {}
 </script>
- 
 
-     
+
+
 </html>
+
+

@@ -4,31 +4,43 @@
 <meta charset='utf-8'>
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
 <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" href="/stylesheets/stylesheet.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/stylesheets/styles.css" media="screen">
 <link rel="stylesheet" type="text/css" href="/stylesheets/pygment_trac.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/stylesheets/print.css" media="print">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="javascripts/respond.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
 <!--[if lt IE 9]>
 <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
-<title>Emomonkey.GitHub.io by Stephen Emo</title>
+<title>Effective Use of Concurrent Sidekiq Workers</title>
 </head>
-<h1>Effective Use of Concurrent Sidekiq Workers</h1>
+<!-- <h1>Effective Use of Concurrent Sidekiq Workers</h1> -->
+
 <body>
 
-
-<div id="container">
-<header>
- <h1>Programming and Gadgets Blog</h1>
- <h2>Covers Ruby on Rails, Oracle suite and Electronic Toys</h2>
-</header>
-<main>
-<div class="inner">
-	<h1>
-         
-        </h1>
- <section id="posts">
-	 
- <p>One of the benefits of Sidekiq is that it allows your application to work on a single task using simultaneous worker processes which also  means that you have a set of additional problems</p>
+ <div id="main">
+  <div id="header">
+   <div class="wrapper">
+        <a href="http://emomonkey.github.io" class="btn">Home</a>
+        <a href="https://github.com/emomonkey" class="btn">View On GitHub</a>
+        <ul class="nav">
+          <li class="download-title">Links</li>
+          <li class="downloads">
+	   <a href="https://uk.linkedin.com/pub/stephen-emo/60/308/54b" class="btn">LinkedIn</a>
+	  </li>
+          <li class="downloads">
+           <a href="http://www.propertytrackerni.co.uk" class="btn">NI Property Tracking</a>
+	  </li>
+        </ul>
+   </div>
+  </div>
+  <div class="wrapper">
+  <section id="posts">
+    <h3>Effective Use of Concurrent Sidekiq Workers </h3>
+   
+    <p>One of the benefits of Sidekiq is that it allows your application to work on a single task using simultaneous worker processes which also  means that you have a set of additional problems</p>
 <ul>
 <li>Ensure separate workers do not save the same record result at the same causing data duplication</li>
 <li>Ensure separate workers do not work on the same data</li>
@@ -40,8 +52,8 @@
 <p>This pdate contains the date the search area record was last processed and as this task is monthly this means search areas that have already been processed will be passed over. Now this does mean that later workers will have to iterate over search params that have already been processed but as the number of search areas can be measured in the thousands (Northern Ireland is quote small) this is not much overhead. The WHERE ActiveRecord statement could be used on top of the top condition e.g.</p>
 <blockquote><p>SearchParams.where(“searchdate is null or (EXTRACT(YEAR FROM searchdate) &lt;= EXTRACT(YEAR FROM now()) AND EXTRACT(MONTH FROM searchdate) &lt;= EXTRACT(MONTH FROM now()))find_each(start:isize, batch_size: batchsize)</p></blockquote>
 <p>However as find_each retrieves data in batches it is possible another worker could have retrieved one of your batches and it is now processed so the if condition is needed as well as the database constraint. The database constraint is needed as it is possible that the more than one worker could have grabbed the row before a database update has been done.</p>
-<blockquote><p>I would be interested in hearing about better methods that could be done to achieve this using SideKiq and Ruby. For example can I specify the number of workers dynamically and then calculate how the records to be processed are split among the workers. This does not seem the case in sidekiq.yml. I know I can specify the maximum number of workers but that is it</p>
-<p>:verbose: false<br />
+<p>I would be interested in hearing about better methods that could be used to achieve this using SideKiq and Ruby. For example can I specify the number of workers dynamically and then calculate how the records to be processed are split among the workers. This does not seem the case in sidekiq.yml. I know I can specify the maximum number of workers but that is it</p>
+<blockquote><p>:verbose: false<br />
 :pidfile: ./tmp/pids/sidekiq.pid<br />
 :logfile: ./log/sidekiq.log<br />
 :concurrency: 25<br />
@@ -84,32 +96,32 @@ return false;<br />
 end<br />
 end</p></blockquote>
 
+   
+   <div class="google-ads">
+   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+   <!-- Programming Blog Ads -->
+	<ins class="adsbygoogle"
+	style="display:block"
+	data-ad-client="ca-pub-9203088421896530"
+	data-ad-slot="3590526208"
+	data-ad-format="auto"></ins>
+   <script>
+   (adsbygoogle = window.adsbygoogle || []).push({});
+   </script>
+   </div>
+   <span class="credits left">
+       Site maintained by <a href="https://github.com/emomonkey">Stephen Emo</a>
+   </span>
+   <span class="credits right">
+       This project uses Jekyll. A Ruby Static Site tool.
+   </span>
+	
+   </div>
 
- </section>
-</div>
-</main>
-<aside>
- <h2>Latest</h2>
- <p class="header"></p>
- <ul>
-  <li><a href="https://uk.linkedin.com/pub/stephen-emo/60/308/54b">Stephen Emo</a></li>
-  <li><a href="http://www.propertytrackerni.co.uk">NI Property Tracking Site</a></li>
-  <li>
-    <div class="google-ads">
-     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-      <!-- Programming Blog Ads -->
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-9203088421896530"
-	     data-ad-slot="3590526208"
-	     data-ad-format="auto"></ins>
-	    <script>
-           (adsbygoogle = window.adsbygoogle || []).push({});
-	    </script>
-    </div>
-   </li>
- </ul>
-</aside>
+   </section>
+  </div>
+
+
 
 </div>
 </body>

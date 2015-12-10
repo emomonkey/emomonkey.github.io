@@ -4,31 +4,43 @@
 <meta charset='utf-8'>
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
 <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" href="/stylesheets/stylesheet.css" media="screen">
+<link rel="stylesheet" type="text/css" href="/stylesheets/styles.css" media="screen">
 <link rel="stylesheet" type="text/css" href="/stylesheets/pygment_trac.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/stylesheets/print.css" media="print">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="javascripts/respond.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
 <!--[if lt IE 9]>
 <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
-<title>Emomonkey.GitHub.io by Stephen Emo</title>
+<title>Good bye Ruby on Rails  and Hello MVVM ASP.Net</title>
 </head>
-<h1>Good bye Ruby on Rails  and Hello MVVM ASP.Net</h1>
+<!-- <h1>Good bye Ruby on Rails  and Hello MVVM ASP.Net</h1> -->
+
 <body>
 
-
-<div id="container">
-<header>
- <h1>Programming and Gadgets Blog</h1>
- <h2>Covers Ruby on Rails, Oracle suite and Electronic Toys</h2>
-</header>
-<main>
-<div class="inner">
-	<h1>
-         
-        </h1>
- <section id="posts">
-	 
- <p>Well my ruby on rails application is up on Cloudfoundry at  dwarfquery.cloudfoundry.com. I have to admit I found cloudfoundry put a lot of limitations on your application. As this application had to parse very large XML files...maybe too large and Cloudfoundry does not allow you to share files I have to upload to temp and then upload to Dropbox. This was very awkward but necessary as the worker instance could not share files with the server instance. Also cloudfoundry forced me to use it's own instance of jquery.</p>
+ <div id="main">
+  <div id="header">
+   <div class="wrapper">
+        <a href="http://emomonkey.github.io" class="btn">Home</a>
+        <a href="https://github.com/emomonkey" class="btn">View On GitHub</a>
+        <ul class="nav">
+          <li class="download-title">Links</li>
+          <li class="downloads">
+	   <a href="https://uk.linkedin.com/pub/stephen-emo/60/308/54b" class="btn">LinkedIn</a>
+	  </li>
+          <li class="downloads">
+           <a href="http://www.propertytrackerni.co.uk" class="btn">NI Property Tracking</a>
+	  </li>
+        </ul>
+   </div>
+  </div>
+  <div class="wrapper">
+  <section id="posts">
+    <h3>Good bye Ruby on Rails  and Hello MVVM ASP.Net </h3>
+   
+    <p>Well my ruby on rails application is up on Cloudfoundry at  dwarfquery.cloudfoundry.com. I have to admit I found cloudfoundry put a lot of limitations on your application. As this application had to parse very large XML files...maybe too large and Cloudfoundry does not allow you to share files I have to upload to temp and then upload to Dropbox. This was very awkward but necessary as the worker instance could not share files with the server instance. Also cloudfoundry forced me to use it's own instance of jquery.</p>
 <p>Still there where some flaws with this concept of uploading 100's of megs of an XML file to be parsed but then again my project had to be ruby on rails as I was restricted to be netbook development environment.</p>
 <p>Now however I have a Windows 8 laptop so new simple project is a MVVM application which calls the Diablo 3 Web API :) That and XCOM Enemy Unknown. Happy Christmas</p>
 <p>As an update. I am using the MVVM template in Visual Studio Express 2012 for Web and I do think there is a bit more coding than MVC. The model has to be recreated twice, once in the C# server end and once in the JavaScript VM part of it. A lot of the template seems to assume I want my changes commited there and then however I do think database applications should have a standard commit button to give the user time to sanity check the updates before a commit. It could be that MVVM is only for certain applications i.e ones that need real time interaction. Still I want to use this technology so I will keep on with the MVVM template.</p>
@@ -37,32 +49,32 @@
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 
+   
+   <div class="google-ads">
+   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+   <!-- Programming Blog Ads -->
+	<ins class="adsbygoogle"
+	style="display:block"
+	data-ad-client="ca-pub-9203088421896530"
+	data-ad-slot="3590526208"
+	data-ad-format="auto"></ins>
+   <script>
+   (adsbygoogle = window.adsbygoogle || []).push({});
+   </script>
+   </div>
+   <span class="credits left">
+       Site maintained by <a href="https://github.com/emomonkey">Stephen Emo</a>
+   </span>
+   <span class="credits right">
+       This project uses Jekyll. A Ruby Static Site tool.
+   </span>
+	
+   </div>
 
- </section>
-</div>
-</main>
-<aside>
- <h2>Latest</h2>
- <p class="header"></p>
- <ul>
-  <li><a href="https://uk.linkedin.com/pub/stephen-emo/60/308/54b">Stephen Emo</a></li>
-  <li><a href="http://www.propertytrackerni.co.uk">NI Property Tracking Site</a></li>
-  <li>
-    <div class="google-ads">
-     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-      <!-- Programming Blog Ads -->
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-9203088421896530"
-	     data-ad-slot="3590526208"
-	     data-ad-format="auto"></ins>
-	    <script>
-           (adsbygoogle = window.adsbygoogle || []).push({});
-	    </script>
-    </div>
-   </li>
- </ul>
-</aside>
+   </section>
+  </div>
+
+
 
 </div>
 </body>
