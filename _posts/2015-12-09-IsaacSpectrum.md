@@ -52,7 +52,7 @@ Take the below selection of games
 
 Most of these games nowadays seem rather slow, UnderWurlde does seem similar to Spelunky with its ropes, platforming and water areas but the other games definitely would to too slow for todays audience.
 
-![Underwurlde](http://emomonkey.github.io/images/UnderWurlde1.jpg)
+![Underwurlde](http://emomonkey.github.io/images/Underwurlde1.jpg)
 
 Spelunky is a bit more busy and as you can see it has multiplayer functionality which you would not get in the pre internet days.
 
