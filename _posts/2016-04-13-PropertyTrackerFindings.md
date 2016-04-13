@@ -54,4 +54,4 @@ It doesn't seem to be universal though as there does seem a steady climb in pric
 Apartments on the other hand average in at 122,294 for March 2016  and in March 2015 came in at 120,738 which is a 1.3 percent increase overall in Northern Ireland
 ![Apartment NI ](http://emomonkey.github.io/images/Screenshot_Apartment1.png)
 ![Apartment NI 2](http://emomonkey.github.io/images/Screenshot_Aprtment2.png)
-It does support the idea that people are more prepared to live in rental apartments and is worth looking into more...in next months post or you can investiage yourself at http://www.propertytrackerni.co.uk
+It does support the idea that people are more prepared to live in rental apartments and is worth looking into more...in next months post or you can investiage yourself at [PropertyTrackerNI](http://www.propertytrackerni.co.uk)
