@@ -56,6 +56,60 @@
      
        
 	  <h1>
+	    <a href="/programming/2015/01/11/tracking-property-in-northern-ireland-ruby-on-rails/">Tracking Property in Northern Ireland (Ruby on Rails)</a>
+	  </h1>
+	  <p class = "author">
+	    <span class="date">2015-01-11 23:47:50 +0000</span>
+	  </p>
+	  <div class="content">
+	   <p>I have put together a Property Tracking Web Site which can be accessed at <a title="http://www.propertytrackerni.co.uk/" href="http://www.propertytrackerni.co.uk/">http://www.propertytrackerni.co.uk/</a>. This web site scrape data from property sites in Northern Ireland and tracks changes in the prices and volumes of properties in all the area in northern ireland.</p>
+<p><img src="/assets/screenshot-2015-01-11-23-25-50.png" alt="Screenshot 2015-01-11 23.25.50" width="600" height="328" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Depending on clicking on the volume or pricing you can navigate through a ranked listing based on the county you select and see a visual representation of the property volume and price movements of the area you select</p>
+<p><img src="/assets/screenshot-2015-01-11-23-32-49.png" alt="Screenshot 2015-01-11 23.32.49" width="600" height="328" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>The Ranked Table is displayed below.  Bourbon/Neat was used as a framework for the layout, it is less heavy than bootstrap and allows for the website to have at least a base level of responsive design</p>
+<p><img src="/assets/screenshot-2015-01-11-23-34-11.png" alt="Screenshot 2015-01-11 23.34.11" width="600" height="328" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>The final graph for the selected area is shown below. These graphs use the highchart framework</p>
+<p><img  src="/assets/screenshot-2015-01-11-23-34-35.png" alt="Screenshot 2015-01-11 23.34.35" width="600" height="328" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>If a user logs in they can subscribe to a number of areas and will receive emailed version of the graphs on a montly basis. The web site has been built on Ruby on Rails 4 with a Postgres back end. The Gems and Technologies used include</p>
+<ul>
+<li>Devise</li>
+<li>Sidekiq</li>
+<li>Postgres</li>
+<li>HighChart</li>
+<li>Whenever</li>
+<li>RSpec</li>
+<li>Neat/Bourbon</li>
+<li>Redis</li>
+<li>PhantomJS</li>
+<li>Nokogiri/Mechanize</li>
+</ul>
+<p>The code is OpenSource and can be viewed at  <a title="https://github.com/emomonkey/PropertyTrackerNI" href="https://github.com/emomonkey/PropertyTrackerNI">https://github.com/emomonkey/PropertyTrackerNI</a>. I have been impressed with Postgres as it matchs Oracle on a feature by feature basis. Windows Functions in place of Analytical Functions and Materialised Views, the only exception is no way of organising code into Packages. ActiveRecord was used alot in the Web Scraping Logic</p>
+<p>I intend to take more about specific areas of the application in further posts</p>
+<p>&nbsp;</p>
+
+	  <div>
+	
+	  <h1>
 	    <a href="/2014/04/24/most-talked-about-tag/">Most talked about #tag</a>
 	  </h1>
 	  <p class = "author">
@@ -100,24 +154,6 @@
 <p> </p>
 <p>I know<a title="BrewPI" href="http://www.brewpi.com"> brewPI</a> exists but I would something non PHP. The twitter monitoring page is still up and running <a title="Whats up in waringstown" href="http://80.229.21.163/">http://80.229.21.163</a>/</p>
 <p> </p>
-
-	  <div>
-	
-	  <h1>
-	    <a href="/programming/2014/02/18/twitterwhatsuphome-nodejs-app-listing-twitter-updates-and-weather-for-your-location/">TwitterWhatsUpHome :- Nodejs App listing Twitter Updates and Weather for your Location</a>
-	  </h1>
-	  <p class = "author">
-	    <span class="date">2014-02-18 00:05:58 +0000</span>
-	  </p>
-	  <div class="content">
-	   <p>I know have my Raspberry PI hosting a nodejs application at the following location</p>
-<p><span style="line-height:1.5em;">http://80.229.21.163/ </span></p>
-<p>This runs on the Krakenjs suite and runs on a Raspiberry PI with a PiGlow.The PiGlow glows according to the weather [blue is rain and orange is cloudy]</p>
-<p>The code is available on  https://github.com/emomonkey/TwitterWhatsUpHome/blob/master/README.md</p>
-<p>There is a also a scheduled tweet which you can follow on the hashtag #waringstown</p>
-<p>&nbsp;</p>
-<p><img class="alignleft size-medium wp-image-106" alt="Screenshot 2014-02-18 00.03.40" src="/assets/screenshot-2014-02-18-00-03-40.png" width="600" height="322" /></p>
-<p><img class="alignleft size-medium wp-image-105" alt="Screenshot 2014-02-17 23.57.58" src="/assets/screenshot-2014-02-17-23-57-58.png" width="600" height="322" /></p>
 
 	  <div>
 	
