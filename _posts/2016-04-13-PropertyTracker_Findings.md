@@ -56,6 +56,3 @@ Apartments on the other hand average in at 122,294 for March 2016  and in March 
 ![Apartment NI ](http://emomonkey.github.io/images/Screenshot_Apartment1.png)
 ![Apartment NI 2](http://emomonkey.github.io/images/Screenshot_Aprtment2.png)
 It does support the idea that people are more prepared to live in rental apartments and is worth looking into more...in next months post or you can investiage yourself at http://www.propertytrackerni.co.uk
-
-
-Maybe it's time to brush off Gamemaker and do the ultimate Stop the Express update
