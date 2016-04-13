@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Property Price Changes in Northern Ireland 2016 versus 2015 ?
-date: 2016-04-14 22:01:49.000000000 +00:00
+date: 2016-04-13 22:01:49.000000000 +00:00
 categories: []
 tags:
 - Property Prices Northern Ireland
@@ -31,7 +31,6 @@ author:
 excerpt: !ruby/object:Hpricot::Doc
   options: {}
 ---
-
 The Northern Ireland Property Tracking website has been running for well over a year and  a half now so I have put together a like for like comparison of price changes for the month of March 2016 and the month of March 2015. It has left us with some interesting difference for Northern Ireland as a whole and individual areas. I have focused on some specific areas such as Portadown and Banbridge as examples and you can use  http://www.propertytrackerni.co.uk to track your local town as well.
 For starters Detached houses on average are coming in at  221,544 for Northern Ireland as a whole in March 2016 which compares to an average price of 219,458 in March 2015 an increase of 0.95 percent. Portadown has average prices for Detached houses coming in at 137,313 in March 2016 while in March 2015 the average price was 196,681 a decrease of 30.2 percent. This is quite a decrease and alot of it comes down to volume of houses on the market. In  February 2015 we have just 24 detaches houses on the market for sale in Portadown while in March 2016 we have 32 houses for sale.
 ![Detached Houses Northern Ireland 1](http://emomonkey.github.io/images/Screenshot Detach1.png)
