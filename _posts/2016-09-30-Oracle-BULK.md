@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Oracle PDFMerger API does not support PDF format beyond 2004
+title: How to Structure BULK Collect FORALL while maintaining the Program Flow
 date: 2016-09-12 22:01:49.000000000 +00:00
 categories: []
 tags:
