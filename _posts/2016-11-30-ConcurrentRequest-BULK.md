@@ -36,7 +36,7 @@ I recently put together a Concurrent Request that queried the database and used 
 
 This thing I missed was the commit statement. It needs to be run after your submit_request and before the wait_for_request. See below 
 
-~~ sql
+~~~ sql
 l_reqid := fnd_request.submit_request
 (application =>
 ,program => 'XX...' -- child prg short name
