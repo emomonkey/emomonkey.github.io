@@ -1,6 +1,6 @@
 ---
 layout: post
-title: EBS Validation in Concurrent Jobs 
+title: SpottyMail 
 date: 2017-04-22 22:01:49.000000000 +00:00
 categories: []
 tags:
