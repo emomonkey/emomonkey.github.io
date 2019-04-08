@@ -34,7 +34,7 @@ excerpt: !ruby/object:Hpricot::Doc
   options: {}
 ---
 
-Since SpottyMail went live I have been expanding the number of preset templates available in the application and noticed an Internet Meme going around where you "Share Your Playlist with your Crush". I am off that age where you recorded your compilation of music onto cassette whcih I think was immortalised in the Nick Hornby book and John Cusask movie High Fidelity. SpottyMail will help you make that Playlist a bit more personal rather than just a link to Spotify. There is a ready made template available
+Since SpottyMail went live I have been expanding the number of preset templates available in the application and noticed an Internet Meme going around where you "Share Your Playlist with your Crush". I am off that age where you recorded your compilation of music onto cassette which I think was immortalised in the Nick Hornby book and John Cusask movie High Fidelity. SpottyMail will help you make that Playlist a bit more personal rather than just a link to Spotify. There is a ready made template available
  
 ![HTML Editor](http://emomonkey.github.io/images/screencrush.png)
 
