@@ -12,3 +12,4 @@ window.onload = function() {
 
   sidebarButton.addEventListener("click", openSidebar, false);
 };
+
