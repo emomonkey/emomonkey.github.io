@@ -1,0 +1,125 @@
+---
+layout: default
+title: Home
+description: Spotify Web Application and Personal Blog
+---
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/styles.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/pygment_trac.css" media="screen">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- [if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+     
+     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+     <title>{{ page.title }}</title>
+</head>
+
+
+<body>
+ <div id="main">
+   <div id="header">
+      <div class="wrapper">
+        <a href="https://github.com/emomonkey" class="btn">View On GitHub</a>
+        <ul class="nav">
+          <li class="download-title">Links</li>
+          <li class="downloads">
+	   <a href="https://uk.linkedin.com/pub/stephen-emo/60/308/54b" class="btn">LinkedIn</a>
+	  </li>
+       	  
+	     
+	  	  
+        </ul>
+      </div>
+    </div><!-- end header -->     
+    <div class="wrapper">
+     <section id="posts">
+	<div id="title">
+       <h1>Development Blog      </h1>
+       <h5>Web Development and Raspberry PI</h5>
+       <h1> <img src="http://emomonkey.github.io/images/portrait.jpg"></h1>
+       <p>  Oracle EBS Developer but loves working with Ruby, Python, Java and tinkering with the Raspberry PI </p> 
+      
+      </div>
+     
+       {% for post in paginator.posts %}
+	  <h1>
+	    <a href="{{ post.url }}">{{ post.title }}</a>
+	  </h1>
+	  <p class = "author">
+	    <span class="date">{{post.date}}</span>
+	  </p>
+	  <div class="content">
+	   {{post.content}}
+	  <div>
+	{% endfor %}
+
+	<!-- Pagination links -->
+	<div class="pagination">
+	  {% if paginator.previous_page %}
+      	   <a href="{{ paginator.previous_page_path }}" class="previous">Previous</a>
+          {% else %}
+           <span class="previous">Previous</span>
+          {% endif %}
+          <span class="page_number ">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
+          {% if paginator.next_page %}
+           <a href="{{ paginator.next_page_path }}" class="next">Next</a>
+          {% else %}
+           <span class="next ">Next</span>
+          {% endif %}
+	 </div>
+	
+            
+             </section>
+      
+       <div class="google-ads">
+	   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	   <!-- Programming Blog Ads -->
+		<ins class="adsbygoogle"
+     		style="display:block"
+     		data-ad-client="ca-pub-9203088421896530"
+     		data-ad-slot="3590526208"
+     		data-ad-format="auto"></ins>
+	   <script>
+	   (adsbygoogle = window.adsbygoogle || []).push({});
+           </script>
+       </div>
+        <span class="credits left">
+	       Site maintained by <a href="https://github.com/emomonkey">Stephen Emo</a>
+       </span>
+       <span class="credits right">
+	       This project uses Jekyll. A Ruby Static Site tool.
+       </span>
+		
+      </div>
+  </div>
+        
+</body>
+
+
+<script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-97629936-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+</script>
+
+
+
+</html>
