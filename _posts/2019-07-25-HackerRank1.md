@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Migratory Ranks Javascript solution 
-date: 2016-12-01 22:01:49.000000000 +00:00
+date: 2019-07-25 22:01:49.000000000 +00:00
 categories: []
 tags:
 - JavaScript
