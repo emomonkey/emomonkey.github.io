@@ -232,6 +232,7 @@
   
   .content {
     padding-left: 2.125em;
+    overflow-y: scroll;
   }
   
   .header {
