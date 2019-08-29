@@ -214,8 +214,7 @@
   .sidebar,
   .content {
     vertical-align: top;
-    height: 100%;
-    overflow-y: scroll;
+    height: 100%;   
     overflow-x: hidden;
   }
   
@@ -230,7 +229,7 @@
   
   .content {
     padding-left: 2.125em;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
   
   .header {
