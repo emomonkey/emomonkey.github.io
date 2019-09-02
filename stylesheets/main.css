@@ -216,6 +216,7 @@
     vertical-align: top;
     height: 100%;   
     overflow-x: hidden;
+    overflow-y: visible;  
   }
   
   .sidebar {
