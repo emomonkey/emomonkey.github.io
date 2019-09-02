@@ -216,13 +216,16 @@
     vertical-align: top;
     height: 100%;   
     overflow-x: hidden;
-    overflow-y: visible;  
+    overflow-y: hidden;  
   }
-  
-  .sidebar {
+
+  .sidebar:hover {
+      overflow-y: scroll;
+   }
+
+  .sidebar {  
     float: left;
-    width: 14%;
-    overflow-y: scroll;  
+    width: 14%;  
     padding-left: 11em;
     padding-right: 2.125em;
     border-right: 1px solid #e7e7e7;  
