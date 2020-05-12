@@ -1,7 +1,7 @@
 ---
 layout: post
-title: A Database Developers First Impression on ElasticSearch 
-date: 2019-07-26 22:01:49.000000000 +00:00
+title: A Database Developer's First Impression on ElasticSearch 
+date: 2020-05-11 22:01:49.000000000 +00:00
 categories: []
 tags:
 - ElasticSearch
@@ -96,28 +96,28 @@ Go into kibana from the browser.
 
 It seems to run off port 5601 by default. It should look happy and healthy
 
-<img src="http://emomonkey.github.io/images/elasticsearch1.jpg" alt="drawing" width="200"/>
+<img src="http://emomonkey.github.io/images/elasticsearch1.jpg" alt="drawing" width="600"/>
 
 Go to Index Management as Index strangely seems to be data in ElasticSearch by clicking on the big Kibana logo.
 
 Create an Index Pattern
 
-<img src="http://emomonkey.github.io/images/elasticsearch2.jpg" alt="drawing" width="200"/>
+<img src="http://emomonkey.github.io/images/elasticsearch2.jpg" alt="drawing" width="600"/>
 
 
 A template is basically needed if you want to format a field in a specific way for elasticsearch to model it, there are no gotchas here. You can use command lines for a lot of this but apart from logstash commands on the command line I would choose the Kibana approach.
 
-<img src="http://emomonkey.github.io/images/elasticsearch3.jpg" alt="drawing" width="200"/>
+<img src="http://emomonkey.github.io/images/elasticsearch3.jpg" alt="drawing" width="600"/>
 
 One gotcha that I did notice is that I had to clear and reimport the index to get the Geo Data Type recognised
 
 So below you can see one of the map visualisation you get
 
-<img src="http://emomonkey.github.io/images/elasticsearch4.jpg" alt="drawing" width="200"/>
+<img src="http://emomonkey.github.io/images/elasticsearch4.jpg" alt="drawing" width="600"/>
 
 The Barchart Graph is another easy one you can put together and I ut together a constructor points one that I put together
 
-<img src="http://emomonkey.github.io/images/elasticsearch5.jpg" alt="drawing" width="200"/>
+<img src="http://emomonkey.github.io/images/elasticsearch5.jpg" alt="drawing" width="600"/>
 
 You can play around with the Visualisation. Below you can see the result of the Constructor_Points bar chart. Its all fairly self explanatory with some terminology such as Buckets/Terms which is in this case the constructor name. Also a lot of this tool is for real time data so by default it creates a timestamp that works off the time logstash imports but in a relational database we usually work off our own date which is the race date which us why I have a large date range attached in the below screenshot.
 
