@@ -783,18 +783,6 @@ section #title {
  }
 
 
-
-section #title {
-  border: 0;
-  outline: none;
-  margin: 0 0 50px 0;
-  padding: 0 0 5px 0;
-   linear-gradient(
-         rgba(0, 0, 0, 0.7), 
-	       rgba(0, 0, 0, 0.7)
-	           ),
-  background-image: url('/images/aticheader.jpg');
-}
 section #title h1 {
   text-align: center;
   line-height: 1em;

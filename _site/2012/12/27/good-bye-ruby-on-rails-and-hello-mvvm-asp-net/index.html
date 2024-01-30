@@ -1,46 +1,76 @@
-
+<!DOCTYPE html>
 <html>
-<head>
-<meta charset='utf-8'>
-<meta http-equiv="X-UA-Compatible" content="chrome=1">
-<link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" href="/stylesheets/styles.css" media="screen">
-<link rel="stylesheet" type="text/css" href="/stylesheets/pygment_trac.css" media="screen">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="javascripts/respond.js"></script>
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Stephen's Blog - Good bye Ruby on Rails  and Hello MVVM ASP.Net</title>
+      <meta name="viewport" content="width=device-width">
 
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+      <!-- syntax highlighting CSS -->
+      <link rel="stylesheet" href="/stylesheets/syntax.css">
 
-<!--[if lt IE 9]>
-<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-<title>Good bye Ruby on Rails  and Hello MVVM ASP.Net</title>
-</head>
-<!-- <h1>Good bye Ruby on Rails  and Hello MVVM ASP.Net</h1> -->
+      <!-- Custom CSS -->
+      <link rel="stylesheet" href="/stylesheets/main.css">
 
-<body>
+      <!-- Responsive CSS -->
+      <link rel="stylesheet" href="/stylesheets/responsive.css">
 
- <div id="main">
-  <div id="header">
-   <div class="wrapper">
-        <a href="http://emomonkey.github.io" class="btn">Home</a>
-        <a href="https://github.com/emomonkey" class="btn">View On GitHub</a>
-        <ul class="nav">
-          <li class="download-title">Links</li>
-          <li class="downloads">
-	   <a href="https://uk.linkedin.com/pub/stephen-emo/60/308/54b" class="btn">LinkedIn</a>
-	  </li>
-          <li class="downloads">
-           <a href="http://www.propertytrackerni.co.uk" class="btn">NI Property Tracking</a>
-	  </li>
-        </ul>
-   </div>
-  </div>
-  <div class="wrapper">
-  <section id="posts">
-    <h3>Good bye Ruby on Rails  and Hello MVVM ASP.Net </h3>
-   
-    <p>Well my ruby on rails application is up on Cloudfoundry at  dwarfquery.cloudfoundry.com. I have to admit I found cloudfoundry put a lot of limitations on your application. As this application had to parse very large XML files...maybe too large and Cloudfoundry does not allow you to share files I have to upload to temp and then upload to Dropbox. This was very awkward but necessary as the worker instance could not share files with the server instance. Also cloudfoundry forced me to use it's own instance of jquery.</p>
+      <!-- Google Fonts -->
+      <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'>
+      <link href='http://fonts.googleapis.com/css?family=Raleway:300,400,700' rel='stylesheet' type='text/css'>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+      <script src="javascripts/respond.js"></script>
+      <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+      <!-- [if lt IE 8]>
+      <link rel="stylesheet" href="stylesheets/ie.css">
+      <![endif]-->
+       
+       <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  </head>
+  <body>
+    <div class="site">
+      <div class="sidebar" id="sidebar">
+        <div class="header">
+          <h1 class="title"><a href="/"><img id="logo" src="http://emomonkey.github.io/images/portrait.jpg"></a></h1>
+          <span class="tagline">Personal Blog</span>
+          <span class="tagline"><a href="/nasa" >NASA page</a></span>
+        </div>
+        <div class="posts">
+          <ul class="posts-list">
+            
+          </ul>
+          
+          <div class="pagination">
+            
+              <span class="previous">Previous</span>
+            
+            <span class="page_number ">
+              Page:  of 
+            </span>
+            
+              <span class="next ">Next</span>
+            
+          </div>
+
+        </div>
+      </div> 
+       <body>
+        <div class="content" id="home">
+        <div id="sidebar-button">
+          <img src="/images/sidebar-button.png">
+        </div>
+        <div id="post-info">
+         
+          <div id="info-container">
+            <h1 id="title">Good bye Ruby on Rails  and Hello MVVM ASP.Net</h1>
+            <span id="date">27 Dec 2012</span>
+          </div>
+        </div>
+      
+        <div class="post">
+          <p>Well my ruby on rails application is up on Cloudfoundry at  dwarfquery.cloudfoundry.com. I have to admit I found cloudfoundry put a lot of limitations on your application. As this application had to parse very large XML files...maybe too large and Cloudfoundry does not allow you to share files I have to upload to temp and then upload to Dropbox. This was very awkward but necessary as the worker instance could not share files with the server instance. Also cloudfoundry forced me to use it's own instance of jquery.</p>
 <p>Still there where some flaws with this concept of uploading 100's of megs of an XML file to be parsed but then again my project had to be ruby on rails as I was restricted to be netbook development environment.</p>
 <p>Now however I have a Windows 8 laptop so new simple project is a MVVM application which calls the Diablo 3 Web API :) That and XCOM Enemy Unknown. Happy Christmas</p>
 <p>As an update. I am using the MVVM template in Visual Studio Express 2012 for Web and I do think there is a bit more coding than MVC. The model has to be recreated twice, once in the C# server end and once in the JavaScript VM part of it. A lot of the template seems to assume I want my changes commited there and then however I do think database applications should have a standard commit button to give the user time to sanity check the updates before a commit. It could be that MVVM is only for certain applications i.e ones that need real time interaction. Still I want to use this technology so I will keep on with the MVVM template.</p>
@@ -49,33 +79,53 @@
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 
-   
-   <div class="google-ads">
-   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-   <!-- Programming Blog Ads -->
-	<ins class="adsbygoogle"
-	style="display:block"
-	data-ad-client="ca-pub-9203088421896530"
-	data-ad-slot="3590526208"
-	data-ad-format="auto"></ins>
-   <script>
-   (adsbygoogle = window.adsbygoogle || []).push({});
-   </script>
-   </div>
-   <span class="credits left">
-       Site maintained by <a href="https://github.com/emomonkey">Stephen Emo</a>
-   </span>
-   <span class="credits right">
-       This project uses Jekyll. A Ruby Static Site tool.
-   </span>
-	
-   </div>
+        </div>
+        <div class="colophon">
+          <p>
+            <span id="pub-date">Published on 27 Dec 2012</span> <span class="separator">&bull;</span>
+            <span id="social">Find me on <a href="">Twitter</a>!</span>
+          </p>
+        </div>
+      </div>
+       </body>
+     
+       
+        <div class="footer">
+          <span id="footer-links">
+                <a href="http://emomonkey.github.io" class="footer-link">Home</a><span class="separator">&bull;</span>
+                <a href="https://github.com/emomonkey" class="footer-link">View On GitHub</a><span class="separator">&bull;</span>
+                <a href="https://uk.linkedin.com/pub/stephen-emo/60/308/54b" class="footer-link">LinkedIn</a><span class="separator">&bull;</span>
+          </span>
+          <div class="google-ads">
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- Programming Blog Ads -->
+                 <ins class="adsbygoogle"
+                      style="display:block"
+                      data-ad-client="ca-pub-9203088421896530"
+                      data-ad-slot="3590526208"
+                      data-ad-format="auto"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+        </div>
 
-   </section>
-  </div>
+        
+      </div>
 
+        
 
-
-</div>
-</body>
+    </div>
+    <script src="/javascripts/responsive.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      </script>
+      <script type="text/javascript">
+        try {
+          var pageTracker = _gat._getTracker("UA-97629936-1");
+        pageTracker._trackPageview();
+        } catch(err) {}
+</script>
+  </body>
 </html>

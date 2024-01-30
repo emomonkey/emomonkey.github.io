@@ -2,7 +2,7 @@
 name: Stephen Emo Ruby Blog
 # Short description (goes below the title; it will also be used in the RSS feed)
 description: Interests and Person Project Blog.
-# Your name, as you want it to appear underneath each post and in the footer
+# Your name, as you want it to appear underneath each post and in the footer 
 author: Stephen Emo
 # Your email if you want it to be linked on the contact page
 author_email: stephen.emo@gmail.com
@@ -25,5 +25,10 @@ markdown: redcarpet
 # Makes pretty (descriptive) permalinks. See Jekyll docs for alternatives.
 permalink: pretty
 # How many articles do you wish to appear on the front page:
-paginate: 4
+plugins:
+  - jekyll-paginate
+  - jekyll-feed
+  - jekyll-sitemap
+paginate: 6
 # Exclude metadata and development time dependencies (like Grunt plugins)
+paginate_path: "/page:num/"
