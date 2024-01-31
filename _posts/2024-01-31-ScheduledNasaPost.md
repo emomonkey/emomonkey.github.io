@@ -32,17 +32,13 @@ author:
 excerpt: !ruby/object:Hpricot::Doc
   options: {}
 ---
-
 Last year I spent some of my time on Oracle Cloud Certification up to OCI Professional so I have decides this year to spend my time on more practical projects. The first of which is a Spring Scheduled Routine which will post the latest NASA pic automatically to my github page via a publicly available API. Its still in progress and when it is finished I will run it on a docker image on my desktop and post about it then.
 
-Until that time I will use this site to post some frequent tips on using Oracle Database and EBS R12 tips. I was going to cover editioned tables in Oracle EBS which increases availablity when the system is being patched but to be honest I suspect it is a brave person who relies on the feature plus editioning is a single command that I am sure Bing Co-Pilot will help with. 
+Until that time I will use this site to post some frequent tips on using Oracle Database and EBS R12 tips. I was going to cover editioned tables in Oracle EBS which increases availablity when the system is being patched but to be honest I suspect it is a brave person who relies on the feature plus editioning is a single command that I am sure Bing Co-Pilot will help with.
 
 Instead I will mention a new feature which from a database programming point of view is a useful feature which is the Out of Place Non Atomic Materialised View. The fast refresh sounds like something you want but generally it means that data is not refreshed in one go and you will end out with users seeing no data so what you need is the original being made available while the new one is being created and this is exactly what Out of Place means.
 
-To get this materialised view you need to run the below command 
+To get this materialised view you need to run the below command
 
-~~~ sql
 exec dbms_mview.refresh(‘TEST_MV’, out_of_place=>true, atomic_refresh=>false);
-~~~
-
 It has some restrictions for example no DBLinks and no materialised views on top of other materialised views and worst of all no outer joins so it is quite limited. Never the less I have found it useful on core materialised views, the ones at the very bottom which others are built on top of.
