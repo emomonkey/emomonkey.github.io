@@ -3,7 +3,7 @@
   <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <title>Stephen's Blog - SpottyMail</title>
+      <title>Stephen's Blog - FastMaterialisedView</title>
       <meta name="viewport" content="width=device-width">
 
       <!-- syntax highlighting CSS -->
@@ -371,28 +371,27 @@
         <div id="post-info">
          
           <div id="info-container">
-            <h1 id="title">SpottyMail</h1>
-            <span id="date">22 Apr 2017</span>
+            <h1 id="title">FastMaterialisedView</h1>
+            <span id="date">31 Jan 2024</span>
           </div>
         </div>
       
         <div class="post">
-          <p>SpottyMail is now finally live and I am now in the process of advertising the site and hopefully expanding the service. SpottyMail should allow you to share your music so you can advertise your festival, concert or simply share your playlist with your friends. SpottyMail makes use of the 30 second preview API in Spotify so that the music can be shared on Twitter or via HTML Email. If you share via Twitter your tweet will include a link to a web page that is publicly available from the SpottyMail Web Server. If you share this via email the email will be forwarded to your own email address and from here you can share this to other users.</p>
+          <p>Last year I spent some of my time on Oracle Cloud Certification up to OCI Professional so I have decides this year to spend my time on more practical projects. The first of which is a Spring Scheduled Routine which will post the latest NASA pic automatically to my github page via a publicly available API. Its still in progress and when it is finished I will run it on a docker image on my desktop and post about it then.</p>
 
-<p>The Email and Web Page can be changed using an editor than can be used to change the fonts, colours, spacing, layout and images contained within the web page.</p>
+<p>Until that time I will use this site to post some frequent tips on using Oracle Database and EBS R12 tips. I was going to cover editioned tables in Oracle EBS which increases availablity when the system is being patched but to be honest I suspect it is a brave person who relies on the feature plus editioning is a single command that I am sure Bing Co-Pilot will help with.</p>
 
-<p><img src="http://emomonkey.github.io/images/htmledit.gif" alt="HTML Editor" /></p>
+<p>Instead I will mention a new feature which from a database programming point of view is a useful feature which is the Out of Place Non Atomic Materialised View. The fast refresh sounds like something you want but generally it means that data is not refreshed in one go and you will end out with users seeing no data so what you need is the original being made available while the new one is being created and this is exactly what Out of Place means.</p>
 
-<p>SpottyMail also includes a number of prebuilt templates so that you do not have to start from scratch and it will give you an idea of what the tool is capable of. I have also included a number of stock images which you can use as well as links to some other sites that allow you to use banners and images for your own public and personal use.</p>
+<p>To get this materialised view you need to run the below command</p>
 
-<p><img src="http://emomonkey.github.io/images/htmltemplate.png" alt="Example Template" /></p>
-
-<p>To ensure the HTML Emails can be viewed correctly no matter what email reader or browser is used an OpenSource Markup Framework MJML is used to reduce the amount of testing required to ensure your creation will be viewable by the recipients. MJML allows you to Banners, Headers, Table Layout and Text Fields which gives alot of freedom when creating your design. The Basic Spotify application does allow you to share you a preview of a track but this share is a basic link which is not suitable for producing a promotional email or advertisement. If you think this would be useful you can give Spotify a Trial and if you like it enough you can pay a small annual subscription. Spottymail is accessible from here <a href="http://www.spottymail.co.uk">http://www.spottymail.co.uk</a></p>
+<p>exec dbms_mview.refresh(‘TEST_MV’, out_of_place=&gt;true, atomic_refresh=&gt;false);
+It has some restrictions for example no DBLinks and no materialised views on top of other materialised views and worst of all no outer joins so it is quite limited. Never the less I have found it useful on core materialised views, the ones at the very bottom which others are built on top of.</p>
 
         </div>
         <div class="colophon">
           <p>
-            <span id="pub-date">Published on 22 Apr 2017</span> <span class="separator">&bull;</span>
+            <span id="pub-date">Published on 31 Jan 2024</span> <span class="separator">&bull;</span>
             <span id="social">Find me on <a href="">Twitter</a>!</span>
           </p>
         </div>

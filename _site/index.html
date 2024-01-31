@@ -43,6 +43,13 @@
           <ul class="posts-list">
             
               <li class="post-link">
+                <a class="post-title" href="/2024/01/31/fastmaterialisedview/">
+                  <span class="post-date">31 Jan 2024</span>
+                  FastMaterialisedView
+                </a>
+              </li>
+            
+              <li class="post-link">
                 <a class="post-title" href="/2020/05/11/Elasticsearch/">
                   <span class="post-date">11 May 2020</span>
                   A Database Developer's First Impression on ElasticSearch
@@ -366,107 +373,27 @@
         <div id="post-info">
          
           <div id="info-container">
-            <h1 id="title">A Database Developer's First Impression on ElasticSearch</h1>
-            <span id="date">11 May 2020</span>
+            <h1 id="title">FastMaterialisedView</h1>
+            <span id="date">31 Jan 2024</span>
           </div>
         </div>
       
         <div class="post">
-          <p>As someone who works pretty constantly on relational database development I have come across limitations on what it can do in terms of reporting and analysis. There are a lot of tools out there and when you are working in Oracle you are pretty much pushed to something large, expensive and pretty much tied to Oracle.</p>
+          <p>Last year I spent some of my time on Oracle Cloud Certification up to OCI Professional so I have decides this year to spend my time on more practical projects. The first of which is a Spring Scheduled Routine which will post the latest NASA pic automatically to my github page via a publicly available API. Its still in progress and when it is finished I will run it on a docker image on my desktop and post about it then.</p>
 
-<p>Elastic Search seems to cover a lot of areas not covered by relational databases with build in analysis , reporting and storage options. It seemed pretty interesting especially as it seemed to do a lot of things that would require custom development or the purchase of new tools</p>
+<p>Until that time I will use this site to post some frequent tips on using Oracle Database and EBS R12 tips. I was going to cover editioned tables in Oracle EBS which increases availablity when the system is being patched but to be honest I suspect it is a brave person who relies on the feature plus editioning is a single command that I am sure Bing Co-Pilot will help with.</p>
 
-<p>There are a lot of articles out there on ElasticSearch which helped along but there did not seem to be anything which described what Elastic Search is to someone coming from a database background.</p>
+<p>Instead I will mention a new feature which from a database programming point of view is a useful feature which is the Out of Place Non Atomic Materialised View. The fast refresh sounds like something you want but generally it means that data is not refreshed in one go and you will end out with users seeing no data so what you need is the original being made available while the new one is being created and this is exactly what Out of Place means.</p>
 
-<p>So as well as reading up I set up ElasticSearch on an Ubuntu server I have which I use for this kind of thing. ElasticSearch is Open Source but it isn’t part of your standard repostory so sudo apt-get elasticsearch is not going to work. You will have to use curl commands and add repository references to your server. I will not recover all those standard article but I will mention the first gotcha none of these articles actually cover. This maybe the installation has changed over the years on Linux with even the path where elasticsearch being installed is different. The first thing you will notice that it is in a different path. To find it enter “whereis elasticsearch”. The machine I installed it on was not my local machine so I needed to access it remotely. To do this edit the file elasticsearch.yml, you need to uncomment the field  network.host or add it . I set it to 0.0.0.0 which means any ip address can log on, not secure but this is on my local network and it is not running all the time. Now once you edit the elasticsearch.yml it seems to switch from development to production mode as it will not be running on a local machine so if you run it doing sudo service elasticsearch you get errors along the lines of discovery nodes being set. There are some misleading articles out there that tell you to set up everything for production in the elasticsearch.yml file but you do not need to do this. Just set discovery.seed.hosts to a blank array and it will start</p>
+<p>To get this materialised view you need to run the below command</p>
 
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
- <span class="k">input</span> <span class="err">{</span>
-  <span class="n">jdbc</span> <span class="err">{</span>
-    <span class="n">jdbc_driver_library</span> <span class="o">=&gt;</span> <span class="nv">""</span>
-    <span class="n">jdbc_driver_class</span> <span class="o">=&gt;</span> <span class="nv">"org.postgresql.Driver"</span>
-    <span class="n">jdbc_connection_string</span> <span class="o">=&gt;</span> <span class="nv">"jdbc:postgresql://localhost:5432/f1"</span>
-    <span class="n">jdbc_user</span> <span class="o">=&gt;</span> <span class="nv">"postgres"</span>
-    <span class="n">jdbc_password</span> <span class="o">=&gt;</span> <span class="nv">"&lt;password&gt;"</span>
-    <span class="k">statement</span> <span class="o">=&gt;</span> <span class="nv">"SELECT c.yearno race_yearno, c.roundno race_roundno,
-    c.name race_name, c.dateval race_date, c.timeval race_time,
-    c.url raceurl, b.constructorRef, b.name constructors_name,
-    b.nationality constructor_nationality,
-    b.url constructor_url, a.points constructor_points,
-    a.status constructor_status, d.lat, d.lng
-    FROM constructor_results a, constructors b, circuits d, races c
-    WHERE a.constructorId = b.constructorId AND
-      a.raceId = c.raceId AND
-      c.circuitId = d.circuitId"</span>
-    <span class="k">type</span> <span class="o">=&gt;</span> <span class="nv">"constructor_result"</span>
- <span class="err">}</span>
-<span class="err">}</span>
-
-<span class="n">filter</span> <span class="err">{</span>
-   <span class="n">mutate</span> <span class="err">{</span>
-    <span class="n">add_field</span> <span class="o">=&gt;</span> <span class="err">{</span><span class="nv">"[location][lon]"</span> <span class="o">=&gt;</span> <span class="nv">"%{lng}"</span><span class="err">}</span>
-    <span class="n">add_field</span> <span class="o">=&gt;</span> <span class="err">{</span><span class="nv">"[location][lat]"</span> <span class="o">=&gt;</span> <span class="nv">"%{lat}"</span><span class="err">}</span>
-    <span class="err">}</span>
-<span class="err">}</span>
-
-<span class="k">output</span> <span class="err">{</span>
-  <span class="n">elasticsearch</span>
-   <span class="err">{</span>
-        <span class="n">hosts</span> <span class="o">=&gt;</span> <span class="nv">"http://localhost:9200"</span>
-        <span class="k">index</span> <span class="o">=&gt;</span> <span class="nv">"%{type}"</span>
-   <span class="err">}</span>
-<span class="k">stdout</span> <span class="err">{}</span>
-<span class="err">}</span>
-
-</code></pre></div></div>
-
-<p>You may notice something above that does not make sense and that is the filter/mutate section I suspect. This is required if you want to model field as geo points. You don’t just require the above you also require something called templates and the easy way to do this is to use another tool called Kibana.  This will need installed separately as well which I will not cover here</p>
-
-<p>Once again you will need to edit another yaml file kibana.yml and set server.host to 0.0.0.0 so you can run it. There is one thing left to do sudo service kibana start. I would not have any of these services running on startup unless it was a production machine as they use a lot of memory. One gotcha also is to make sure you have a decent amount of free disk space as elasticsearch will error as it checks for adequate disk space on bootup but gives some rather obscure error messages in the log.</p>
-
-<p>So now we need to import our data</p>
-
-<p>So run the logstash command</p>
-
-<p>sudo /usr/share/logstash/bin/logstash -f ~/f1/constructor_results.conf</p>
-
-<p>Go into kibana from the browser.</p>
-
-<p>It seems to run off port 5601 by default. It should look happy and healthy</p>
-
-<p><img src="http://emomonkey.github.io/images/elasticsearch1.jpg" alt="drawing" width="600" /></p>
-
-<p>Go to Index Management as Index strangely seems to be data in ElasticSearch by clicking on the big Kibana logo.</p>
-
-<p>Create an Index Pattern</p>
-
-<p><img src="http://emomonkey.github.io/images/elasticsearch2.jpg" alt="drawing" width="600" /></p>
-
-<p>A template is basically needed if you want to format a field in a specific way for elasticsearch to model it, there are no gotchas here. You can use command lines for a lot of this but apart from logstash commands on the command line I would choose the Kibana approach.</p>
-
-<p><img src="http://emomonkey.github.io/images/elasticsearch3.jpg" alt="drawing" width="600" /></p>
-
-<p>One gotcha that I did notice is that I had to clear and reimport the index to get the Geo Data Type recognised</p>
-
-<p>So below you can see one of the map visualisation you get</p>
-
-<p><img src="http://emomonkey.github.io/images/elasticsearch4.jpg" alt="drawing" width="600" /></p>
-
-<p>The Barchart Graph is another easy one you can put together and I ut together a constructor points one that I put together</p>
-
-<p><img src="http://emomonkey.github.io/images/elasticsearch5.jpg" alt="drawing" width="600" /></p>
-
-<p>You can play around with the Visualisation. Below you can see the result of the Constructor_Points bar chart. Its all fairly self explanatory with some terminology such as Buckets/Terms which is in this case the constructor name. Also a lot of this tool is for real time data so by default it creates a timestamp that works off the time logstash imports but in a relational database we usually work off our own date which is the race date which us why I have a large date range attached in the below screenshot.</p>
-
-<p>So hopefully when you creating your index pattern you choose the race date on import in which case that was a gotcha as well :)</p>
-
-<p>So that really covers my database developer’s opinion on elasticsearch I am looking forward to try it on some real time data as this is where I think it was really designed to shine as you can use machine learning to model anomalies and such like. There is a lot you can do here with very little programming.</p>
-
+<p>exec dbms_mview.refresh(‘TEST_MV’, out_of_place=&gt;true, atomic_refresh=&gt;false);
+It has some restrictions for example no DBLinks and no materialised views on top of other materialised views and worst of all no outer joins so it is quite limited. Never the less I have found it useful on core materialised views, the ones at the very bottom which others are built on top of.</p>
 
         </div>
         <div class="colophon">
           <p>
-            <span id="pub-date">Published on 11 May 2020</span> <span class="separator">&bull;</span>
+            <span id="pub-date">Published on 31 Jan 2024</span> <span class="separator">&bull;</span>
             <span id="social">Find me on <a href="">Twitter</a>!</span>
           </p>
         </div>
