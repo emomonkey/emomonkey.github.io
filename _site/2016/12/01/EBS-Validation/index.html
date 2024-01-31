@@ -370,12 +370,13 @@
         </div>
       
         <div class="post">
-          <p>Some more interesting tips with Oracle EBS Validation Set in R12. A Frequent Request is to Filter some of the other valuesets by Date e.g. only Purchase Orders between two date. To Do this we need to Create a From Date Value Set of type FND<em>STANDARD</em>DATE.</p>
+          <p>Some more interesting tips with Oracle EBS Validation Set in R12. A Frequent Request is to Filter some of the other valuesets by Date e.g. only Purchase Orders between two date. To Do this we need to Create a From Date Value Set of type FND_STANDARD_DATE.</p>
 
-<p>The list of Purchase Orders in the Validation Set need to be filter by this date. You would think that the value returned by FND<em>STANDARD</em>DATE would be a date but it is not. It is a character that needs formatted e.g. TO_DATE(, &#39;YYYY/MM/DD HH24:MI:SS&#39;),</p>
+<p>The list of Purchase Orders in the Validation Set need to be filter by this date. You would think that the value returned by FND_STANDARD_DATE would be a date but it is not. It is a character that needs formatted e.g. TO_DATE(, ‘YYYY/MM/DD HH24:MI:SS’),</p>
 
 <p>So in the Validation Table Information screen do the following</p>
-<div class="highlight"><pre><code class="language-sql" data-lang="sql"> <span class="n">l_reqid</span> <span class="p">:</span><span class="o">=</span> <span class="n">fnd_request</span><span class="p">.</span><span class="n">submit_request</span>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="n">l_reqid</span> <span class="p">:</span><span class="o">=</span> <span class="n">fnd_request</span><span class="p">.</span><span class="n">submit_request</span>
 <span class="n">_date</span>  <span class="o">&gt;=</span>
 
    <span class="n">TO_DATE</span><span class="p">(:</span><span class="err">$</span><span class="n">FLEX</span><span class="err">$</span><span class="p">.</span><span class="n">FIN_PO_FROM_VS</span><span class="p">,</span> <span class="s1">'YYYY/MM/DD HH24:MI:SS'</span><span class="p">)</span>
@@ -388,9 +389,11 @@
 <span class="p">);</span>
 
 <span class="n">fnd_request</span><span class="p">.</span><span class="n">wait_for_request</span> <span class="p">...</span>
+ 
+
+</code></pre></div></div>
 
 
-</code></pre></div>
         </div>
         <div class="colophon">
           <p>

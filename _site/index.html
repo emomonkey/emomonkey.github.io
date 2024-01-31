@@ -379,7 +379,8 @@
 <p>There are a lot of articles out there on ElasticSearch which helped along but there did not seem to be anything which described what Elastic Search is to someone coming from a database background.</p>
 
 <p>So as well as reading up I set up ElasticSearch on an Ubuntu server I have which I use for this kind of thing. ElasticSearch is Open Source but it isn’t part of your standard repostory so sudo apt-get elasticsearch is not going to work. You will have to use curl commands and add repository references to your server. I will not recover all those standard article but I will mention the first gotcha none of these articles actually cover. This maybe the installation has changed over the years on Linux with even the path where elasticsearch being installed is different. The first thing you will notice that it is in a different path. To find it enter “whereis elasticsearch”. The machine I installed it on was not my local machine so I needed to access it remotely. To do this edit the file elasticsearch.yml, you need to uncomment the field  network.host or add it . I set it to 0.0.0.0 which means any ip address can log on, not secure but this is on my local network and it is not running all the time. Now once you edit the elasticsearch.yml it seems to switch from development to production mode as it will not be running on a local machine so if you run it doing sudo service elasticsearch you get errors along the lines of discovery nodes being set. There are some misleading articles out there that tell you to set up everything for production in the elasticsearch.yml file but you do not need to do this. Just set discovery.seed.hosts to a blank array and it will start</p>
-<div class="highlight"><pre><code class="language-sql" data-lang="sql">
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
  <span class="k">input</span> <span class="err">{</span>
   <span class="n">jdbc</span> <span class="err">{</span>
     <span class="n">jdbc_driver_library</span> <span class="o">=&gt;</span> <span class="nv">""</span>
@@ -417,7 +418,8 @@
 <span class="k">stdout</span> <span class="err">{}</span>
 <span class="err">}</span>
 
-</code></pre></div>
+</code></pre></div></div>
+
 <p>You may notice something above that does not make sense and that is the filter/mutate section I suspect. This is required if you want to model field as geo points. You don’t just require the above you also require something called templates and the easy way to do this is to use another tool called Kibana.  This will need installed separately as well which I will not cover here</p>
 
 <p>Once again you will need to edit another yaml file kibana.yml and set server.host to 0.0.0.0 so you can run it. There is one thing left to do sudo service kibana start. I would not have any of these services running on startup unless it was a production machine as they use a lot of memory. One gotcha also is to make sure you have a decent amount of free disk space as elasticsearch will error as it checks for adequate disk space on bootup but gives some rather obscure error messages in the log.</p>
@@ -432,33 +434,34 @@
 
 <p>It seems to run off port 5601 by default. It should look happy and healthy</p>
 
-<p><img src="http://emomonkey.github.io/images/elasticsearch1.jpg" alt="drawing" width="600"/></p>
+<p><img src="http://emomonkey.github.io/images/elasticsearch1.jpg" alt="drawing" width="600" /></p>
 
 <p>Go to Index Management as Index strangely seems to be data in ElasticSearch by clicking on the big Kibana logo.</p>
 
 <p>Create an Index Pattern</p>
 
-<p><img src="http://emomonkey.github.io/images/elasticsearch2.jpg" alt="drawing" width="600"/></p>
+<p><img src="http://emomonkey.github.io/images/elasticsearch2.jpg" alt="drawing" width="600" /></p>
 
 <p>A template is basically needed if you want to format a field in a specific way for elasticsearch to model it, there are no gotchas here. You can use command lines for a lot of this but apart from logstash commands on the command line I would choose the Kibana approach.</p>
 
-<p><img src="http://emomonkey.github.io/images/elasticsearch3.jpg" alt="drawing" width="600"/></p>
+<p><img src="http://emomonkey.github.io/images/elasticsearch3.jpg" alt="drawing" width="600" /></p>
 
 <p>One gotcha that I did notice is that I had to clear and reimport the index to get the Geo Data Type recognised</p>
 
 <p>So below you can see one of the map visualisation you get</p>
 
-<p><img src="http://emomonkey.github.io/images/elasticsearch4.jpg" alt="drawing" width="600"/></p>
+<p><img src="http://emomonkey.github.io/images/elasticsearch4.jpg" alt="drawing" width="600" /></p>
 
 <p>The Barchart Graph is another easy one you can put together and I ut together a constructor points one that I put together</p>
 
-<p><img src="http://emomonkey.github.io/images/elasticsearch5.jpg" alt="drawing" width="600"/></p>
+<p><img src="http://emomonkey.github.io/images/elasticsearch5.jpg" alt="drawing" width="600" /></p>
 
 <p>You can play around with the Visualisation. Below you can see the result of the Constructor_Points bar chart. Its all fairly self explanatory with some terminology such as Buckets/Terms which is in this case the constructor name. Also a lot of this tool is for real time data so by default it creates a timestamp that works off the time logstash imports but in a relational database we usually work off our own date which is the race date which us why I have a large date range attached in the below screenshot.</p>
 
 <p>So hopefully when you creating your index pattern you choose the race date on import in which case that was a gotcha as well :)</p>
 
 <p>So that really covers my database developer’s opinion on elasticsearch I am looking forward to try it on some real time data as this is where I think it was really designed to shine as you can use machine learning to model anomalies and such like. There is a lot you can do here with very little programming.</p>
+
 
         </div>
         <div class="colophon">

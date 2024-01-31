@@ -370,17 +370,20 @@
         </div>
       
         <div class="post">
-          <p>I recently encountered a problem where I was asked to merge PDF Files as part of an EBS customisation. Considering that most of Oracle&#39;s tools support exporting in PDF Format and that Oracle EBS contains a Java library for merging PDFs you would have thought it would be kept up to date. However after some investigation and queries on metalink it appears Oracle have not bothered updating their PDFMerger API to support PDF formats from 2005 onwards and I am posting this in 2016.</p>
+          <p>I recently encountered a problem where I was asked to merge PDF Files as part of an EBS customisation. Considering that most of Oracle’s tools support exporting in PDF Format and that Oracle EBS contains a Java library for merging PDFs you would have thought it would be kept up to date. However after some investigation and queries on metalink it appears Oracle have not bothered updating their PDFMerger API to support PDF formats from 2005 onwards and I am posting this in 2016.</p>
 
-<p>However Apache Opensource libraries come to the rescue and if you choose PDFBox you get to use a Java Library that works with the latest PDF Formats and is maintained </p>
+<p>However Apache Opensource libraries come to the rescue and if you choose PDFBox you get to use a Java Library that works with the latest PDF Formats and is maintained</p>
 
 <p>So rather than the Oracle API below</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">oracle.apps.xdo.common.pdf.util.PDFDocMerger</span><span class="o">;</span>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">oracle.apps.xdo.common.pdf.util.PDFDocMerger</span><span class="o">;</span>
 
 <span class="nc">PDFDocMerger</span> <span class="n">pdfMerger</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PDFDocMerger</span><span class="o">(</span><span class="n">inpFiles</span><span class="o">,</span> <span class="n">outFile</span><span class="o">);</span>
-</code></pre></div>
+</code></pre></div></div>
+
 <p>Use the Apache PDFBox library</p>
-<div class="highlight"><pre><code class="language-java" data-lang="java">
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="kn">import</span> <span class="nn">org.apache.pdfbox.multipdf.PDFMergerUtility</span><span class="o">;</span>
 
 <span class="n">mergePDF</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PDFMergerUtility</span><span class="o">();</span>
@@ -389,7 +392,9 @@
           <span class="n">mergePDF</span><span class="o">.</span><span class="na">addSource</span><span class="o">(</span><span class="n">string</span><span class="o">);</span>
 <span class="o">}</span> 
 
-</code></pre></div>
+</code></pre></div></div>
+
+
         </div>
         <div class="colophon">
           <p>

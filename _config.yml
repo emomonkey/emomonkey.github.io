@@ -20,15 +20,11 @@ url: http://emomonkey.github.io/
 # Use rdiscount as the markdown engine because it generates html5 compliant code for stuff like footnotes
 # If you use maroku (default engine) some of your generated pages may not validate or lint as html5
 # If you don't have it install it via gem install rdiscount
-markdown: redcarpet
+markdown: kramdown
 #pygments: true
 # Makes pretty (descriptive) permalinks. See Jekyll docs for alternatives.
 permalink: pretty
 # How many articles do you wish to appear on the front page:
 plugins:
-  - jekyll-paginate
   - jekyll-feed
   - jekyll-sitemap
-paginate: 6
-# Exclude metadata and development time dependencies (like Grunt plugins)
-paginate_path: "/page:num/"

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Scheduled Nasa Post
+title: Outofplace
 date: 2024-01-31 22:01:49.000000000 +00:00
 description: Earliest 2024 Projects and an Oracle EBS Tip
 categories: []
@@ -29,8 +29,6 @@ author:
   display_name: emospacemonkey
   first_name: ''
   last_name: ''
-excerpt: !ruby/object:Hpricot::Doc
-  options: {}
 ---
 Last year I spent some of my time on Oracle Cloud Certification up to OCI Professional so I have decides this year to spend my time on more practical projects. The first of which is a Spring Scheduled Routine which will post the latest NASA pic automatically to my github page via a publicly available API. Its still in progress and when it is finished I will run it on a docker image on my desktop and post about it then.
 

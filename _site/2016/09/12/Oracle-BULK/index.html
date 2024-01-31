@@ -373,7 +373,8 @@
           <p>I have been working on a number of concurrent requests for Oracle EBS and checking to see how I can improve the performance of some of the existing routines which do numerous updates and inserts. Not it is suggested that the updates be split up into BULK Collect and FORALL statements however this does ignore the fact that sometimes routines need to carry out calculations and checks in a certain order. It is not simply a matter of doing all the updates in one go so to keep the flow of the program I updated the routine to instead store the updates and inserts to various tables in a global temporary tables. Then this global temporary table could be processed in a step by step basis as required.</p>
 
 <p>So the declaration of the global temporary table was combined with the BULK Collect and FORALL in the below manner</p>
-<div class="highlight"><pre><code class="language-sql" data-lang="sql">       <span class="n">tmp_tb</span> <span class="k">IS</span> <span class="k">TABLE</span> <span class="k">OF</span> <span class="n">tmp_table</span><span class="o">%</span><span class="n">ROWTYPE</span> <span class="k">INDEX</span> <span class="k">BY</span> <span class="n">BINARY_INTEGER</span><span class="p">;</span>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code>       <span class="n">tmp_tb</span> <span class="k">IS</span> <span class="k">TABLE</span> <span class="k">OF</span> <span class="n">tmp_table</span><span class="o">%</span><span class="n">ROWTYPE</span> <span class="k">INDEX</span> <span class="k">BY</span> <span class="n">BINARY_INTEGER</span><span class="p">;</span>
 
        <span class="n">l_tmp</span> <span class="n">tmp_table</span><span class="p">;</span>
 
@@ -388,18 +389,20 @@
         LOOP
         FETCH update_cur BULK COLLECT INTO l_tmp LIMIT 200;
         EXIT WHEN l_tmp.COUNT = 0;
-
+          
              FORALL i IN l_tmp.first .. l_tmp.last
                UPDATE A_TABLE SET field1=l_tmp(i).field1 WHERE field2=l_tmp(i).field2;
 
 
         END LOOP;
         CLOSE update_cur;
-
+       
        END
 
-</span></code></pre></div>
-<p>The above logic can be used and parse the changes into the database while the population of the Global Temporary Table can be done in such a way that it mirrors the flow of the original program which dotted updates and inserts behind checks and calculations. This allows us to update the program while not disturbing the flow of the program but allowing it to process it&#39;s updates and inserts efficiently.</p>
+</span></code></pre></div></div>
+
+<p>The above logic can be used and parse the changes into the database while the population of the Global Temporary Table can be done in such a way that it mirrors the flow of the original program which dotted updates and inserts behind checks and calculations. This allows us to update the program while not disturbing the flow of the program but allowing it to process it’s updates and inserts efficiently.</p>
+
 
         </div>
         <div class="colophon">

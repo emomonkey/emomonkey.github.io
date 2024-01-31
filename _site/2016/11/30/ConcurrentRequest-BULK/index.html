@@ -370,10 +370,11 @@
         </div>
       
         <div class="post">
-          <p>I recently put together a Concurrent Request that queried the database and used the result to create a number of folders named after the customers in the database. This concurrent routine was called from within Oracle Reports Builder in the after<em>report event. It needed to be called before the FTP Burst concurrent routine so I have to use the fnd</em>request.wait<em>for</em>request command. However it did not seem to wait for me and which had not been mentioned anywhere I checked on the web.</p>
+          <p>I recently put together a Concurrent Request that queried the database and used the result to create a number of folders named after the customers in the database. This concurrent routine was called from within Oracle Reports Builder in the after_report event. It needed to be called before the FTP Burst concurrent routine so I have to use the fnd_request.wait_for_request command. However it did not seem to wait for me and which had not been mentioned anywhere I checked on the web.</p>
 
-<p>This thing I missed was the commit statement. It needs to be run after your submit<em>request and before the wait</em>for_request. See below </p>
-<div class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="n">l_reqid</span> <span class="p">:</span><span class="o">=</span> <span class="n">fnd_request</span><span class="p">.</span><span class="n">submit_request</span>
+<p>This thing I missed was the commit statement. It needs to be run after your submit_request and before the wait_for_request. See below</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">l_reqid</span> <span class="p">:</span><span class="o">=</span> <span class="n">fnd_request</span><span class="p">.</span><span class="n">submit_request</span>
 <span class="p">(</span><span class="n">application</span> <span class="o">=&gt;</span>
 <span class="p">,</span><span class="n">program</span> <span class="o">=&gt;</span> <span class="s1">'XX...'</span> <span class="c1">-- child prg short name</span>
 <span class="p">,</span><span class="n">description</span> <span class="o">=&gt;</span> <span class="s1">''</span>
@@ -383,9 +384,11 @@
 <span class="p">);</span>
 
 <span class="n">fnd_request</span><span class="p">.</span><span class="n">wait_for_request</span> <span class="p">...</span>
+  
+
+</code></pre></div></div>
 
 
-</code></pre></div>
         </div>
         <div class="colophon">
           <p>
