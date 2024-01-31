@@ -126,4 +126,3 @@ So hopefully when you creating your index pattern you choose the race date on im
 
 So that really covers my database developer’s opinion on elasticsearch I am looking forward to try it on some real time data as this is where I think it was really designed to shine as you can use machine learning to model anomalies and such like. There is a lot you can do here with very little programming.
 
-

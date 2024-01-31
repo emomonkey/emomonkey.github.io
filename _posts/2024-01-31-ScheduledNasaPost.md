@@ -1,12 +1,13 @@
 ---
 layout: post
-title: 2024 Scheduled Nasa Post in Spring and EBS R12
+title: Scheduled Nasa Post
 date: 2024-01-31 22:01:49.000000000 +00:00
-description: Earliest 2024 Projects and an Oracle EBS Top
+description: Earliest 2024 Projects and an Oracle EBS Tip
 categories: []
 tags:
 - Materialised Views
 - Oracle EBS
+- R12
 status: publish
 type: post
 published: true
