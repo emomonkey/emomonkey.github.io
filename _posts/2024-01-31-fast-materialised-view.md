@@ -1,6 +1,6 @@
 ---
 layout: post
-title: FastMaterialisedView
+title: Fast Materialised View
 date: 2024-01-31 19:37 +0000
 description: Earliest 2024 Projects and an Oracle EBS Tip
 categories: []
